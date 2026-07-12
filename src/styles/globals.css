@@ -1,12 +1,16 @@
+@import "colors.css";
+@import "typography.css";
+@import "sizes.css";
+
 /* Design tokens — placeholder. Real values added in design pass. */
 :root {
   /* Color */
-  --color-background: #ffffff;
-  --color-foreground: #000000;
+  /*--color-background: #ffffff;
+  --color-foreground: #000000;*/
 
   /* Typography */
-  --font-sans: system-ui, sans-serif;
-  --font-mono: ui-monospace, monospace;
+  /*--font-sans: system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;*/
 
   /* Spacing */
   --spacing-unit: 8px;
@@ -14,14 +18,34 @@
   /* Motion */
   --duration-fast: 150ms;
   --duration-base: 300ms;
+  /* Occasional, marketing/explanatory moments only (hero entrances) — not
+     for anything a user triggers repeatedly. */
+  --duration-slow: 700ms;
+  /* Entrances/exits, hovers, presses — anything responding to the user. */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Elements already on screen moving from one state/position to another. */
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+  /*constants*/
+  --max-width: 84rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: #0a0a0a;
-    --color-foreground: #ededed;
+    color-scheme: dark;
   }
+}
+
+/* Manual theme toggle (Footer) overrides the system-preference media query
+   above — higher specificity than a plain `:root` rule, so it wins
+   regardless of source order. Falls back to the media query above when no
+   explicit choice has been made yet. */
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
 }
 
 *,
@@ -35,10 +59,47 @@ html {
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
+  min-block-size: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* Nav-height offset so content isn't obscured, plus real breathing room
+     on top of that — the exact nav height alone left content touching the
+     nav with no gap at all. */
+  padding-block-start: calc(var(--nav-height) + var(--size-8));
+
   background-color: var(--color-background);
-  color: var(--color-foreground);
-  font-family: var(--font-sans);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+/* Text links (e.g. links inside MDX prose) — accent color, with the
+   underline appearing only on hover/focus/active rather than sitting there
+   permanently. Componentized nav-style links (TopNav, Footer, card/row
+   titles, "Up Next") all set their own color via a class, which outranks
+   this bare-element default. */
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+a:hover,
+a:focus-visible,
+a:active {
+  text-decoration-color: currentColor;
+}
+
+/* Grows to fill any leftover viewport height so Footer sits at the bottom
+   of the viewport on short pages instead of floating mid-page. The bottom
+   padding is real breathing room before the Footer starts, rather than the
+   two sitting flush against each other. */
+.page-content {
+  flex: 1 0 auto;
+  padding-block-end: var(--size-8);
 }
 
 /* Honour prefers-reduced-motion globally for CSS transitions/animations */
@@ -51,4 +112,138 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Subtle entrance for hero content — every element within a hero section
+   (labels, title, description, image, etc.), staggered via the delay
+   tiers below, but never applied outside those hero moments.
+   @starting-style is the modern, JS-free way to animate an element's first
+   paint; falls back to simply appearing (no transition) in browsers that
+   don't support it yet, rather than staying invisible. */
+.text-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity var(--duration-slow) var(--ease-out),
+    transform var(--duration-slow) var(--ease-out);
+}
+
+@starting-style {
+  .text-in {
+    opacity: 0;
+    transform: translateY(var(--size-2));
+  }
+}
+
+/* Stagger tiers for .text-in — a small cascade instead of everything in a
+   hero appearing at once. Keep to these three; more than that starts to
+   feel slow rather than considered. */
+.text-in-delay-1 {
+  transition-delay: 80ms;
+}
+
+.text-in-delay-2 {
+  transition-delay: 160ms;
+}
+
+.text-in-delay-3 {
+  transition-delay: 240ms;
+}
+
+/* Scroll-driven entrance for card grids (design.md: "subtle fade/slide-up
+   on scroll"). Fades/settles in as an element enters the viewport, tied to
+   scroll position rather than a one-time trigger — scrolling back up past
+   the entry point reverses it, which reads as intentional rather than
+   content vanishing. See ScrollTimelinePolyfillLoader for cross-browser
+   support (mounted once, globally, in RootLayout). */
+.scroll-reveal {
+  animation: reveal-up both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 40%;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--size-4));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* animation-duration forced near-zero above doesn't meaningfully affect a
+   scroll-timeline-driven animation (its "duration" maps to scroll distance,
+   not wall-clock time) — so reduced-motion needs its own explicit override
+   here rather than relying on the blanket rule. */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Decorative accents — quiet background texture, never the focal point.
+   Every rule here reuses --line-soft/--line-bold at reduced opacity (no new
+   colors), and each is a single class: drop it, or edit the one opacity
+   value, to dial back or remove entirely without touching layout. */
+
+/* Faint dot-grid for large, mostly-empty background areas (hero sections,
+   footer) — reads as texture from a distance, disappears up close. */
+.bg-dot-grid {
+  background-image: radial-gradient(
+    circle,
+    oklch(from var(--line-soft) l c h / 5%) 1px,
+    transparent 1px
+  );
+  background-size: var(--size-4) var(--size-4);
+}
+
+/* Single soft radial sweep — cap at one use per page (the homepage hero).
+   Reuses --line-bold rather than --accent, so it stays a felt-not-seen
+   background effect instead of a color wash. */
+.bg-radial-glow {
+  background-image: radial-gradient(
+    ellipse 60% 55% at 30% 15%,
+    oklch(from var(--line-bold) l c h / 8%),
+    transparent 70%
+  );
+  background-repeat: no-repeat;
+}
+
+/* Sparse "anchor point" crosshair — border-colored, not accent, and meant
+   for a handful of chosen intersections (page corners, a bounding box),
+   never every corner of every component. Position it via the host
+   component's own CSS (inset + translate to center on the corner); this
+   only draws the mark itself. */
+.corner-mark {
+  position: absolute;
+  inline-size: var(--size-2);
+  block-size: var(--size-2);
+  pointer-events: none;
+}
+
+.corner-mark::before,
+.corner-mark::after {
+  content: "";
+  position: absolute;
+  background-color: oklch(from var(--line-bold) l c h / 55%);
+}
+
+.corner-mark::before {
+  inset-block-start: 50%;
+  inset-inline-start: 0;
+  inline-size: 100%;
+  block-size: 1px;
+  transform: translateY(-50%);
+}
+
+.corner-mark::after {
+  inset-inline-start: 50%;
+  inset-block-start: 0;
+  block-size: 100%;
+  inline-size: 1px;
+  transform: translateX(-50%);
 }

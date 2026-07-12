@@ -1,0 +1,89 @@
+/* Standalone (single-child) mode */
+.quote {
+  position: relative;
+  margin: 0;
+  padding-inline-start: var(--size-6);
+  padding-block-start: var(--size-6);
+}
+
+.mark {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  font-size: var(--font-size-8);
+  line-height: 1;
+  color: var(--accent);
+  pointer-events: none;
+}
+
+.content {
+  color: var(--text-primary);
+}
+
+/* Interactive stack mode */
+.stackWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--size-3);
+}
+
+.arrow {
+  flex: none;
+  appearance: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--size-6);
+  block-size: var(--size-6);
+  border-radius: 999px;
+  border: 1px solid var(--line-soft);
+  background: none;
+  color: var(--text-primary);
+  font-size: var(--font-size-5);
+}
+
+.stack {
+  position: relative;
+  flex: 1;
+  /* Placeholder height until real quote copy/spacing rhythm lands. */
+  min-block-size: var(--size-40);
+}
+
+.card {
+  position: absolute;
+  inset: 0;
+  padding-inline-start: var(--size-6);
+  padding-inline-end: var(--size-4);
+  padding-block: var(--size-5);
+  border: 1px solid var(--line-soft);
+  background-color: var(--color-background);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    opacity var(--duration-base) var(--ease-out);
+}
+
+.card[data-depth="0"] {
+  transform: translate(0, 0) scale(1);
+  opacity: 1;
+  z-index: 4;
+  box-shadow: 0 var(--size-1) var(--size-2) rgb(0 0 0 / 8%);
+}
+
+.card[data-depth="1"] {
+  transform: translate(var(--size-1), var(--size-1)) scale(0.96);
+  opacity: 0.85;
+  z-index: 3;
+}
+
+.card[data-depth="2"] {
+  transform: translate(var(--size-2), var(--size-2)) scale(0.92);
+  opacity: 0.7;
+  z-index: 2;
+}
+
+.card[data-depth="3"] {
+  transform: translate(var(--size-3), var(--size-3)) scale(0.88);
+  opacity: 0.55;
+  z-index: 1;
+}

@@ -1,0 +1,47 @@
+/* Shared spacing across the three Hero variants. */
+
+.tags {
+  color: var(--text-soft);
+  margin: 0;
+  margin-block-end: var(--size-2);
+}
+
+/* CaseStudyHero-only: labels render as a row of Tag(kind="label") chips
+   rather than the plain joined text the other two Heroes use for tags. */
+.labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-2);
+  margin-block-end: var(--size-2);
+}
+
+.overview {
+  margin-block-start: var(--size-3);
+}
+
+.date {
+  color: var(--text-softer);
+  margin-block-start: var(--size-3);
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-3);
+  margin-block-start: var(--size-3);
+}
+
+/* CaseStudyHero-only: plain frame around the hero image, plus one sparse
+   crosshair mark at a corner (a one-off framing moment for the single
+   biggest visual per case-study page, not a pattern applied to every
+   image). */
+.imageFrame {
+  position: relative;
+  border: 1px solid var(--line-soft);
+}
+
+.imageMark {
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  transform: translate(50%, -50%);
+}

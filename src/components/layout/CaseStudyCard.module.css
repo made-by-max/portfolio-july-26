@@ -1,0 +1,61 @@
+/* Grid's own divider (border-inline-start on the image column) only spans
+   the Grid's own row height, which stops short of the Section's actual
+   top/bottom border by Section's own padding-block. This pseudo-element
+   extends a matching line through that padding on both ends, so the
+   divider reads as going edge-to-edge with the card as a whole. Hidden on
+   mobile, where the divider is horizontal instead (see below). */
+.dividerBleed {
+  position: relative;
+}
+
+.dividerBleed::before {
+  content: "";
+  position: absolute;
+  inset-block-start: calc(-1 * var(--size-6));
+  inset-block-end: calc(-1 * var(--size-6));
+  inset-inline-start: 50%;
+  inline-size: 1px;
+  background-color: var(--line-soft);
+  pointer-events: none;
+}
+
+.labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-2);
+  margin-block-end: var(--size-3);
+}
+
+.description {
+  margin-block-start: var(--size-2);
+  margin-block-end: var(--size-4);
+  color: var(--text-soft);
+}
+
+.imageFrame {
+  border: 1px solid var(--line-soft);
+}
+
+/* Media queries can't reference custom properties, so this is a literal
+   value — keep it in sync with --breakpoint-mobile in sizes.css. */
+@media (max-width: 48rem) {
+  /* Image renders above the text content on mobile — the opposite of
+     Grid's default DOM-order stacking. Grid's own mobile divider rule
+     (`.grid > *:not(:first-child)`) targets this column by DOM position
+     regardless of visual order, so it has to be cancelled here and moved
+     onto the text column instead (which Grid leaves untouched, being the
+     first DOM child) — !important is needed since Grid's compound
+     selector otherwise outranks a single class here. */
+  .imageColumn {
+    order: -1;
+    border-block-start: none !important;
+  }
+
+  .textColumn {
+    border-block-start: 1px solid var(--line-soft);
+  }
+
+  .dividerBleed::before {
+    display: none;
+  }
+}

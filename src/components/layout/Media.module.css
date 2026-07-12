@@ -1,0 +1,17 @@
+/* Shared figure/caption treatment for Image and Video. */
+
+.figure {
+  margin: 0;
+}
+
+.figure img,
+.figure video {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+.caption {
+  margin-block-start: var(--size-1);
+  color: var(--text-soft);
+}

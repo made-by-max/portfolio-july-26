@@ -1,0 +1,63 @@
+:root {
+  /*Primitives*/
+
+  /* Progressive hue rotation across all tonal steps */
+  --palette-hue-rotate-by: 0;
+
+  /* Base chroma for all palettes, except natural tones (gray and stone) */
+  --palette-chroma: 0.9;
+
+  /* Chroma control specifically for natural tones (gray and stone) */
+  --gray-chroma: 0.01;
+
+  /* Base hue angle (0–360) for each color palette */
+  --gray-hue: 248;
+
+  --gray-0: oklch(99% var(--gray-chroma, none) var(--gray-hue, none));
+  --gray-1: oklch(96% var(--gray-chroma, none) var(--gray-hue, none));
+  --gray-2: oklch(94% var(--gray-chroma, none) var(--gray-hue, none));
+  --gray-3: oklch(89% var(--gray-chroma, none) var(--gray-hue, none));
+  --gray-4: oklch(78% var(--gray-chroma, none) var(--gray-hue, none));
+  --gray-5: oklch(66% var(--gray-chroma, none) var(--gray-hue, none));
+  --gray-6: oklch(50% var(--gray-chroma, none) var(--gray-hue, none));
+  --gray-7: oklch(38% var(--gray-chroma, none) var(--gray-hue, none));
+  --gray-8: oklch(27% var(--gray-chroma, none) var(--gray-hue, none));
+  --gray-9: oklch(18% var(--gray-chroma, none) var(--gray-hue, none));
+
+  /* absolute white — used as --on-accent in light theme */
+  --color-prim-white: oklch(1 0 0);
+
+  /* cobalt blue */
+  --color-prim-accent: oklch(0.46 0.2 254);
+
+  /*Semantics*/
+
+  /* surfaces */
+  --color-background: light-dark(var(--gray-0), var(--gray-9));
+  --surface: light-dark(var(--gray-1), var(--gray-8));
+  --surface-2: light-dark(var(--gray-2), var(--gray-7));
+
+  /* borders */
+  --line-soft: light-dark(var(--gray-2), var(--gray-8));
+  --line-bold: light-dark(var(--gray-3), var(--gray-7));
+
+  /*type*/
+  --text-primary: light-dark(var(--gray-9), var(--gray-0));
+  --text-soft: light-dark(var(--gray-6), var(--gray-4));
+  --text-softer: light-dark(var(--gray-5), var(--gray-6));
+
+  --accent: var(--color-prim-accent);
+  --accent-deep: oklch(
+    from var(--color-prim-accent) calc(l - 0.09) calc(c - 0.02) h
+  );
+  --accent-soft: oklch(from var(--color-prim-accent) 0.93 calc(c * 0.16) h);
+  --on-accent: var(--color-prim-white);
+
+  /* Section background variants. Default stays transparent (inherits the
+     page's own --color-background) — "dark" reuses --surface-2 rather than
+     a full color inversion, which would also require overriding text/line
+     tokens locally to stay legible; a moderate elevation shift is enough to
+     read as a distinct section without that complexity. */
+  --section-bg-default: transparent;
+  --section-bg-dark: var(--surface-2);
+}

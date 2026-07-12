@@ -1,0 +1,14 @@
+.section {
+  position: relative;
+  border-block-start: 1px solid var(--line-soft);
+  background-color: var(--section-bg-default);
+  /* Generous rhythm between sections (design.md: "huge vertical spacing
+     between sections") — combines with Column's own padding-block, so
+     the visible gap between two stacked sections is larger than either
+     alone. */
+  padding-block: var(--size-6);
+}
+
+.section[data-background="dark"] {
+  background-color: var(--section-bg-dark);
+}

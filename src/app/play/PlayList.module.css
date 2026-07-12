@@ -1,0 +1,24 @@
+.filterRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--size-2);
+  margin-block-end: var(--size-4);
+}
+
+.clear {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: var(--text-soft);
+  text-decoration: underline;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .clear:hover {
+    color: var(--text-primary);
+  }
+}

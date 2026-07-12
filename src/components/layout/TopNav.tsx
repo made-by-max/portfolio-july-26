@@ -1,0 +1,65 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import styles from "./TopNav.module.css";
+
+const LINKS = [
+  { href: "/work", label: "Work" },
+  { href: "/play", label: "Play" },
+  { href: "/about", label: "About" },
+];
+
+// Fixed, always-visible chrome — no scroll-reactive behavior, no active
+// link state (not yet built). Mobile collapses the link list into a
+// hamburger-triggered dropdown panel rather than a full-screen overlay.
+export function TopNav() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <header className={styles.nav}>
+      <div className={styles.inner}>
+        <Link href="/" className={styles.logo}>
+          Max Taylor
+        </Link>
+
+        <nav className={styles.links} aria-label="Primary">
+          {LINKS.map((link) => (
+            <Link key={link.href} href={link.href} className={styles.link}>
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        <button
+          type="button"
+          className={styles.menuButton}
+          aria-expanded={open}
+          aria-controls="mobile-nav-panel"
+          aria-label={open ? "Close menu" : "Open menu"}
+          onClick={() => setOpen((prev) => !prev)}
+        >
+          {open ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </div>
+
+      <div
+        id="mobile-nav-panel"
+        className={styles.mobilePanel}
+        data-open={open || undefined}
+      >
+        {LINKS.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className={styles.mobileLink}
+            onClick={() => setOpen(false)}
+          >
+            {link.label}
+          </Link>
+        ))}
+      </div>
+    </header>
+  );
+}

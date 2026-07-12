@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getPublishedPlayItems } from "@/lib/content";
+import { ContentWrapper } from "@/components/layout";
 import PlayList from "./PlayList";
 
 export const metadata: Metadata = {
@@ -15,9 +16,8 @@ export default function PlayPage() {
   ).sort();
 
   return (
-    <main>
-      <h1>Play</h1>
+    <ContentWrapper>
       <PlayList items={items} allTags={allTags} />
-    </main>
+    </ContentWrapper>
   );
 }

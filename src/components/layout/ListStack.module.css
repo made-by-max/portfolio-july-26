@@ -1,0 +1,10 @@
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemDivided {
+  margin-block-start: var(--size-3);
+  border-block-start: 1px solid var(--line-soft);
+  padding-block-start: var(--size-3);
+}

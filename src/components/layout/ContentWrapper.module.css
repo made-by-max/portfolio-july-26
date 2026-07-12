@@ -1,0 +1,23 @@
+.wrapper {
+  position: relative;
+  /* Caps at --max-width on wide viewports (centered via the auto margin);
+     below that, keeps a fixed --size-4 gutter on each side instead of the
+     border running edge-to-edge into the viewport. */
+  max-width: min(var(--max-width), calc(100% - var(--size-4) * 2));
+  margin-inline: auto;
+
+  border-block-end: 1px solid var(--line-soft);
+  border-inline: 1px solid var(--line-soft);
+}
+
+.markTopLeft {
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  transform: translate(-50%, -50%);
+}
+
+.markTopRight {
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  transform: translate(50%, -50%);
+}

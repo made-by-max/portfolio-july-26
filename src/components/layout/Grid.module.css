@@ -1,0 +1,24 @@
+.grid {
+  display: grid;
+  grid-template-columns: var(--grid-columns);
+  align-items: stretch;
+}
+
+/* Vertical dividers between every adjacent column pair, full-bleed to the
+   column edges — spacing lives on Column's own padding, not here. */
+.grid > *:not(:first-child) {
+  border-inline-start: 1px solid var(--line-soft);
+}
+
+/* Media queries can't reference custom properties, so this is a literal
+   value — keep it in sync with --breakpoint-mobile in sizes.css. */
+@media (max-width: 48rem) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grid > *:not(:first-child) {
+    border-inline-start: none;
+    border-block-start: 1px solid var(--line-soft);
+  }
+}

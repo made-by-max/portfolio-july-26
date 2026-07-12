@@ -1,0 +1,17 @@
+/* Genuine CSS auto-fit grid — dynamic column count, so this can't use the
+   layout system's Grid (fixed columns array only). Min/max width is a
+   reasonable starting point (~4 cards at --max-width); expect this to be
+   tuned once real content/imagery is in place. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
+  gap: var(--size-6);
+  /* Sits directly in a Section, not wrapped in Column, so it needs its
+     own inset — same reasoning as PinnedMediaScroll's textColumn. */
+  padding: var(--size-4);
+}
+
+.item[data-row-divider="true"] {
+  border-block-start: 1px solid var(--line-soft);
+  padding-block-start: var(--size-6);
+}

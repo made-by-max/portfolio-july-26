@@ -1,0 +1,36 @@
+.link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.eyebrow {
+  display: block;
+  color: var(--text-soft);
+  margin-block-end: var(--size-2);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: var(--size-3);
+  color: var(--text-soft);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.arrow {
+  flex: none;
+  inline-size: var(--size-5);
+  block-size: var(--size-5);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover .title {
+    color: var(--text-primary);
+  }
+
+  .link:hover .arrow {
+    transform: translateX(var(--size-1));
+  }
+}

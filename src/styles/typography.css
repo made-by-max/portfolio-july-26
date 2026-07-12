@@ -1,0 +1,146 @@
+:root {
+  /*Primitives*/
+  /*font families*/
+  --font-display: "Figtree", sans-serif;
+  --font-body: "Figtree", sans-serif;
+  --font-mono: "Figtree", sans-serif;
+
+  /*Sizes*/
+
+  /*display-xxl*/
+  --font-size-9: clamp(2.2rem, calc(1.545rem + 3.273cqi), 4rem);
+
+  /*display-xl*/
+  --font-size-8: clamp(1.8rem, calc(1.364rem + 2.182cqi), 3rem);
+
+  /*display-large*/
+  --font-size-7: clamp(1.6rem, calc(1.273rem + 1.636cqi), 2.5rem);
+
+  /*display medium*/
+  --font-size-6: clamp(1.4rem, calc(1.182rem + 1.091cqi), 2rem);
+
+  /*display small*/
+
+  --font-size-5: clamp(1.2rem, calc(1.091rem + 0.545cqi), 1.5rem);
+
+  /* display xs, body large*/
+
+  --font-size-4: clamp(1rem, calc(0.909rem + 0.455cqi), 1.25rem);
+
+  /*body base*/
+  --font-size-3: 1rem;
+  /*body small*/
+  --font-size-2: 0.875rem;
+  /*body xs*/
+  --font-size-1: 0.75rem;
+
+  /* Oversized decorative wordmark (Footer watermark only) — scales with
+     viewport so it keeps bleeding off the edge at any width, new token
+     since nothing in the display scale goes this large. Sized up from an
+     earlier pass now that the watermark is a single short word ("max")
+     rather than the full name — needs to be bigger to still read as a
+     dramatic, edge-bleeding flourish. */
+  --font-size-watermark: clamp(10rem, 34vw, 28rem);
+
+  /*font weight*/
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /*semantics*/
+
+  /*display-xxl*/
+  h1,
+  .display-xxl {
+    font-size: var(--font-size-9);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.06;
+    letter-spacing: -1.4%;
+  }
+
+  /*display-xl*/
+  h2,
+  .display-xl {
+    font-size: var(--font-size-8);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.06;
+    letter-spacing: -2.9%;
+  }
+
+  /*display-large*/
+  h3,
+  .display-l {
+    font-size: var(--font-size-7);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.2;
+    letter-spacing: -2.4%;
+  }
+
+  /*display medium*/
+  h4,
+  .display-m {
+    font-size: var(--font-size-6);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.25;
+    letter-spacing: -1.3%;
+  }
+
+  /*display small*/
+  h5,
+  .display-s {
+    font-size: var(--font-size-5);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.6;
+    letter-spacing: -1%;
+  }
+
+  /* display xs, body large*/
+  h6,
+  .display-xs {
+    font-size: var(--font-size-4);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.3;
+    letter-spacing: -0.4%;
+  }
+
+  .body-l {
+    font-size: var(--font-size-4);
+    line-height: 1.8;
+  }
+
+  p,
+  .body-m {
+    font-size: var(--font-size-3);
+    line-height: 1.6;
+  }
+
+  .body-s {
+    font-size: var(--font-size-2);
+    line-height: 1.6;
+  }
+
+  .body-xs {
+    font-size: var(--font-size-1);
+    line-height: 1.6;
+  }
+
+  .font-button {
+    font-size: var(--font-size-3);
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 5%;
+  }
+
+  .font-tech-stack {
+    font-size: var(--font-size-3);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .font-tag {
+    font-size: var(--font-size-1);
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 9%;
+  }
+}

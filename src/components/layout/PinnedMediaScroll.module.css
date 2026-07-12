@@ -1,0 +1,88 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--size-6);
+}
+
+.textColumn {
+  display: flex;
+  flex-direction: column;
+  /* PinnedMediaScroll builds its own 2-column grid rather than going
+     through Grid/Column, so it needs to provide its own inset — otherwise
+     content runs edge-to-edge inside the Section/ContentWrapper border. */
+  padding-inline: var(--size-4);
+}
+
+.block {
+  min-block-size: 100vh;
+}
+
+.blockContent {
+  /* Sticky boundary is the parent .block, so each block's content pins
+     while that block is on-screen, then naturally unsticks as the next
+     block scrolls in. 48px matches var(--size-6) — keep in sync with
+     the JS threshold in PinnedMediaScrollClient.tsx. */
+  position: sticky;
+  inset-block-start: var(--size-6);
+  padding-block: var(--size-6);
+  /* Caps line length for readability — the column itself can be much
+     wider than this at desktop widths. */
+  max-inline-size: 34rem;
+}
+
+.mobileMedia {
+  display: none;
+}
+
+.mediaColumn {
+  position: relative;
+  padding-block-start: var(--size-6);
+  padding-inline-end: var(--size-4);
+}
+
+.mediaPanel {
+  position: sticky;
+  inset-block-start: var(--size-10);
+  block-size: calc(100vh - var(--size-10) - var(--size-6));
+}
+
+.mediaLayer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.mediaLayerActive {
+  opacity: 1;
+}
+
+.mediaLayer img {
+  display: block;
+  inline-size: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Sticky pin-and-crossfade doesn't translate to narrow viewports — fall
+   back to a simple linear stack with each image inline under its text.
+   Media queries can't reference custom properties, so this is a literal
+   value — keep it in sync with --breakpoint-mobile in sizes.css. */
+@media (max-width: 48rem) {
+  .wrapper {
+    display: block;
+  }
+
+  .block {
+    min-block-size: 0;
+  }
+
+  .mobileMedia {
+    display: block;
+    margin-block-start: var(--size-3);
+  }
+
+  .mediaColumn {
+    display: none;
+  }
+}

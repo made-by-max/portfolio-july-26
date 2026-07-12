@@ -1,0 +1,53 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: var(--size-4);
+  align-items: flex-start;
+}
+
+.imageArea {
+  flex: 3;
+  min-inline-size: 0;
+}
+
+.tabList {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.tab {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-align: start;
+  cursor: pointer;
+  font: inherit;
+  color: var(--text-softer);
+  transition: color var(--duration-fast) var(--ease-out);
+  /* accessibility minimum tap target */
+  min-block-size: 2.75rem;
+  padding-block: var(--size-2);
+}
+
+.tab[data-active="true"] {
+  color: var(--text-primary);
+}
+
+/* "hovering any item brightens it" — gated to real pointer devices so
+   touch taps don't get stuck in a hovered state. */
+@media (hover: hover) and (pointer: fine) {
+  .tab:hover {
+    color: var(--text-primary);
+  }
+}
+
+/* Media queries can't reference custom properties, so this is a literal
+   value — keep it in sync with --breakpoint-mobile in sizes.css. */
+@media (max-width: 48rem) {
+  .wrapper {
+    flex-direction: column;
+  }
+}

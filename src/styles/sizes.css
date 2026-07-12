@@ -1,0 +1,39 @@
+:root {
+  --size-0: 0.25rem; /*   4px */
+  --size-1: 0.5rem; /*   8px */
+  --size-2: 1rem; /*  16px */
+  --size-3: 1.5rem; /*  24px */
+  --size-4: 2rem; /*  32px */
+  --size-5: 2.5rem; /*  40px */
+  --size-6: 3rem; /*  48px */
+  --size-7: 3.5rem; /*  56px */
+  --size-8: 4rem; /*  64px */
+  --size-9: 4.5rem; /*  72px */
+  --size-10: 5rem; /*  80px */
+  --size-11: 5.5rem; /*  88px */
+  --size-12: 6rem; /*  96px */
+  --size-13: 6.5rem; /* 104px */
+  --size-14: 7rem; /* 112px */
+  --size-15: 7.5rem; /* 120px */
+  --size-20: 10rem; /* 160px */
+  --size-40: 20rem; /* 320px */
+
+  --size-7-fluid: clamp(2rem, 7cqi, 3.5rem);
+  --size-8-fluid: clamp(2.25rem, 8cqi, 4rem);
+  --size-9-fluid: clamp(2.5rem, 9cqi, 4.5rem);
+  --size-10-fluid: clamp(3rem, 10cqi, 5rem);
+  --size-11-fluid: clamp(3.25rem, 11cqi, 5.5rem);
+  --size-12-fluid: clamp(3.5rem, 12cqi, 6rem);
+  --size-13-fluid: clamp(4rem, 13cqi, 6.5rem);
+  --size-14-fluid: clamp(4.25rem, 14cqi, 7rem);
+  --size-15-fluid: clamp(4.5rem, 15cqi, 7.5rem);
+  --size-20-fluid: clamp(6rem, 20cqi, 10rem);
+  --size-40-fluid: clamp(12rem, 40cqi, 20rem);
+
+  /* Breakpoint used by the layout system (Grid/Column stacking, Section + mark) */
+  --breakpoint-mobile: 48rem; /* 768px */
+
+  /* Fixed TopNav height — page content needs matching top padding so the
+     fixed nav doesn't obscure it on load. New token, flagging per CLAUDE.md. */
+  --nav-height: var(--size-10); /* 80px */
+}

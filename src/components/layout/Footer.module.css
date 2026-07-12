@@ -1,0 +1,175 @@
+.footer {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--surface-2);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width);
+  margin-inline: auto;
+}
+
+/* Oversized, low-opacity wordmark bleeding off the footer's edge — anchored
+   to the bottom-left (rather than centered) with a negative inline offset,
+   so it always crops at the edge regardless of viewport width instead of
+   depending on the text getting wide enough to overflow on its own.
+   Clipped by .footer's own overflow:hidden. */
+.watermark {
+  position: absolute;
+  z-index: 0;
+  inset-inline-start: -0.05em;
+  inset-block-end: -0.18em;
+  font-size: var(--font-size-watermark);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  white-space: nowrap;
+  color: oklch(from var(--text-softer) l c h / 8%);
+  pointer-events: none;
+}
+
+.emailRow {
+  display: flex;
+  align-items: center;
+  gap: var(--size-3);
+}
+
+/* Grid's own vertical dividers don't belong in the footer — !important is
+   needed since Grid's compound selector (.grid > *:not(:first-child))
+   otherwise outranks a single class here. */
+.noDivider {
+  border-inline-start: none !important;
+}
+
+/* Text link (not a nav link) — accent color, underline appears on
+   hover/focus/active rather than sitting there permanently. */
+.email {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.email:hover,
+.email:focus-visible,
+.email:active {
+  text-decoration-color: currentColor;
+}
+
+/* Shared by the copy-to-clipboard button and the theme toggle — no border;
+   a quiet background shift on hover is the only affordance. */
+.iconButton {
+  appearance: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  padding: var(--size-1);
+  border: none;
+  border-radius: var(--size-0);
+  background-color: transparent;
+  color: var(--text-soft);
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  /* --surface (not --surface-2) — the footer's own background is already
+     --surface-2, so using that same value here made the hover invisible. */
+  .iconButton:hover {
+    color: var(--text-primary);
+    background-color: var(--surface);
+  }
+}
+
+.iconButton:active {
+  transform: scale(0.97);
+}
+
+.iconButton:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.themeToggle {
+  margin-block-start: var(--size-3);
+}
+
+/* Both icons stay mounted, stacked, and cross-fade via opacity/transform —
+   interruptible if clicked again mid-transition, unlike a keyframe swap. */
+.iconSwap {
+  position: relative;
+  display: inline-flex;
+  inline-size: var(--size-3);
+  block-size: var(--size-3);
+}
+
+.iconSwap svg {
+  position: absolute;
+  inset: 0;
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.iconCheck {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.iconSwap[data-state="check"] .iconCopy {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.iconSwap[data-state="check"] .iconCheck {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Sun/Moon add a slight rotation on top of the cross-fade — a small
+   day/night flip rather than a flat icon swap. */
+.iconSun {
+  opacity: 0;
+  transform: scale(0.9) rotate(-30deg);
+}
+
+.iconSwap[data-state="dark"] .iconMoon {
+  opacity: 0;
+  transform: scale(0.9) rotate(30deg);
+}
+
+.iconSwap[data-state="dark"] .iconSun {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
+}
+
+.link {
+  color: var(--text-soft);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover {
+    color: var(--text-primary);
+  }
+}
+
+.copyright {
+  margin-block-start: var(--size-6);
+  padding-inline: var(--size-4);
+  color: var(--text-softer);
+}

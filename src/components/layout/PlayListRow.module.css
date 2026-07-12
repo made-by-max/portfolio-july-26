@@ -1,0 +1,29 @@
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--size-3);
+  padding-block: var(--size-3);
+}
+
+.title {
+  flex: 2 1 0;
+  min-inline-size: 0;
+  color: var(--text-soft);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .title:hover {
+    color: var(--text-primary);
+  }
+}
+
+.tags {
+  flex: 1 1 0;
+  min-inline-size: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--size-1);
+}

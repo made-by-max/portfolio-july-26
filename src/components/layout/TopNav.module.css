@@ -1,0 +1,145 @@
+.nav {
+  position: fixed;
+  inset-inline: 0;
+  inset-block-start: 0;
+  z-index: 100;
+  block-size: var(--nav-height);
+  /* No background fill — fully transparent over content. The blur alone
+     still keeps scrolled content from reading as flush with the nav text. */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-block-end: 1px solid var(--line-bold);
+}
+
+.inner {
+  /* Same max-width formula as ContentWrapper (not padding-inline) — so the
+     line at the end of .links lands at the exact same physical edge as
+     ContentWrapper's border, instead of sitting inset from it. */
+  max-width: min(var(--max-width), calc(100% - var(--size-4) * 2));
+  block-size: 100%;
+  margin-inline: auto;
+  display: flex;
+  /* stretch (not center) so .links can stretch too — that's what lets its
+     border-inline-start dividers reach the nav's full block-size instead
+     of only wrapping the link text. */
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex: none;
+  margin-inline-start: var(--size-4);
+  color: var(--text-soft);
+  text-decoration: none;
+  font-weight: var(--font-weight-semibold);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .logo:hover {
+    color: var(--text-primary);
+  }
+}
+
+.links {
+  display: flex;
+  align-items: stretch;
+  border-inline-end: 1px solid var(--line-bold);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  padding-inline: var(--size-3);
+  border-inline-start: 1px solid var(--line-bold);
+  color: var(--text-soft);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover {
+    color: var(--text-primary);
+  }
+}
+
+.menuButton {
+  display: none;
+  align-items: center;
+  margin-inline-end: var(--size-4);
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--text-primary);
+}
+
+.mobilePanel {
+  display: none;
+  /* Closed state also carries the transition used for the exit — visibility
+     flips to hidden only after the fade/slide finishes, so the panel stays
+     hit-testable (and screen-reader reachable) for the full exit motion. */
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out),
+    visibility 0s linear var(--duration-fast);
+}
+
+/* Media queries can't reference custom properties, so this is a literal
+   value — keep it in sync with --breakpoint-mobile in sizes.css. */
+@media (max-width: 48rem) {
+  .links {
+    display: none;
+  }
+
+  .menuButton {
+    display: inline-flex;
+  }
+
+  .mobilePanel {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    inset-inline: 0;
+    inset-block-start: 100%;
+    background-color: oklch(from var(--surface) l c h / 92%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-block-end: 1px solid var(--line-bold);
+    /* transform/opacity only — animating max-block-size forces layout
+       every frame; this composites on the GPU instead. */
+    opacity: 0;
+    transform: translateY(calc(-1 * var(--size-1)));
+    visibility: hidden;
+  }
+
+  .mobilePanel[data-open] {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    transition:
+      opacity var(--duration-fast) var(--ease-out),
+      transform var(--duration-fast) var(--ease-out),
+      visibility 0s linear;
+  }
+
+  .mobileLink {
+    padding: var(--size-3) var(--size-4);
+    color: var(--text-soft);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .mobileLink:hover {
+      color: var(--text-primary);
+    }
+  }
+
+  .mobileLink:not(:first-child) {
+    border-block-start: 1px solid var(--line-soft);
+  }
+}

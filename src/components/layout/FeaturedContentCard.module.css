@@ -1,0 +1,38 @@
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.imageLink,
+.titleLink {
+  display: block;
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.imageLink {
+  color: inherit;
+}
+
+.titleLink {
+  margin-block-start: var(--size-3);
+  color: var(--text-soft);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .titleLink:hover {
+    color: var(--text-primary);
+  }
+}
+
+.description {
+  margin-block-start: var(--size-1);
+  color: var(--text-soft);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-1);
+  margin-block-start: var(--size-2);
+}
