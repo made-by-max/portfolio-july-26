@@ -50,6 +50,36 @@
 
   /*semantics*/
 
+  /* Shared text constraints — readable line length (--text-max-width,
+     defined in globals.css) plus wrap quality. Headers balance so no line
+     is left much shorter than the others; body text uses "pretty" to
+     avoid orphans on the last line. Font-button/font-tag/font-tech-stack
+     are short UI labels, not reading content, so they're excluded. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .display-xxl,
+  .display-xl,
+  .display-l,
+  .display-m,
+  .display-s,
+  .display-xs {
+    max-inline-size: var(--text-max-width);
+    text-wrap: balance;
+  }
+
+  p,
+  .body-l,
+  .body-m,
+  .body-s,
+  .body-xs {
+    max-inline-size: var(--prose-max-width);
+    text-wrap: pretty;
+  }
+
   /*display-xxl*/
   h1,
   .display-xxl {
@@ -60,7 +90,7 @@
   }
 
   /*display-xl*/
-  h2,
+
   .display-xl {
     font-size: var(--font-size-8);
     font-weight: var(--font-weight-semibold);
@@ -69,7 +99,7 @@
   }
 
   /*display-large*/
-  h3,
+  h2,
   .display-l {
     font-size: var(--font-size-7);
     font-weight: var(--font-weight-semibold);
@@ -78,7 +108,7 @@
   }
 
   /*display medium*/
-  h4,
+  h3,
   .display-m {
     font-size: var(--font-size-6);
     font-weight: var(--font-weight-semibold);
@@ -87,7 +117,7 @@
   }
 
   /*display small*/
-  h5,
+  h4,
   .display-s {
     font-size: var(--font-size-5);
     font-weight: var(--font-weight-semibold);
@@ -96,7 +126,7 @@
   }
 
   /* display xs, body large*/
-  h6,
+  h5,
   .display-xs {
     font-size: var(--font-size-4);
     font-weight: var(--font-weight-semibold);
@@ -105,19 +135,31 @@
   }
 
   .body-l {
-    font-size: var(--font-size-4);
+    font-size: var(--font-size-5);
     line-height: 1.8;
   }
 
   p,
+  li,
   .body-m {
+    font-size: var(--font-size-4);
+    line-height: 1.6;
+  }
+  .body-m-bold {
+    font-size: var(--font-size-4);
+    line-height: 1.6;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .body-s {
     font-size: var(--font-size-3);
     line-height: 1.6;
   }
 
-  .body-s {
-    font-size: var(--font-size-2);
+  .body-s-bold {
+    font-size: var(--font-size-3);
     line-height: 1.6;
+    font-weight: var(--font-weight-bold);
   }
 
   .body-xs {
@@ -142,5 +184,20 @@
     text-transform: uppercase;
     line-height: 1;
     letter-spacing: 9%;
+  }
+
+  .listStack p {
+    font-size: var(--font-size-3);
+    margin-block-start: 0;
+  }
+  .listStack h3,
+  h4 {
+    font-size: var(--font-size-3);
+    font-weight: var(--font-weight-bold);
+    margin-block-end: 0;
+  }
+
+  .bold-text {
+    font-weight: var(--font-weight-bold);
   }
 }

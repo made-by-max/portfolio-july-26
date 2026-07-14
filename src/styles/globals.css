@@ -28,6 +28,10 @@
 
   /*constants*/
   --max-width: 84rem;
+  /* Readable line-length cap for body/heading text — 2/3 of --max-width,
+     new token since nothing else in the tokens file expresses this ratio. */
+  --text-max-width: calc(var(--max-width) * 2 / 3);
+  --prose-max-width: 70ch;
 }
 
 @media (prefers-color-scheme: dark) {

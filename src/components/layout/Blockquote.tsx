@@ -16,13 +16,15 @@ export function Blockquote({ children }: Props) {
   if (items.length <= 1) {
     return (
       <blockquote className={styles.quote}>
-        <span className={styles.mark} aria-hidden="true">
-          “
-        </span>
-        <div className={styles.content}>{children}</div>
+        <div className={styles.quoteBody}>
+          <span className={styles.mark} aria-hidden="true">
+            “
+          </span>
+          <div className={`body-l ${styles.content}`}>{children}</div>
+        </div>
       </blockquote>
     );
   }
 
-  return <BlockquoteStack items={items} />;
+  return <BlockquoteStack>{children}</BlockquoteStack>;
 }

@@ -2,11 +2,12 @@
   position: relative;
   border-block-start: 1px solid var(--line-soft);
   background-color: var(--section-bg-default);
-  /* Generous rhythm between sections (design.md: "huge vertical spacing
-     between sections") — combines with Column's own padding-block, so
-     the visible gap between two stacked sections is larger than either
-     alone. */
-  padding-block: var(--size-6);
+  /* No padding-block here on purpose — GridSpacer (a real element between
+     Sections) now owns the generous inter-section rhythm. Section's own
+     padding-block used to double up with that *and* was the reason Grid's
+     column dividers (and anything else spanning a Section's full height)
+     stopped short of the actual border instead of reaching it. Content
+     still gets its inset from Column's own padding-block, same as always. */
 }
 
 .section[data-background="dark"] {

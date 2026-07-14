@@ -4,7 +4,28 @@
 }
 
 .itemDivided {
+  position: relative;
   margin-block-start: var(--size-3);
-  border-block-start: 1px solid var(--line-soft);
   padding-block-start: var(--size-3);
+}
+
+.itemDivided p {
+  font-size: var(--font-size-1);
+}
+
+/* ListStack always sits inside a Column, so a plain border-block-start
+   stops short at Column's own padding-inline instead of reaching the
+   real content-frame edge — same category of bug as Grid's column
+   dividers. This pseudo-element extends the line past that inset on
+   both sides so it bleeds edge-to-edge, matching Grid. Offset is
+   negative Column's own padding-inline (var(--size-4)) — the two are
+   coupled by convention, not a shared token, since ListStack has no way
+   to read Column's padding directly. */
+.itemDivided::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: calc(-1 * var(--size-4));
+  block-size: 1px;
+  background-color: var(--line-soft);
 }

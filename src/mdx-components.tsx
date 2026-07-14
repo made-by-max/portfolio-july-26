@@ -13,6 +13,7 @@ import {
   PinnedMediaScroll,
   PinnedMediaScrollItem,
 } from "@/components/layout";
+import { Stat } from "@/components/ui";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -26,6 +27,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Blockquote,
     PinnedMediaScroll,
     PinnedMediaScrollItem,
+    Stat,
     ...components,
   };
 }

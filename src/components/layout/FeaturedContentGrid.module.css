@@ -1,17 +1,30 @@
-/* Genuine CSS auto-fit grid — dynamic column count, so this can't use the
-   layout system's Grid (fixed columns array only). Min/max width is a
-   reasonable starting point (~4 cards at --max-width); expect this to be
-   tuned once real content/imagery is in place. */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
-  gap: var(--size-6);
-  /* Sits directly in a Section, not wrapped in Column, so it needs its
-     own inset — same reasoning as PinnedMediaScroll's textColumn. */
+/* Sits directly in a Section, not wrapped in Column, so it needs its own
+   inset — same reasoning as PinnedMediaScroll's textColumn/mediaColumn.
+   Kept as a separate wrapper (rather than padding directly on .grid) so
+   that padding doesn't get painted in .grid's own line-soft background —
+   see below. */
+.wrapper {
   padding: var(--size-4);
 }
 
-.item[data-row-divider="true"] {
-  border-block-start: 1px solid var(--line-soft);
-  padding-block-start: var(--size-6);
+/* Genuine CSS auto-fit grid — dynamic column count, so this can't use the
+   layout system's Grid (fixed columns array only). Min/max width is a
+   reasonable starting point (~4 cards at --max-width); expect this to be
+   tuned once real content/imagery is in place.
+
+   Grid-line technique: the grid's own background is the line color, and
+   a 1px gap lets it peek through at every internal boundary; each item
+   then paints over it with the page's own background. This produces a
+   divider between every adjacent item, in both directions, regardless of
+   how auto-fit wraps at a given width — no JS measurement needed. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
+  gap: 1px;
+  background-color: var(--line-soft);
+}
+
+.item {
+  background-color: var(--color-background);
+  padding: var(--size-6);
 }

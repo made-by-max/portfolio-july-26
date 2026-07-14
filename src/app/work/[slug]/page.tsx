@@ -2,7 +2,12 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getWorkItems, getWorkBySlug, getNextWorkItem } from "@/lib/content";
 import { buildImageUrl } from "@/lib/cloudinary";
-import { ContentWrapper, Section, UpNextCaseStudy } from "@/components/layout";
+import {
+  ContentWrapper,
+  Section,
+  GridSpacer,
+  UpNextCaseStudy,
+} from "@/components/layout";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -49,12 +54,20 @@ export default async function WorkCaseStudyPage({ params }: Props) {
     <ContentWrapper>
       <Content />
       {nextItem && (
-        <Section>
-          <UpNextCaseStudy
-            title={nextItem.title}
-            href={`/work/${nextItem.slug}/`}
-          />
-        </Section>
+        <>
+          {/* The case study content above ends with whatever column
+              structure that particular case study happens to use — no
+              single shared shape to match, so this falls back to
+              UpNextCaseStudy's own [1] column, per GridSpacer's own
+              guidance for mismatched neighbors. */}
+          <GridSpacer columns={[1]} />
+          <Section>
+            <UpNextCaseStudy
+              title={nextItem.title}
+              href={`/work/${nextItem.slug}/`}
+            />
+          </Section>
+        </>
       )}
     </ContentWrapper>
   );

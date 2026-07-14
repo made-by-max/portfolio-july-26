@@ -3,6 +3,7 @@ import {
   Section,
   Grid,
   Column,
+  GridSpacer,
   CaseStudyHero,
   Image,
 } from "@/components/layout";
@@ -29,6 +30,8 @@ export default function ExampleCaseStudy() {
           imageAlt={meta.title}
         />
       </Section>
+
+      <GridSpacer columns={[1, 1]} />
 
       <Section>
         <Grid columns={[1]}>

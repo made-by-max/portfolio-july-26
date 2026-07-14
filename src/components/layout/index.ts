@@ -3,6 +3,7 @@ export { ContentWrapper } from "./ContentWrapper";
 export { Section } from "./Section";
 export { Grid } from "./Grid";
 export { Column } from "./Column";
+export { GridSpacer } from "./GridSpacer";
 
 export { Image } from "./Image";
 export { Video } from "./Video";
@@ -12,6 +13,7 @@ export { ImageTabs } from "./ImageTabs";
 export { ImageTabsItem } from "./ImageTabsItem";
 
 export { Blockquote } from "./Blockquote";
+export { BlockquoteStack } from "./BlockquoteStack";
 
 export { PinnedMediaScroll } from "./PinnedMediaScroll";
 export { PinnedMediaScrollItem } from "./PinnedMediaScrollItem";

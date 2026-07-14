@@ -29,9 +29,9 @@ export function PinnedMediaScrollClient({ items }: Props) {
         const el = blockRefs.current[i];
         if (!el) continue;
         // A block becomes active when its top reaches the sticky inset offset.
-        // 48px matches var(--size-6) — keep in sync with blockContent's
-        // inset-block-start in PinnedMediaScroll.module.css.
-        if (el.getBoundingClientRect().top <= 48) {
+        // 112px is --nav-height (80px) + --size-4 (32px) — keep in sync
+        // with --sticky-offset in PinnedMediaScroll.module.css.
+        if (el.getBoundingClientRect().top <= 112) {
           next = i;
         }
       }

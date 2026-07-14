@@ -5,6 +5,7 @@ import {
   Section,
   Grid,
   Column,
+  GridSpacer,
   CaseStudyCard,
   PlayListRow,
 } from "@/components/layout";
@@ -30,17 +31,26 @@ export default async function WorkPage() {
         </Grid>
       </Section>
 
-      {caseStudies.map((item) => (
-        <Section key={item.slug}>
-          <CaseStudyCard
-            title={item.title}
-            description={item.description}
-            labels={item.labels}
-            image={item.image}
-            imageAlt={item.title}
-            href={`/work/${item.slug}/`}
-          />
-        </Section>
+      {caseStudies.map((item, index) => (
+        <div key={item.slug}>
+          {/* Matches CaseStudyCard's own [1,1] split, same reasoning as
+              the homepage's featured work list — the spacer's dividers
+              read as continuing straight through the card's own. */}
+          <GridSpacer columns={[1, 1]} />
+          <Section>
+            <CaseStudyCard
+              title={item.title}
+              description={item.description}
+              labels={item.labels}
+              image={item.image}
+              imageAlt={item.title}
+              href={`/work/${item.slug}/`}
+            />
+          </Section>
+          {index === caseStudies.length - 1 && playTaggedWork.length > 0 && (
+            <GridSpacer columns={[1, 1]} />
+          )}
+        </div>
       ))}
 
       {playTaggedWork.length > 0 && (

@@ -1,0 +1,36 @@
+/* Height uses --size-10-fluid (3rem–5rem / 48–80px) — its floor matches
+   Section's own --size-6 padding-block (48px) for continuity today, with
+   room to grow on wider containers. Flagging a caveat: like the rest of
+   the site's -fluid tokens (already used in typography.css), this is a
+   cqi-based clamp(), and no ancestor in the app currently declares
+   `container-type`, so it renders at its floor value rather than truly
+   scaling until that's set up somewhere upstream — a pre-existing gap,
+   not something new introduced here. */
+.spacer {
+  display: grid;
+  grid-template-columns: var(--grid-columns);
+  block-size: var(--size-10-fluid);
+  border-block: 1px solid var(--line-soft);
+}
+
+.cell {
+  min-inline-size: 0;
+}
+
+/* Same technique as Grid.module.css: dividers between every adjacent
+   column pair, matching whatever Grid the columns prop was set to mirror. */
+.spacer > *:not(:first-child) {
+  border-inline-start: 1px solid var(--line-soft);
+}
+
+/* Media queries can't reference custom properties, so this is a literal
+   value — keep it in sync with --breakpoint-mobile in sizes.css. Grid
+   collapses to one column on mobile and swaps its vertical dividers for a
+   horizontal one between stacked items; this spacer has no stacked
+   content of its own to divide, so it just drops the verticals and keeps
+   its top/bottom frame. */
+@media (max-width: 48rem) {
+  .spacer > *:not(:first-child) {
+    border-inline-start: none;
+  }
+}

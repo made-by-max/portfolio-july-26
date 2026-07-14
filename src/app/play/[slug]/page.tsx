@@ -7,6 +7,7 @@ import {
   Section,
   Grid,
   Column,
+  GridSpacer,
   WritingHero,
   CodeHero,
 } from "@/components/layout";
@@ -94,6 +95,7 @@ export default async function PlayItemPage({ params }: Props) {
           />
         )}
       </Section>
+      <GridSpacer columns={[1]} />
       <Section>
         <Grid columns={[1]}>
           <Column>

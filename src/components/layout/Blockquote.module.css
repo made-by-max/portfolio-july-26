@@ -1,15 +1,18 @@
-/* Standalone (single-child) mode */
-.quote {
+/* Shared by both modes — the mark positions against this, not the outer
+   box, so it stays anchored to the text regardless of the box's own
+   padding. */
+.quoteBody {
   position: relative;
-  margin: 0;
-  padding-inline-start: var(--size-6);
-  padding-block-start: var(--size-6);
 }
 
 .mark {
   position: absolute;
   inset-block-start: 0;
   inset-inline-start: 0;
+  /* Nudges the mark up and to the left so it precedes/overlaps the first
+     line of text, rather than sitting flush inside it. Approximate by
+     design — a judgment call, easy to retune. */
+  transform: translate(-55%, -35%);
   font-size: var(--font-size-8);
   line-height: 1;
   color: var(--accent);
@@ -20,11 +23,24 @@
   color: var(--text-primary);
 }
 
+/* Standalone (single-child) mode — box is half its parent Column's width
+   (not half the site's --max-width), centered, with generous padding
+   relative to that smaller box. No border/shadow here — that's a
+   stacked-mode-only device for conveying card depth. */
+.quote {
+  margin: 0;
+  inline-size: 50%;
+  margin-inline: auto;
+  padding: var(--size-6);
+}
+
 /* Interactive stack mode */
 .stackWrapper {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--size-3);
+  inline-size: 100%;
 }
 
 .arrow {
@@ -41,49 +57,130 @@
   background: none;
   color: var(--text-primary);
   font-size: var(--font-size-5);
+  transition: background-color var(--duration-fast) var(--ease-out);
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .arrow:hover {
+    background-color: var(--surface-2);
+  }
+}
+
+/* CSS-only uniform sizing: every quote (not just the current 4-layer
+   window — see BlockquoteStack) is stacked into this single grid cell via
+   .card's grid-row/grid-column below. Grid's auto row-sizing takes the
+   tallest participant, so .stack's height is naturally driven by the
+   longest quote among ALL siblings in this instance, stays constant as
+   the active quote changes, and needs no JS measurement pass.
+
+   --stack-rotate-* are rotation angles for the peeking "messy pile" cards
+   below, alternating direction per layer so the stack reads as
+   tossed/organic rather than a mechanically uniform fan. Component-scoped
+   new custom properties, flagged per CLAUDE.md — there's no existing
+   rotation token to reference. */
 .stack {
   position: relative;
-  flex: 1;
-  /* Placeholder height until real quote copy/spacing rhythm lands. */
-  min-block-size: var(--size-40);
+  inline-size: 50%;
+  display: grid;
+  --stack-rotate-1: 3deg;
+  --stack-rotate-2: -4deg;
+  --stack-rotate-3: 5deg;
 }
 
 .card {
-  position: absolute;
-  inset: 0;
-  padding-inline-start: var(--size-6);
-  padding-inline-end: var(--size-4);
-  padding-block: var(--size-5);
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+  padding: var(--size-6);
   border: 1px solid var(--line-soft);
   background-color: var(--color-background);
+  /* Subtle depth for every card — the active one gets a stronger shadow
+     below, peeking cards keep just this base amount. */
+  box-shadow: 0 var(--size-0) var(--size-1) rgb(0 0 0 / 6%);
   transition:
     transform var(--duration-base) var(--ease-out),
-    opacity var(--duration-base) var(--ease-out);
+    opacity var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
 }
 
 .card[data-depth="0"] {
-  transform: translate(0, 0) scale(1);
+  transform: translate(0, 0) rotate(0deg);
   opacity: 1;
   z-index: 4;
+  box-shadow: 0 var(--size-1) var(--size-2) rgb(0 0 0 / 10%);
+}
+
+/* Peeking layers: offset increases at each layer back, diagonally in both
+   x and y, with a small alternating rotation so the pile reads as
+   scattered rather than a flat, uniform fan. */
+.card[data-depth="1"] {
+  transform: translate(
+      calc(var(--size-0) + var(--size-1)),
+      calc(var(--size-0) + var(--size-1))
+    )
+    rotate(var(--stack-rotate-1));
+  opacity: 0.9;
+  z-index: 3;
   box-shadow: 0 var(--size-1) var(--size-2) rgb(0 0 0 / 8%);
 }
 
-.card[data-depth="1"] {
-  transform: translate(var(--size-1), var(--size-1)) scale(0.96);
-  opacity: 0.85;
-  z-index: 3;
-}
-
 .card[data-depth="2"] {
-  transform: translate(var(--size-2), var(--size-2)) scale(0.92);
-  opacity: 0.7;
+  transform: translate(var(--size-3), var(--size-3)) rotate(var(--stack-rotate-2));
+  opacity: 0.8;
   z-index: 2;
+  box-shadow: 0 var(--size-0) var(--size-1) rgb(0 0 0 / 6%);
 }
 
 .card[data-depth="3"] {
-  transform: translate(var(--size-3), var(--size-3)) scale(0.88);
-  opacity: 0.55;
+  transform: translate(var(--size-4), var(--size-4)) rotate(var(--stack-rotate-3));
+  opacity: 0.7;
   z-index: 1;
+  box-shadow: 0 var(--size-0) var(--size-0) rgb(0 0 0 / 4%);
+}
+
+/* Quotes outside the current 4-layer window — invisible, but still
+   occupying the shared grid cell so they still count toward .stack's
+   height (see the .stack comment above). */
+.card[data-depth="hidden"] {
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* The quote body (mark + text) crossfades faster and independently of the
+   card's own settle motion. Only the active card's text is ever legible —
+   peeking cards read as blank stacked shapes, not overlapping duplicate
+   text (which, with every card nearly the same size and slightly offset,
+   would otherwise show through as visual noise). */
+.card .quoteBody {
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.card[data-depth="0"] .quoteBody {
+  opacity: 1;
+}
+
+/* Media queries can't reference custom properties, so this is a literal
+   value — keep it in sync with --breakpoint-mobile in sizes.css. Arrow
+   navigation is desktop-only; mobile shows just the active quote (no
+   swipe-to-advance — explicitly out of scope).
+
+   Width is a deliberate deviation from "same sizing rules as desktop":
+   50% of an already-narrow mobile Column measures well under 200px,
+   which wraps body-l text to one or two words per line — a real
+   readability break, not just a different look. Padding, text size, and
+   mark position are unchanged from desktop. */
+@media (max-width: 48rem) {
+  .arrow {
+    display: none;
+  }
+
+  .card:not([data-depth="0"]) {
+    display: none;
+  }
+
+  .quote,
+  .stack {
+    inline-size: 100%;
+  }
 }

@@ -9,6 +9,7 @@ import { Tag } from "@/components/ui";
 import { Section } from "@/components/layout/Section";
 import { Grid } from "@/components/layout/Grid";
 import { Column } from "@/components/layout/Column";
+import { GridSpacer } from "@/components/layout/GridSpacer";
 import { ListStack } from "@/components/layout/ListStack";
 import { PlayListRow } from "@/components/layout/PlayListRow";
 import styles from "./PlayList.module.css";
@@ -72,6 +73,8 @@ export default function PlayList({ items, allTags }: Props) {
           </Column>
         </Grid>
       </Section>
+
+      <GridSpacer columns={[1]} />
 
       <Section>
         <Grid columns={[1]}>

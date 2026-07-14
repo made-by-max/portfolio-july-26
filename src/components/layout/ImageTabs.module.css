@@ -1,19 +1,40 @@
 .wrapper {
   display: flex;
-  flex-direction: row;
-  gap: var(--size-4);
-  align-items: flex-start;
+  flex-direction: column;
+  gap: var(--size-1);
+  /* ImageTabs sits directly in a Section (no Column), so it needs its own
+     inset — same reasoning as PinnedMediaScroll's textColumn/mediaColumn
+     and FeaturedContentGrid's .grid. */
+  padding: var(--size-4);
 }
 
 .imageArea {
-  flex: 3;
   min-inline-size: 0;
 }
 
+.imageArea img {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
 .tabList {
-  flex: 2;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--size-4);
+}
+
+.tabList p {
+  font-size: var(--font-size-2);
+  margin-block-start: 0;
+}
+.tabList h3 {
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight-bold);
+  margin-block-end: 4px;
 }
 
 .tab {
@@ -27,9 +48,18 @@
   font: inherit;
   color: var(--text-softer);
   transition: color var(--duration-fast) var(--ease-out);
+  /* Without a basis, a flex item's preferred width is its content's
+     unwrapped (max-content) size — for a paragraph of body text that's
+     wider than the row itself, so every tab wrapped onto its own line
+     instead of sharing it. An explicit shrinkable basis + min-inline-size:
+     0 lets them sit side by side and wrap their own text normally within
+     an even share of the row (falling back to wrapping onto new lines
+     only once that share drops below ~160px). */
+  flex: 1 1 var(--size-20);
+  min-inline-size: 0;
   /* accessibility minimum tap target */
   min-block-size: 2.75rem;
-  padding-block: var(--size-2);
+  /*padding-block: var(--size-2);*/
 }
 
 .tab[data-active="true"] {
@@ -45,9 +75,17 @@
 }
 
 /* Media queries can't reference custom properties, so this is a literal
-   value — keep it in sync with --breakpoint-mobile in sizes.css. */
+   value — keep it in sync with --breakpoint-mobile in sizes.css. Stacks
+   instead of wrapping: .tab's row-oriented flex-basis (var(--size-20))
+   would otherwise apply to block-size in a column direction, squashing
+   each tab to a ~10rem-tall box instead of its natural text height. */
 @media (max-width: 48rem) {
-  .wrapper {
+  .tabList {
     flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .tab {
+    flex: initial;
   }
 }

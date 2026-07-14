@@ -4,6 +4,7 @@ import {
   Section,
   Grid,
   Column,
+  GridSpacer,
   CaseStudyCard,
   FeaturedContentCard,
   FeaturedContentGrid,
@@ -36,6 +37,8 @@ export default async function HomePage() {
         </Grid>
       </Section>
 
+      <GridSpacer columns={[1]} />
+
       {work.length > 0 && (
         <Section>
           <Grid columns={[1]}>
@@ -45,17 +48,27 @@ export default async function HomePage() {
           </Grid>
         </Section>
       )}
-      {work.map((item) => (
-        <Section key={item.slug}>
-          <CaseStudyCard
-            title={item.title}
-            description={item.description}
-            labels={item.labels}
-            image={item.image}
-            imageAlt={item.title}
-            href={`/work/${item.slug}/`}
-          />
-        </Section>
+      {work.map((item, index) => (
+        <div key={item.slug}>
+          {/* Matches the CaseStudyCard's own [1,1] split, on either side —
+              between "Featured Work" and the first card, and between
+              cards themselves — so the card's own divider reads as
+              continuing straight through the gap. */}
+          <GridSpacer columns={[1, 1]} />
+          <Section>
+            <CaseStudyCard
+              title={item.title}
+              description={item.description}
+              labels={item.labels}
+              image={item.image}
+              imageAlt={item.title}
+              href={`/work/${item.slug}/`}
+            />
+          </Section>
+          {index === work.length - 1 && featuredPlay.length > 0 && (
+            <GridSpacer columns={[1, 1]} />
+          )}
+        </div>
       ))}
 
       {featuredPlay.length > 0 && (
@@ -65,6 +78,10 @@ export default async function HomePage() {
               <h2 className="display-m">Featured Play</h2>
             </Column>
           </Grid>
+          {/* FeaturedContentGrid is an auto-fit grid, not a fixed columns
+              array, so there's no real column structure to match here —
+              an evenly-spaced fallback per GridSpacer's own docs. */}
+          <GridSpacer columns={[1, 1, 1, 1]} />
           <FeaturedContentGrid>
             {featuredPlay.map((item) => (
               <FeaturedContentCard

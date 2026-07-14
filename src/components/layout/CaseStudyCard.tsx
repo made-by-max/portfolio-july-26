@@ -27,7 +27,7 @@ export function CaseStudyCard({
   href,
 }: Props) {
   return (
-    <div className={`scroll-reveal ${styles.dividerBleed}`}>
+    <div className="scroll-reveal">
       <Grid columns={[1, 1]}>
         <Column className={styles.textColumn}>
           <div className={styles.labels}>
