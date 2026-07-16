@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import type { PlayItem } from "@/lib/content";
-import { Tag } from "@/components/ui";
 // Imported directly (not via the layout barrel) — this is a client
 // component, and re-exporting through components/layout/index.ts would
 // pull in Image/Video's server-only Cloudinary Admin SDK import.
@@ -21,23 +20,19 @@ type Props = {
 
 // Filters and the list live in the same client component (rather than
 // filters in the page's static header + list here) because both need the
-// same selectedTags state — the header Section's filter row and the list
+// same selectedTag state — the header Section's filter row and the list
 // Section below it are two halves of one interactive unit.
+//
+// Single-select, not multi — `null` means "All" (the default/reset state)
+// rather than a separate empty-selection state. `items` is expected to
+// already be sorted newest-first by getPublishedPlayItems().
 export default function PlayList({ items, allTags }: Props) {
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-
-  function toggleTag(tag: string) {
-    setSelectedTags((prev) =>
-      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
-    );
-  }
+  const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
   const filtered =
-    selectedTags.length === 0
+    selectedTag === null
       ? items
-      : items.filter((item) =>
-          selectedTags.every((tag) => item.tags.includes(tag))
-        );
+      : items.filter((item) => item.tags.includes(selectedTag));
 
   return (
     <>
@@ -50,25 +45,27 @@ export default function PlayList({ items, allTags }: Props) {
               aria-label="Filter by tag"
               className={styles.filterRow}
             >
+              <button
+                type="button"
+                className={styles.filterButton}
+                aria-pressed={selectedTag === null}
+                data-selected={selectedTag === null || undefined}
+                onClick={() => setSelectedTag(null)}
+              >
+                All
+              </button>
               {allTags.map((tag) => (
-                <Tag
+                <button
                   key={tag}
-                  kind="tag"
-                  selected={selectedTags.includes(tag)}
-                  onClick={() => toggleTag(tag)}
+                  type="button"
+                  className={styles.filterButton}
+                  aria-pressed={selectedTag === tag}
+                  data-selected={selectedTag === tag || undefined}
+                  onClick={() => setSelectedTag(tag)}
                 >
                   {tag}
-                </Tag>
-              ))}
-              {selectedTags.length > 0 && (
-                <button
-                  type="button"
-                  className={styles.clear}
-                  onClick={() => setSelectedTags([])}
-                >
-                  Clear
                 </button>
-              )}
+              ))}
             </div>
           </Column>
         </Grid>
@@ -87,12 +84,12 @@ export default function PlayList({ items, allTags }: Props) {
                     title={item.title}
                     href={`/play/${item.slug}/`}
                     tags={item.tags}
-                    onTagClick={toggleTag}
+                    onTagClick={setSelectedTag}
                   />
                 ))}
               </ListStack>
             ) : (
-              <p className="body-m">No items match the selected filters.</p>
+              <p className="body-m">No items match the selected filter.</p>
             )}
           </Column>
         </Grid>

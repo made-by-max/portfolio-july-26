@@ -1,0 +1,66 @@
+---
+title: "Setting up Prisma and Supabase in your Next.js app"
+tags: ["code"]
+isDraft: false
+featured: false
+date: "2026-04-03"
+type: "blog"
+---
+
+import { Image } from "@/components/layout";
+
+Next.JS, Supabase, and Prisma are a pretty commonly recommended tech stack, using Next.JS as a Fullstack framework, Supabase as a database, and Prisma as an ORM (Object Relational Mapper) that translates the data from the Supabase into objects.
+
+When I was trying to get them all working together it was surprisingly hard to find accurate integration steps. Most blog posts I could find were out of date, and even Google's AI overview and Supabase's documentation had outdated information. So here's the steps I took to get everything working as of April, 2026.
+
+1\. Install your Next.JS app. Customize your settings as you see fit.
+
+```npm install prisma @prisma/client```
+
+2\. Install Prisma in your project directory and then initialize Prisma.
+
+```npm install prisma @prisma/client```
+
+```npx prisma init```
+
+3\. Sign up for a [Supabase account](https://supabase.com/) and create a new project if you haven't already. Make sure you save your database password somewhere safe - you'll need that later.
+
+<Image publicId="Screenshot_2026-03-31_at_1.48.24_PM_igqpnk" alt="a screenshot of the supabase create new project page" />
+
+
+4\. Find the Connections section in Supabase and select ORM connections and make sure Prisma is selected.
+
+<Image publicId="Screenshot_2026-03-31_at_1.56.16_PM_eqjtxe" alt="a screenshot of the connections page in supabase" />
+
+
+5\. Copy the DATABASE\_URL and DIRECT\_URL into the .env file in your project folder, replacing \[YOUR-PASSWORD] with your Supabase password.
+
+6\. Go to your prisma.config.ts file and change datasource from DATABASE\_URL to DIRECT\_URL. *Note that this was a *[*change in Prisma ORM v7.*](https://www.prisma.io/docs/orm/reference/prisma-config-reference#datasourceurl)* In older versions of Prisma you could add both your database and direct URLs.*
+
+<Image publicId="Screenshot_2026-03-31_at_11.06.49_AM_umedox" alt="a screenshot of the prisma.config file" />
+![](</media/Screenshot 2026-03-31 at 11.06.49 AM.png>)
+
+7\. Create your Prisma schema in the schema.prisma file.
+
+<Image publicId="Screenshot_2026-03-31_at_2.03.29_PM_cwar2j" alt="a screenshot of the schema.prisma file with the schema added" />
+
+
+8\. Upload your schema to Supabase.
+
+```npx prisma migrate dev --name init```
+
+You should now see your tables updated in Supabase!
+
+<Image publicId="Screenshot_2026-03-31_at_2.02.49_PM_i2bnwg" alt="a screenshot of the created tables in supabase" />
+
+If you want to make any changes or updates to your Prisma schema run
+
+```npx prisma db push```
+
+9\. Generate the client API
+
+```npx prisma generate```
+
+10\. Once you're ready to start sending or querying data through the API you'll want to change your datasource back to "DATABASE\_URL"
+
+Now you should be all set to start interacting with your new database!

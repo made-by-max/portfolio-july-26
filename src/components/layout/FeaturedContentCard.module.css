@@ -1,6 +1,12 @@
+/* Subgrids the 4 row tracks (image/title/description/tags) inherited from
+   .item, and pins each child to its own explicit row below — needed
+   because description is optional: without an explicit row, auto-placement
+   would shift tags up into row 3 whenever description is absent, breaking
+   alignment with cards that do have one. */
 .card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
 }
 
 .imageLink,
@@ -11,10 +17,12 @@
 }
 
 .imageLink {
+  grid-row: 1;
   color: inherit;
 }
 
 .titleLink {
+  grid-row: 2;
   margin-block-start: var(--size-3);
   color: var(--text-soft);
 }
@@ -26,11 +34,13 @@
 }
 
 .description {
+  grid-row: 3;
   margin-block-start: var(--size-1);
   color: var(--text-soft);
 }
 
 .tags {
+  grid-row: 4;
   display: flex;
   flex-wrap: wrap;
   gap: var(--size-1);

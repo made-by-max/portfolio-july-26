@@ -1,0 +1,54 @@
+/* Extra breathing room around headings and images in a play item's MDX
+   body — the typography scale itself only sets font size/weight, not this
+   spacing, so it's applied here rather than globally (case studies use
+   their own explicit GridSpacer rhythm instead). */
+.content h2 {
+  margin-block-start: var(--size-12-fluid);
+}
+
+.content h3 {
+  margin-block-start: var(--size-10-fluid);
+}
+
+/* An h3 immediately under its h2 reads as part of the same section, so it
+   needs much less separation than a heading starting a new one. */
+.content h2 + h3 {
+  margin-block-start: var(--size-2);
+}
+
+.content figure {
+  margin-block: var(--size-12-fluid);
+}
+
+/* Inline code spans (single backtick) — a small mono-font badge rather
+   than plain text, so a code reference reads as distinct mid-sentence. */
+.content code {
+  padding-inline: var(--size-1);
+  padding-block: 0.1em;
+  border-radius: var(--size-0);
+  background-color: var(--surface-code);
+  color: var(--color-prim-white);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-2);
+}
+
+/* Fenced code blocks — same background as inline code, but as a padded,
+   scrollable block rather than a badge. Resets the inline `code` styling
+   above so it doesn't double up inside the block. Capped at a fixed
+   height so a long block scrolls internally instead of stretching the
+   page; overflow covers both axes since long lines need to scroll too. */
+.content pre {
+  margin-block: var(--size-6);
+  padding: var(--size-4);
+  border-radius: var(--size-1);
+  background-color: var(--surface-code);
+  color: var(--color-prim-white);
+  max-block-size: var(--code-block-max-height);
+  overflow: auto;
+}
+
+.content pre code {
+  padding: 0;
+  border-radius: 0;
+  background-color: transparent;
+}

@@ -16,9 +16,7 @@ function escapeXml(str: string): string {
 }
 
 export async function GET() {
-  const items = getPublishedPlayItems().sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  const items = getPublishedPlayItems();
 
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -33,7 +31,7 @@ export async function GET() {
         (item) => `<item>
       <title>${escapeXml(item.title)}</title>
       <link>${SITE_URL}/play/${item.slug}/</link>
-      <description>${escapeXml(item.description)}</description>
+      ${item.description ? `<description>${escapeXml(item.description)}</description>` : ""}
       <pubDate>${new Date(item.date).toUTCString()}</pubDate>
       <guid isPermaLink="true">${SITE_URL}/play/${item.slug}/</guid>
     </item>`

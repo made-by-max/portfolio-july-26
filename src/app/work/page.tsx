@@ -16,7 +16,14 @@ export const metadata: Metadata = {
 };
 
 export default async function WorkPage() {
-  const caseStudies = await getWorkItems();
+  const workItems = await getWorkItems();
+  // CaseStudyCard is image-only (no video support) — guard here rather
+  // than widening its props for a case the content model now allows
+  // (image/video are both optional, with a Hero-level video fallback)
+  // but this thumbnail card doesn't handle.
+  const caseStudies = workItems.filter(
+    (item): item is typeof item & { image: string } => Boolean(item.image)
+  );
   const playTaggedWork = getPublishedPlayItems().filter((item) =>
     item.tags.includes("work")
   );

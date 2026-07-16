@@ -7,3 +7,4 @@ export { LucideExample } from "./LucideExample";
 export { Tag } from "./Tag";
 export { Button } from "./Button";
 export { Stat } from "./Stat";
+export { CodepenEmbed } from "./CodepenEmbed";

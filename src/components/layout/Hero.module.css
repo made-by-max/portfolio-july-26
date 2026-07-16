@@ -1,26 +1,28 @@
 /* Shared spacing across the three Hero variants. */
 
-.tags {
-  color: var(--text-soft);
-  margin: 0;
-  margin-block-end: var(--size-2);
-}
-
-/* CaseStudyHero-only: labels render as a row of Tag(kind="label") chips
-   rather than the plain joined text the other two Heroes use for tags. */
-.labels {
+/* CodeHero/WritingHero eyebrow — date + tags. Nested flex so the row
+   breaks between date and tags first (outer wrap) before it ever wraps
+   within the tags group itself (inner wrap). */
+.eyebrow {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--size-2);
+  align-items: baseline;
+  gap: var(--size-3);
   margin-block-end: var(--size-2);
+  color: var(--text-soft);
+}
+
+.eyebrowDate {
+  color: var(--text-softer);
+}
+
+.eyebrowTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-1);
 }
 
 .overview {
-  margin-block-start: var(--size-3);
-}
-
-.date {
-  color: var(--text-softer);
   margin-block-start: var(--size-3);
 }
 
@@ -29,6 +31,31 @@
   flex-wrap: wrap;
   gap: var(--size-3);
   margin-block-start: var(--size-3);
+}
+
+/* CodeHero-only: tech stack sits directly under the hero image in the
+   media column, so it needs a tighter gap than the standalone case. */
+.mediaTechStack {
+  margin-block-start: var(--size-1);
+}
+
+.buttonRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-2);
+  margin-block-start: var(--size-3);
+}
+
+/* CodeHero-only: on the stacked mobile layout, the media column (image +
+   tech stack) should come first, ahead of the text column. Scoped to the
+   mobile breakpoint so it doesn't affect the two-column desktop order,
+   which is driven by DOM order instead.
+   Media queries can't reference custom properties, so this is a literal
+   value — keep it in sync with --breakpoint-mobile in sizes.css. */
+@media (max-width: 48rem) {
+  .mediaColumn {
+    order: -1;
+  }
 }
 
 /* CaseStudyHero-only: plain frame around the hero image, plus one sparse

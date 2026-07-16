@@ -26,13 +26,24 @@ export default function Voice() {
   return (
     <>
       <Section texture>
-        <CaseStudyHero
-          title={meta.title}
-          overview={meta.overview}
-          labels={meta.labels}
-          image={meta.image}
-          imageAlt={meta.title}
-        />
+        {meta.video ? (
+          <CaseStudyHero
+            title={meta.title}
+            overview={meta.overview}
+            video={meta.video}
+            videoAutoplay={meta.videoAutoplay}
+            alt={meta.title}
+          />
+        ) : meta.image ? (
+          <CaseStudyHero
+            title={meta.title}
+            overview={meta.overview}
+            image={meta.image}
+            alt={meta.title}
+          />
+        ) : (
+          <CaseStudyHero title={meta.title} overview={meta.overview} />
+        )}
       </Section>
       <Section>
         <Grid columns={[1]}>

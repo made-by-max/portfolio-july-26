@@ -9,6 +9,7 @@
   z-index: 1;
   max-width: var(--max-width);
   margin-inline: auto;
+  padding-block-start: var(--size-8);
 }
 
 /* Oversized, low-opacity wordmark bleeding off the footer's edge — anchored
@@ -42,10 +43,11 @@
   border-inline-start: none !important;
 }
 
-/* Text link (not a nav link) — accent color, underline appears on
-   hover/focus/active rather than sitting there permanently. */
+/* Text link (not a nav link) — reads as primary text rather than a
+   standard accent-colored link, since it's the largest, most prominent
+   element in the footer. Underline still appears on hover/focus/active. */
 .email {
-  color: var(--accent);
+  color: var(--text-primary);
   text-decoration: underline;
   text-decoration-color: transparent;
   transition:

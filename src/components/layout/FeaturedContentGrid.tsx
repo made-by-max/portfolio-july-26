@@ -15,14 +15,12 @@ export function FeaturedContentGrid({ children }: Props) {
   const items = Children.toArray(children);
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.grid}>
-        {items.map((child, index) => (
-          <div key={index} className={styles.item}>
-            {child}
-          </div>
-        ))}
-      </div>
+    <div className={styles.grid}>
+      {items.map((child, index) => (
+        <div key={index} className={styles.item}>
+          {child}
+        </div>
+      ))}
     </div>
   );
 }

@@ -32,6 +32,10 @@
      new token since nothing else in the tokens file expresses this ratio. */
   --text-max-width: calc(var(--max-width) * 2 / 3);
   --prose-max-width: 70ch;
+  /* Scroll cap for fenced code blocks (600px) — new token, same "dedicated
+     constant" pattern as the max-width tokens above rather than the
+     --size-* spacing scale, since it doesn't fit that scale. */
+  --code-block-max-height: 37.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -103,7 +107,7 @@ a:active {
    two sitting flush against each other. */
 .page-content {
   flex: 1 0 auto;
-  padding-block-end: var(--size-8);
+  padding-block-end: var(--size-12);
 }
 
 /* Honour prefers-reduced-motion globally for CSS transitions/animations */

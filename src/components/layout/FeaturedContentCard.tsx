@@ -5,7 +5,7 @@ import styles from "./FeaturedContentCard.module.css";
 
 type Props = {
   title: string;
-  description: string;
+  description?: string;
   tags: string[];
   image: string;
   imageAlt: string;
@@ -32,7 +32,9 @@ export function FeaturedContentCard({
       <Link href={href} className={styles.titleLink}>
         <h3 className="display-xs">{title}</h3>
       </Link>
-      <p className={`body-s ${styles.description}`}>{description}</p>
+      {description ? (
+        <p className={`body-s ${styles.description}`}>{description}</p>
+      ) : null}
       <div className={styles.tags}>
         {tags.map((tag) => (
           <Tag key={tag} kind="tag">

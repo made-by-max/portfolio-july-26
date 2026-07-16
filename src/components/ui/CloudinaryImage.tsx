@@ -1,3 +1,5 @@
+import styles from "./CloudinaryImage.module.css";
+
 type Props = {
   publicId: string;
   width: number;
@@ -17,5 +19,13 @@ export function CloudinaryImage({ publicId, width, height, alt }: Props) {
   const src = `https://res.cloudinary.com/${cloudName}/image/upload/w_${deliveryWidth},q_auto,f_auto/${publicId}`;
 
   // eslint-disable-next-line @next/next/no-img-element
-  return <img src={src} width={width} height={height} alt={alt} />;
+  return (
+    <img
+      className={styles.image}
+      src={src}
+      width={width}
+      height={height}
+      alt={alt}
+    />
+  );
 }

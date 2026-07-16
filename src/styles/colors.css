@@ -36,6 +36,12 @@
   --color-background: light-dark(var(--gray-0), var(--gray-9));
   --surface: light-dark(var(--gray-1), var(--gray-8));
   --surface-2: light-dark(var(--gray-2), var(--gray-7));
+  /* Code blocks/inline code — --surface reads as almost-white in light
+     mode (gray-1, too close to the page background), so this steps
+     further down the scale in light mode specifically. Dark mode keeps
+     --surface's existing value (gray-8) unchanged. New token since no
+     existing semantic surface was dark enough for this in light mode. */
+  --surface-code: light-dark(var(--gray-8), var(--gray-8));
 
   /* borders */
   --line-soft: light-dark(var(--gray-2), var(--gray-8));

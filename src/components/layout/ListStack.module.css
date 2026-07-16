@@ -10,7 +10,7 @@
 }
 
 .itemDivided p {
-  font-size: var(--font-size-1);
+  font-size: var(--font-size-3);
 }
 
 /* ListStack always sits inside a Column, so a plain border-block-start

@@ -37,7 +37,7 @@ export function CaseStudyCard({
               </Tag>
             ))}
           </div>
-          <h3 className="display-s">{title}</h3>
+          <h3 className="display-l">{title}</h3>
           <p className={`body-m ${styles.description}`}>{description}</p>
           <Button variant="primary" href={href} linkType="internal">
             View case study
@@ -45,7 +45,9 @@ export function CaseStudyCard({
         </Column>
         <Column className={styles.imageColumn}>
           <div className={styles.imageFrame}>
-            <Image publicId={image} alt={imageAlt} />
+            <a href={href}>
+              <Image publicId={image} alt={imageAlt} />
+            </a>
           </div>
         </Column>
       </Grid>

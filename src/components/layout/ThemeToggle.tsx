@@ -16,6 +16,11 @@ export function ThemeToggle() {
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored === "light" || stored === "dark") {
+      // One-time read of browser-only state on mount, to sync away from
+      // the SSR default ("light") without a hydration mismatch — not an
+      // update loop, so the cascading-render concern this rule guards
+      // against doesn't apply here.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setTheme(stored);
       return;
     }

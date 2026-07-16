@@ -29,13 +29,24 @@ export default function Quickstarts() {
   return (
     <>
       <Section texture>
-        <CaseStudyHero
-          title={meta.title}
-          overview={meta.overview}
-          labels={meta.labels}
-          image={meta.image}
-          imageAlt={meta.title}
-        />
+        {meta.video ? (
+          <CaseStudyHero
+            title={meta.title}
+            overview={meta.overview}
+            video={meta.video}
+            videoAutoplay={meta.videoAutoplay}
+            alt={meta.title}
+          />
+        ) : meta.image ? (
+          <CaseStudyHero
+            title={meta.title}
+            overview={meta.overview}
+            image={meta.image}
+            alt={meta.title}
+          />
+        ) : (
+          <CaseStudyHero title={meta.title} overview={meta.overview} />
+        )}
       </Section>
 
       <GridSpacer columns={[1, 1]} />
@@ -150,7 +161,7 @@ export default function Quickstarts() {
           </Column>
           <Column>
             <ListStack>
-              <div>
+              <div className="listStack">
                 <h3 className="display-xs">
                   Make “Create Account” or “Log In” a dedicated step
                 </h3>
@@ -160,7 +171,7 @@ export default function Quickstarts() {
                 </p>
               </div>
 
-              <div>
+              <div className="listStack">
                 <h3 className="display-xs">
                   Provide pre-configured full file code samples
                 </h3>
@@ -170,7 +181,7 @@ export default function Quickstarts() {
                   snippets.
                 </p>
               </div>
-              <div>
+              <div className="listStack">
                 <h3 className="display-xs">
                   Configure URLs from the Quickstart
                 </h3>

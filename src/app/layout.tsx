@@ -3,6 +3,8 @@ import "@/styles/globals.css";
 import "@fontsource/clear-sans";
 // Supports weights 300-900
 import "@fontsource-variable/figtree/wght.css";
+// Supports weights 100-800
+import "@fontsource-variable/jetbrains-mono/wght.css";
 import {
   TopNav,
   Footer,

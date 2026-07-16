@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import matter from "gray-matter";
 import {
   CaseStudyMetaSchema,
   PlayFrontmatterSchema,
@@ -8,46 +9,6 @@ import {
 } from "./schemas";
 
 const CONTENT_ROOT = path.join(process.cwd(), "content");
-
-function parseFrontmatter(raw: string): Record<string, unknown> {
-  const lines = raw.split("\n");
-  const result: Record<string, unknown> = {};
-
-  for (const line of lines) {
-    const colonIdx = line.indexOf(":");
-    if (colonIdx === -1) continue;
-    const key = line.slice(0, colonIdx).trim();
-    const value = line.slice(colonIdx + 1).trim();
-
-    if (value === "true") {
-      result[key] = true;
-    } else if (value === "false") {
-      result[key] = false;
-    } else if (value.startsWith("[") && value.endsWith("]")) {
-      result[key] = value
-        .slice(1, -1)
-        .split(",")
-        .map((v) => v.trim().replace(/^["']|["']$/g, ""))
-        .filter(Boolean);
-    } else {
-      result[key] = value.replace(/^["']|["']$/g, "");
-    }
-  }
-
-  return result;
-}
-
-function extractFrontmatter(source: string): {
-  data: Record<string, unknown>;
-  content: string;
-} {
-  const match = source.match(/^---\n([\s\S]*?)\n---/);
-  if (!match) return { data: {}, content: source };
-  return {
-    data: parseFrontmatter(match[1]),
-    content: source.slice(match[0].length).trim(),
-  };
-}
 
 function getMDXFiles(dir: string): string[] {
   if (!fs.existsSync(dir)) return [];
@@ -121,7 +82,7 @@ export function getPlayItems(): PlayItem[] {
   return files.map((filePath) => {
     const slug = path.basename(filePath, ".mdx");
     const source = fs.readFileSync(filePath, "utf-8");
-    const { data } = extractFrontmatter(source);
+    const { data } = matter(source);
 
     const parsed = PlayFrontmatterSchema.safeParse(data);
     if (!parsed.success) {
@@ -139,7 +100,9 @@ export function getPlayBySlug(slug: string): PlayItem | undefined {
 }
 
 export function getPublishedPlayItems(): PlayItem[] {
-  return getPlayItems().filter((item) => !item.isDraft);
+  return getPlayItems()
+    .filter((item) => !item.isDraft)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 export async function getFeaturedItems(): Promise<{

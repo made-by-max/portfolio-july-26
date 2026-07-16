@@ -12,9 +12,13 @@ import {
 
 export default async function HomePage() {
   const { work, play } = await getFeaturedItems();
-  // Featured Content Card assumes any featured /play item has an image —
-  // guard here rather than widening the card's props for a case the
-  // content model already rules out.
+  // CaseStudyCard/FeaturedContentCard are image-only (no video support) —
+  // guard here rather than widening either card's props for a case the
+  // content model now allows (image/video are both optional, with a
+  // Hero-level video fallback) but these thumbnail cards don't handle.
+  const featuredWork = work.filter(
+    (item): item is typeof item & { image: string } => Boolean(item.image)
+  );
   const featuredPlay = play.filter(
     (item): item is typeof item & { image: string } => Boolean(item.image)
   );
@@ -39,7 +43,7 @@ export default async function HomePage() {
 
       <GridSpacer columns={[1]} />
 
-      {work.length > 0 && (
+      {featuredWork.length > 0 && (
         <Section>
           <Grid columns={[1]}>
             <Column>
@@ -48,7 +52,7 @@ export default async function HomePage() {
           </Grid>
         </Section>
       )}
-      {work.map((item, index) => (
+      {featuredWork.map((item, index) => (
         <div key={item.slug}>
           {/* Matches the CaseStudyCard's own [1,1] split, on either side —
               between "Featured Work" and the first card, and between
@@ -65,7 +69,7 @@ export default async function HomePage() {
               href={`/work/${item.slug}/`}
             />
           </Section>
-          {index === work.length - 1 && featuredPlay.length > 0 && (
+          {index === featuredWork.length - 1 && featuredPlay.length > 0 && (
             <GridSpacer columns={[1, 1]} />
           )}
         </div>

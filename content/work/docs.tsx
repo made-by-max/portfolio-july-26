@@ -20,7 +20,7 @@ export const meta: CaseStudyMeta = {
     "A research-informed approach to information architecture that improved navigation by 400%",
   overview:
     "I conducted user interviews, a content audit, card sorting, and usability testing to completely overhaul the information architecutre of Auth0's developer documentation.",
-  labels: ["Developer Experience", "User Research", "Information Architecture"],
+  labels: ["Developer Experience", "User Research", "IA"],
   featured: true,
   image: "docs-featured-image_nhms2n",
   date: "2022-03-05",
@@ -30,13 +30,24 @@ export default function DocsIA() {
   return (
     <>
       <Section texture>
-        <CaseStudyHero
-          title={meta.title}
-          overview={meta.overview}
-          labels={meta.labels}
-          image={meta.image}
-          imageAlt={meta.title}
-        />
+        {meta.video ? (
+          <CaseStudyHero
+            title={meta.title}
+            overview={meta.overview}
+            video={meta.video}
+            videoAutoplay={meta.videoAutoplay}
+            alt={meta.title}
+          />
+        ) : meta.image ? (
+          <CaseStudyHero
+            title={meta.title}
+            overview={meta.overview}
+            image={meta.image}
+            alt={meta.title}
+          />
+        ) : (
+          <CaseStudyHero title={meta.title} overview={meta.overview} />
+        )}
       </Section>
 
       <GridSpacer columns={[1, 1]} />

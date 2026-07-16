@@ -9,6 +9,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-block-end: 1px solid var(--line-bold);
+  background-color: var(--color-background);
 }
 
 .inner {

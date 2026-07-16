@@ -23,7 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = await getWorkBySlug(slug);
   if (!item) return {};
 
-  const ogImage = buildImageUrl(item.image, { width: 1200, quality: 80 });
+  const ogImage = item.image
+    ? buildImageUrl(item.image, { width: 1200, quality: 80 })
+    : undefined;
 
   return {
     title: item.title,
@@ -31,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: item.title,
       description: item.description,
-      images: [{ url: ogImage }],
+      ...(ogImage ? { images: [{ url: ogImage }] } : {}),
     },
   };
 }

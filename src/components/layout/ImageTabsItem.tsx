@@ -6,7 +6,6 @@ export type ImageTabsItemProps = {
 
 // Marker component only — ImageTabs reads these props directly off its
 // children and never renders ImageTabsItem itself.
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function ImageTabsItem(_props: ImageTabsItemProps) {
   return null;
 }

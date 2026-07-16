@@ -1,0 +1,59 @@
+---
+title: "Database Demo with Supabase"
+tags: ["work", "code"]
+isDraft: false
+featured: true
+date: "2025-08-13"
+type: "project"
+image: "dbdesign_vavz2l"
+description: "How learning database design improved my communication on cross-funcational teams"
+techStack:
+  - name: "Supabase"
+    icon: "supabase"
+  - name: "SQL"
+    icon: "database"
+---
+
+## An Excel spreadsheet is not a database
+
+In my day job I’m responsible for the information architecture of a large set of medical terminology (roughly 5000 terms). These terms are used in medical reports and insights, and we generally need to surface all the information related to a given term. For example, an endoscopist might start writing about a polyp, and we would want to show a list of anatomical locations, filtered to just those where a polyp might be present.
+
+I inherited this terminology in the form of multiple Excel spreadsheets, where the terms were laid out hierarchically. This had worked ok when we had a fairly small and static set of terms, but as the terminology scaled it introduced a number of issues.
+
+Firstly, updating and maintaining the spreadsheets was a very manual process and quite prone to human error. Once I’d updated the spreadsheets, my development team ran a script to import it to a PostgreSQL database, but it often required a lot of manual checking and fixing on their end as well.
+
+Secondly, there was no version control. Terms were being added regularly, and often as parts of different projects. This led to a situation where there were multiple versions of the same spreadsheet, and as much as I tried to clearly label them and make sure my team was referencing the correct one, it was getting out of control fast. Any changes made during the transfer to the database had to be retroactively changed in all the versions of the spreadsheets to keep parity between them.
+
+Finally, the organization of the terms in the spreadsheets was mapped directly to the hierarchy of our product UI. My development team was then copying the terminology into a database with the same structure. This meant that terms were being repeated everywhere they were used. There was no single source of truth for terms, so if there was a typo or a translation error in a term, each instance had to be updated in all the spreadsheets and the database. Some terms appeared dozens of times across multiple spreadsheets.
+
+If you’re thinking that this sounds like an absolute mess and an extremely inefficient process, I assure you it was even worse than you imagine.
+
+It seemed to me that the best way forward was to create an underlying database with a single instance of each term mapped to all the different places it could be used and then handle the UI layer separately. However, my engineering team wasn’t seeing it. They’d been doing it the existing way for so long that anytime I raised the topic they expressed concern that it wouldn’t work with our UI.
+
+## If you can't beat 'em, join 'em
+
+Trying to verbally describe how a database of 5000 different terms should be organized is a bit of a challenge, and even though I could picture it in my head, it just wasn’t getting through to everybody else. So, I tried to illustrate it in a few different ways.
+
+Because we use Notion as our internal wiki, the first thing I tried was using Notion’s databases to build out a simple version of what I had in mind. Unfortunately, even a simplified version was too complex for what I could make work in Notion.
+
+Next, I created a FigJam file with a subset of terms and used arrows to map the relationships. Even with just a small subset of data it made for a giant, messy diagram, but it did sort of start to get the point across.
+
+Then I tried pulling data from the existing Excel spreadsheets and showing the relationships between the terms. I was essentially building join tables in Excel before I knew what join tables were. That got me a little closer, but it still wasn’t quite clicking.
+
+So finally, I decided that I needed to start speaking their language. If they were storing the terminology in a Postgres database, then by golly I’d just have to figure out what a Postgres database was and how to use it.
+
+## Learning SQL and database design
+
+I started by teaching myself the basics of SQL by working through Scrimba’s SQL course. I’ve always been intimidated by SQL, but once I got into it, I realized that I already understand the logic, I just need to learn the syntax. As a former librarian, I have a lot of experience conducting complex searches in scholarly databases. Advanced querying, Boolean logic, using wildcards, and joining multiple sources of information is second nature to me! While I won’t claim to be an expert in SQL just yet, it meshes very well with the way my brain works and I’m now confident I could figure it if and when I need to.
+
+Unfortunately, learning SQL alone wasn’t quite enough to get my point across. I needed to figure out how to show the relationship between terms, whether they were 1:1, 1:many or many:many. I needed to understand database design.
+
+I started searching online for more information, but most of what I found was too in the weeds for my needs. There were tons of tutorials that jumped right into setting up a Postgres database, or focused on the database schema, or creating diagrams. I needed something more high level and conceptual. Eventually I found Caleb Curry’s Database Design course on YouTube. I was a little intimidated at first since it was 8 hours long, and Caleb’s humor wasn’t quite my vibe, but as I started watching the first few lessons I realized that it was exactly what I was looking for.
+
+After watching all 8 hours of the course, I finally had a clear mental model of how relational databases worked. I took my giant mess of spreadsheets, combined them into a single sheet, flattened it, sorted it by term, and identified the relationships between different terms. I selected a subset of the terms and created spreadsheets for each table and join table, exported them as CSVs and imported them to Supabase. Then I used my new knowledge of SQL to create a few basic queries to show how we could query a complete database to identify the relationships between terms. For example, for any given finding, such as a polyp, I could create queries that would show all the anatomical locations one might find a polyp, which procedure types they would be found in, and all the details that needed to be captured about them.
+
+## A prototype is worth a thousand meetings
+
+Then I put together a short video to walk stakeholders through my thought process and how we could use this type of database to pull in all the related information for any term in the database in order to surface that in the product UI. I shared this with my engineering team, and with product managers and designers on related teams.
+
+By speaking the engineers' language I was finally able to communicate my vision for the terminology structure that had been living in my head all along. I was also able to share my vision with product management and make sure we were on the same page about the necessary solution. We finally were able to start moving forward! And unfortunately, just as things finally started gaining momentum, our product leadership proposed a massive reorganization of our product team, which involved deprioritizing all terminology-related efforts. So sadly, my vision of a grand unified terminology database likely won't be realized anytime soon. But on the plus side, I learned a ton about database design and SQL, which I'm certain will serve me well in the future.

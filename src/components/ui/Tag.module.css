@@ -9,6 +9,7 @@
   border-radius: 999px;
   background-color: transparent;
   color: var(--text-soft);
+  border: 1px solid var(--line-soft);
 }
 
 button.tag {
@@ -16,6 +17,7 @@ button.tag {
   border: none;
   font: inherit;
   cursor: pointer;
+  border: 1px solid var(--line-soft);
   transition:
     background-color var(--duration-fast) var(--ease-out),
     color var(--duration-fast) var(--ease-out),
@@ -58,16 +60,23 @@ button.tag[data-selected="true"] {
   padding-inline: var(--size-2);
   padding-block: var(--size-1);
   border-radius: var(--size-0);
-  border: 1px solid var(--text-primary);
+  border: 1px solid var(--line-soft);
   background-color: transparent;
-  color: var(--text-primary);
+  color: var(--text-soft);
+  font-size: var(--font-size-1);
 }
 
-/* Tech Stack (kind="tech-stack") — icon + name, used inside CodeHero. */
+/* Tech Stack (kind="tech-stack") — icon + name, used inside CodeHero.
+   Pill border (same radius as Tag) so it reads as its own chip rather
+   than bare text next to the image. */
 .techStackItem {
   display: flex;
   align-items: center;
   gap: var(--size-1);
+  padding-inline: var(--size-2);
+  padding-block: var(--size-1);
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
 }
 
 .techStackIcon {

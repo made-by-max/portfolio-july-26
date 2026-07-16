@@ -1,9 +1,9 @@
 :root {
   /*Primitives*/
   /*font families*/
-  --font-display: "Figtree", sans-serif;
-  --font-body: "Figtree", sans-serif;
-  --font-mono: "Figtree", sans-serif;
+  --font-display: "Figtree Variable", sans-serif;
+  --font-body: "Figtree Variable", sans-serif;
+  --font-mono: "JetBrains Mono Variable", monospace;
 
   /*Sizes*/
 
@@ -28,9 +28,9 @@
   --font-size-4: clamp(1rem, calc(0.909rem + 0.455cqi), 1.25rem);
 
   /*body base*/
-  --font-size-3: 1rem;
+  --font-size-3: 1.2rem;
   /*body small*/
-  --font-size-2: 0.875rem;
+  --font-size-2: 1rem;
   /*body xs*/
   --font-size-1: 0.75rem;
 
@@ -99,7 +99,6 @@
   }
 
   /*display-large*/
-  h2,
   .display-l {
     font-size: var(--font-size-7);
     font-weight: var(--font-weight-semibold);
@@ -108,7 +107,7 @@
   }
 
   /*display medium*/
-  h3,
+  h2,
   .display-m {
     font-size: var(--font-size-6);
     font-weight: var(--font-weight-semibold);
@@ -117,7 +116,7 @@
   }
 
   /*display small*/
-  h4,
+  h3,
   .display-s {
     font-size: var(--font-size-5);
     font-weight: var(--font-weight-semibold);
@@ -126,7 +125,7 @@
   }
 
   /* display xs, body large*/
-  h5,
+  h4,
   .display-xs {
     font-size: var(--font-size-4);
     font-weight: var(--font-weight-semibold);
@@ -135,29 +134,29 @@
   }
 
   .body-l {
-    font-size: var(--font-size-5);
+    font-size: var(--font-size-4);
     line-height: 1.8;
   }
 
   p,
   li,
   .body-m {
-    font-size: var(--font-size-4);
+    font-size: var(--font-size-3);
     line-height: 1.6;
   }
   .body-m-bold {
-    font-size: var(--font-size-4);
+    font-size: var(--font-size-3);
     line-height: 1.6;
     font-weight: var(--font-weight-bold);
   }
 
   .body-s {
-    font-size: var(--font-size-3);
+    font-size: var(--font-size-2);
     line-height: 1.6;
   }
 
   .body-s-bold {
-    font-size: var(--font-size-3);
+    font-size: var(--font-size-2);
     line-height: 1.6;
     font-weight: var(--font-weight-bold);
   }
@@ -168,14 +167,14 @@
   }
 
   .font-button {
-    font-size: var(--font-size-3);
-    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-2);
+    font-weight: var(--font-weight-semibold);
     text-transform: uppercase;
     letter-spacing: 5%;
   }
 
   .font-tech-stack {
-    font-size: var(--font-size-3);
+    font-size: var(--font-size-2);
     font-weight: var(--font-weight-medium);
   }
 
@@ -194,7 +193,7 @@
   h4 {
     font-size: var(--font-size-3);
     font-weight: var(--font-weight-bold);
-    margin-block-end: 0;
+    margin-block-end: var(--size-0);
   }
 
   .bold-text {

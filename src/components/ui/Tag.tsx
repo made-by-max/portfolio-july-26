@@ -1,3 +1,4 @@
+import { getTechStackIcon } from "@/lib/techStackIcons";
 import styles from "./Tag.module.css";
 
 type TagProps = {
@@ -33,15 +34,18 @@ export function Tag(props: Props) {
   }
 
   if (props.kind === "tech-stack") {
+    const iconSrc = getTechStackIcon(props.icon);
     return (
       <span className={styles.techStackItem}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          className={styles.techStackIcon}
-          src={props.icon}
-          alt=""
-          aria-hidden="true"
-        />
+        {iconSrc ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            className={styles.techStackIcon}
+            src={iconSrc}
+            alt=""
+            aria-hidden="true"
+          />
+        ) : null}
         <span className="font-tech-stack">{props.name}</span>
       </span>
     );

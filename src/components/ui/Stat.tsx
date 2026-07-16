@@ -50,10 +50,10 @@ export function Stat({ value, prefix = "", suffix = "" }: Props) {
       return;
     }
 
-    // 1.6s is a judgment call — long enough to read as a deliberate count
+    // 0.9s is a judgment call — long enough to read as a deliberate count
     // rather than a flicker, short enough not to feel like a wait.
     const controls = animate(motionValue, value, {
-      duration: 1.6,
+      duration: 0.9,
       ease: "easeOut",
     });
     return () => controls.stop();

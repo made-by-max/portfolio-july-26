@@ -11,6 +11,7 @@ import {
   WritingHero,
   CodeHero,
 } from "@/components/layout";
+import styles from "./page.module.css";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -52,53 +53,57 @@ export default async function PlayItemPage({ params }: Props) {
 
   const isCode = item.type === "project" || item.type === "experiment";
 
+  // PlayFrontmatter has no dedicated alt field yet — falling back to the
+  // title until one is added to the schema.
+  const alt = item.title;
+  const codeProps = {
+    title: item.title,
+    description: item.description,
+    date: item.date,
+    tags: item.tags,
+    techStack: item.techStack,
+    buttons: item.buttons,
+  };
+  const writingProps = {
+    title: item.title,
+    description: item.description,
+    date: item.date,
+    tags: item.tags,
+  };
+
   return (
     <ContentWrapper>
       <Section texture>
         {isCode ? (
-          item.image ? (
+          item.video ? (
             <CodeHero
-              title={item.title}
-              description={item.description}
-              date={item.date}
-              tags={item.tags}
-              techStack={item.techStack}
-              image={item.image}
-              // PlayFrontmatter has no dedicated alt field yet — falling
-              // back to the title until one is added to the schema.
-              imageAlt={item.title}
+              {...codeProps}
+              video={item.video}
+              videoAutoplay={item.videoAutoplay}
+              alt={alt}
             />
+          ) : item.image ? (
+            <CodeHero {...codeProps} image={item.image} alt={alt} />
           ) : (
-            <CodeHero
-              title={item.title}
-              description={item.description}
-              date={item.date}
-              tags={item.tags}
-              techStack={item.techStack}
-            />
+            <CodeHero {...codeProps} />
           )
+        ) : item.video ? (
+          <WritingHero
+            {...writingProps}
+            video={item.video}
+            videoAutoplay={item.videoAutoplay}
+            alt={alt}
+          />
         ) : item.image ? (
-          <WritingHero
-            title={item.title}
-            description={item.description}
-            date={item.date}
-            tags={item.tags}
-            image={item.image}
-            imageAlt={item.title}
-          />
+          <WritingHero {...writingProps} image={item.image} alt={alt} />
         ) : (
-          <WritingHero
-            title={item.title}
-            description={item.description}
-            date={item.date}
-            tags={item.tags}
-          />
+          <WritingHero {...writingProps} />
         )}
       </Section>
       <GridSpacer columns={[1]} />
       <Section>
         <Grid columns={[1]}>
-          <Column>
+          <Column className={styles.content}>
             <Content />
           </Column>
         </Grid>

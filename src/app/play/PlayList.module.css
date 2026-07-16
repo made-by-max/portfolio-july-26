@@ -2,11 +2,14 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--size-2);
+  gap: var(--size-3);
   margin-block-end: var(--size-4);
 }
 
-.clear {
+/* Same treatment as TopNav's own link — soft by default, primary on
+   hover/selection. No pill/background like the chip-style Tag component;
+   "selected" here reads the same way a nav link's hover state does. */
+.filterButton {
   appearance: none;
   background: none;
   border: none;
@@ -14,11 +17,15 @@
   cursor: pointer;
   font: inherit;
   color: var(--text-soft);
-  text-decoration: underline;
+  transition: color var(--duration-fast) var(--ease-out);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .clear:hover {
+  .filterButton:hover {
     color: var(--text-primary);
   }
+}
+
+.filterButton[data-selected] {
+  color: var(--text-primary);
 }
