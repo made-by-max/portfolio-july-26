@@ -15,7 +15,7 @@ export const meta: CaseStudyMeta = {
   description:
     "An AI voice solution to decrease documentation time and reduce physician burnout",
   overview:
-    "I integrated an AI scribe during endoscopic procedures to reduce physicians' cognitive load and report writing time, leveraging creative prototyping for user testing and cross-team collaboration for implementation.",
+    "I integrated an AI scribe during endoscopic procedures to reduce physicians’ cognitive load and report writing time, leveraging creative prototyping for user testing and cross-team collaboration for implementation.",
   labels: ["Healthcare", "AI", "0 - 1"],
   featured: true,
   image: "voice-featured-image_sndh1d",
@@ -53,14 +53,14 @@ export default function Voice() {
               documentation, leading to high levels of burnout
             </h2>
             <p>
-              The growing complexity of healthcare procedures and regulatory
-              requirements has led to an increase in the amount and the
-              complexity of documentation for each patient encounter.
+              Growing complexity in healthcare procedures and regulatory
+              requirements has increased both the volume and complexity of
+              documentation for each patient encounter.
             </p>
             <p>
-              At Olympus we explored a number of different avenues to simplify
-              the documentation process, including the use of an ambient AI
-              scribe to capture findings during endoscopic procedures.
+              At Olympus, we explored several ways to simplify documentation,
+              including an ambient AI scribe that captures findings during
+              endoscopic procedures.
             </p>
           </Column>
         </Grid>
@@ -76,9 +76,8 @@ export default function Voice() {
               the fact.
             </p>
             <p>
-              In more complicated procedures with multiple findings a nurse
-              might capture the details on a sticky note, napkin, or other bit
-              of scrap paper.
+              In complex procedures with multiple findings, a nurse might
+              capture details on a sticky note, napkin, or other scrap of paper.
             </p>
           </Column>
           <Column>
@@ -88,9 +87,8 @@ export default function Voice() {
         <Grid columns={[1]}>
           <Column>
             <p>
-              With an AI scribe, endoscopists are able to speak these details
-              aloud and can be confident that the AI scribe is capturing
-              everything and adding it to their report.
+              With an AI scribe, endoscopists can speak these details aloud,
+              confident it’s capturing everything and adding it to their report.
             </p>
             <Blockquote>
               Because of ability to use voice I won’t forget things that I’ve
@@ -104,16 +102,15 @@ export default function Voice() {
       </Section>
 
       <Section>
-        <Grid columns={[3, 2]}>
+        <Grid columns={[2, 3]}>
           <Column>
             <h2>
               Physicians were excited, but had concerns about control and
               accuracy
             </h2>
             <p>
-              Our UX Researcher conducted interviews with 12 endoscopists to
-              gauge their interest in a voice solution and identify any concerns
-              they had.
+              Our UX researcher interviewed 12 endoscopists to gauge their
+              interest in a voice solution and surface any concerns.
             </p>
           </Column>
           <Column>
@@ -121,19 +118,19 @@ export default function Voice() {
               <div className="listStack">
                 <h4>Time savings</h4>
                 <p>
-                  Doctors were very excited about using voice during a procedure
-                  and believed it would save them a significant amount of time.
+                  Doctors were excited about using voice during a procedure and
+                  expected it to save them a significant amount of time.
                 </p>
               </div>
               <div className="listStack">
                 <h4>Comfort with voice interfaces</h4>
                 <p>
-                  Most regularly used technologies like Siri or Alexa ane were
-                  comfortable with voice interfaces.
+                  Most regularly used technologies like Siri or Alexa and were
+                  already comfortable with voice interfaces.
                 </p>
               </div>
               <div className="listStack">
-                <h4>Automony</h4>
+                <h4>Autonomy</h4>
                 <p>
                   Doctors wanted to be able to control when the scribe was
                   recording.
@@ -142,9 +139,8 @@ export default function Voice() {
               <div className="listStack">
                 <h4>Accuracy</h4>
                 <p>
-                  They wanted to be sure that the scribe would be able to
-                  capture the nuances of an endoscopic procedure and filter out
-                  side conversations.{" "}
+                  They wanted assurance the scribe could capture the nuances of
+                  an endoscopic procedure and filter out side conversations.
                 </p>
               </div>
             </ListStack>
@@ -157,24 +153,21 @@ export default function Voice() {
           <Column>
             <h2>User testing a voice interface presented unique challenges</h2>
             <p>
-              In order validate the doctor&rsquo;s mental model before the
-              backend was in place I used Claude to create a realistic
-              transcript of a colonoscopy procedure, complete with side
-              conversations and interruptions. I then used ElevenLabs to turn it
-              into an audio recording and played that over images from a
-              procedure room.
+              To validate the doctor&rsquo;s mental model before the backend was
+              in place, I used Claude to create a realistic transcript of a
+              colonoscopy procedure, complete with side conversations and
+              interruptions, then used ElevenLabs to turn it into audio and
+              played it over images from a procedure room.
             </p>
             <p>
               The video demonstrated how doctors could use vocal commands to
-              start and stop the recording and showed real time feedback on the
-              monitor so they could be confident it was recording when they
-              wanted and only when they wanted.
+              start and stop recording, with real-time feedback on the monitor
+              so they could be confident it was recording only when they wanted.
             </p>
             <p>
-              At the end of the video user&rsquo;s were shown a Figma prototype
-              of the post procedure report where they could see how the relevant
-              information had been captured and mapped to the report in a
-              structured format.{" "}
+              At the end of the video, users were shown a Figma prototype of the
+              post-procedure report, showing how the relevant information had
+              been captured and mapped into a structured format.
             </p>
           </Column>
         </Grid>
@@ -194,18 +187,18 @@ export default function Voice() {
         <Grid columns={[1]}>
           <Column>
             <h2>
-              The biggest design challenge wasn’t the UI - it was coordinating
+              The biggest design challenge wasn’t the UI — it was coordinating
               across teams
             </h2>
             <p>
-              The intra-procedure experience and post procedure report writing
-              experience were owned by different teams, each with their own
-              roadmaps and delivery constraints.
+              The intra-procedure experience and the post-procedure report
+              writing experience were owned by different teams, each with its
+              own roadmap and delivery constraints.
             </p>
 
             <p>
-              I partnered closely with the designers, engineers, and product
-              managers from both teams to craft an end-to-end voice experience
+              I partnered closely with designers, engineers, and product
+              managers from both teams to craft the end-to-end voice experience
               that spanned multiple touchpoints and integrated into their
               existing designs without risking their delivery timelines.
             </p>
@@ -227,25 +220,11 @@ export default function Voice() {
 
         <Grid columns={[1]}>
           <Column>
-            <h3>Adding microphone controls to the touch screen interface</h3>
-            <p>
-              The intra-procedure experience used a touch screen connected to
-              the endoscopy tower to capture images and videos. We needed to add
-              microphone controls (in case wake words were not available) and
-              status to thier interface.
-            </p>
-
-            <Image publicId="intra-active_yl2u0g" alt="screenshot" padded />
-          </Column>
-        </Grid>
-
-        <Grid columns={[1]}>
-          <Column>
             <h3>Mapping findings to the correct report fields</h3>
             <p>
-              On the post-procedure report, I partnered with the designers on
-              the report team to define how the data would flow from the backend
-              to the report, ensuring that it mapped to the correct fields and
+              On the post-procedure report, I partnered with the report team’s
+              designers to define how data would flow from the backend into the
+              report, ensuring findings mapped to the correct fields and
               formatted the findings with the correct structure.
             </p>
 
@@ -261,13 +240,11 @@ export default function Voice() {
           <Column>
             <h3>Adhering to EU regulations for AI and medical devices</h3>
             <p>
-              We also collaborated closely with our internal regulatory team to
-              ensure we were meeting the guidelines for AI use in the medical
-              field for all the jurisdictions where we planned to sell our voice
-              solution. In order to meet these requirements, our designs had to
-              clearly indicate which fields were populated by AI and include a
-              disclaimer that all AI content be carefully reviewed by a
-              physician.
+              I also worked closely with our internal regulatory team to meet
+              AI-in-medical-devices guidelines across every jurisdiction where
+              we planned to sell the voice solution. To comply, our designs had
+              to clearly flag which fields were AI-populated and include a
+              disclaimer that all AI content must be reviewed by a physician.
             </p>
 
             <Image
@@ -287,12 +264,11 @@ export default function Voice() {
               burnout
             </h2>
             <p>
-              Our user research team performed in-person testing of the
-              end-to-end reporting experience and physicians were very impressed
-              with both the voice caapture technology and the overall ability to
-              reduce the reporting burden and cognitive load. They anticipated
-              that the voice feature would save them a significant amount of
-              time and allow them to devote more time to patient care.
+              Our user research team ran in-person testing of the end-to-end
+              reporting experience. Physicians were impressed with both the
+              voice capture technology and the overall ability to reduce
+              reporting burden and cognitive load, and expected it would save
+              significant time and free them up for patient care.
             </p>
 
             <Blockquote>

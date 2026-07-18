@@ -57,16 +57,14 @@ export default function Quickstarts() {
             <p>
               Auth0’s Quickstarts let developers quickly spin up a new
               application and add login and logout functionality, allowing them
-              to learn the product by diving directly into the coding
-              experience.
+              to learn the product by diving straight into the code.
             </p>
 
             <p>
-              We’d always gotten positive feedback on our Quickstart experience,
-              as well as on our developer experience overall. However, our
-              Quickstarts hadn’t seen a substantial update in about 5 years, and
-              we wanted to modernize the experience and look for opportunities
-              to make it even better.
+              We’d always gotten positive feedback on the Quickstarts and on our
+              developer experience overall. But Quickstarts hadn’t seen a
+              substantial update in about five years, and we wanted to modernize
+              the experience and look for opportunities to make it even better.
             </p>
           </Column>
         </Grid>
@@ -79,13 +77,12 @@ export default function Quickstarts() {
           <Column>
             <h2>Identifying pain points</h2>
             <p>
-              In order to get a better understanding of what developers liked
-              about our quickstarts as well as areas for improvement, I
-              conducted usability testing with six developers with varying
-              levels of experience with React. Experienced React developers
-              typically completed our React Quickstart in about 15 minutes. Less
-              experienced developers took closer to 30, and typically required
-              some guidance.
+              To understand what developers liked about the Quickstarts and
+              where they fell short, I ran usability testing with six developers
+              with varying levels of experience with React. Experienced
+              developers typically completed the React Quickstart in about 15
+              minutes; less experienced developers took closer to 30 and usually
+              needed some guidance.
             </p>
           </Column>
         </Grid>
@@ -102,16 +99,15 @@ export default function Quickstarts() {
             <h3>Unclear benefits of account creation</h3>
             <p>
               One of the key features of our Quickstarts is that if users have a
-              free Auth0 account and are logged in, the code samples in the
-              Quickstart automatically update to include information tied to a
-              user&rsquo;s application.
+              free Auth0 account and are logged in, code samples automatically
+              update with information tied to their application.
             </p>
 
             <p>
               Developers loved this feature...if they were aware of it. But
-              testing showed that, while creating an account is recommended, the
-              information is buried in the introduction and doesn&rsquo;t do an
-              adequate job of conveying the advantages of doing so.
+              testing showed the recommendation to create an account was buried
+              in the introduction and didn&rsquo;t do an adequate job of
+              conveying the advantages.
             </p>
           </PinnedMediaScrollItem>
 
@@ -121,14 +117,12 @@ export default function Quickstarts() {
           >
             <h3>Incomplete code samples</h3>
             <p>
-              The code samples provided in the Quickstart were incomplete
-              snippets and failed to call out a specific file name for where to
-              put the code.
+              Code samples in the Quickstart were incomplete snippets that
+              didn&rsquo;t specify which file to put the code in.
             </p>
             <p>
-              While more experienced React developers generally figured this
-              step out without assistance, I noticed that it was something
-              novice developers really struggled with.
+              More experienced React developers generally figured this out on
+              their own, but novice developers struggled with it.
             </p>
           </PinnedMediaScrollItem>
 
@@ -138,15 +132,14 @@ export default function Quickstarts() {
           >
             <h3>Too much context switching</h3>
             <p>
-              In order to follow along with the Quickstart, users would have to
-              navigate to the Auth0 dashboard to enter their callback, logout,
-              and web origins URLs, then copy the information from the
-              quickstart into their code editor.
+              To follow along, users had to jump to the Auth0 dashboard to enter
+              their callback, logout, and web origin URLs, copy that information
+              into their IDE, and then jump back to the Quickstart.
             </p>
             <p>
-              This context switching slowed down the integration process, and
-              created a less focused experience. It was also prone to error, as
-              users frequently forgot to save their URLs in the dashboard.
+              This context switching slowed down integration, broke focus, and
+              was error-prone, as users often forgot to save their URLs in the
+              dashboard.
             </p>
           </PinnedMediaScrollItem>
         </PinnedMediaScroll>
@@ -157,7 +150,7 @@ export default function Quickstarts() {
       <Section>
         <Grid columns={[1, 1]}>
           <Column>
-            <h2>Redesign Goals</h2>
+            <h2>Redesign goals</h2>
           </Column>
           <Column>
             <ListStack>
@@ -166,8 +159,8 @@ export default function Quickstarts() {
                   Make “Create Account” or “Log In” a dedicated step
                 </h3>
                 <p>
-                  Encourage account creation and login by making it an actual
-                  step in the process as opposed to a suggestion.
+                  Make account creation and login an actual step in the process,
+                  not just a suggestion.
                 </p>
               </div>
 
@@ -176,9 +169,8 @@ export default function Quickstarts() {
                   Provide pre-configured full file code samples
                 </h3>
                 <p>
-                  Provide full file code samples, including the file that the
-                  code would be placed in, rather than showing incomplete code
-                  snippets.
+                  Show full file code samples, including exactly where the code
+                  goes, instead of incomplete snippets.
                 </p>
               </div>
               <div className="listStack">
@@ -186,9 +178,8 @@ export default function Quickstarts() {
                   Configure URLs from the Quickstart
                 </h3>
                 <p>
-                  Reduce context switching by allowing users to configure their
-                  callback, logout, and web origins URLs directly from the
-                  Quickstart.
+                  Let users configure their callback, logout, and web origin
+                  URLs directly from the Quickstart to reduce context switching.
                 </p>
               </div>
             </ListStack>
@@ -216,8 +207,8 @@ export default function Quickstarts() {
           >
             <h3>Dedicated sign up step</h3>
             <p>
-              Users are prompted to log in or create an account and the benefits
-              of doing so are more clear.
+              Users are prompted to log in or create an account, with the
+              benefits now made clear.
             </p>
           </PinnedMediaScrollItem>
 
@@ -227,9 +218,9 @@ export default function Quickstarts() {
           >
             <h3>Complete code samples</h3>
             <p>
-              A code editor shows the complete code sample, including the file
-              structure. The code editor automatically updates as users scroll
-              through the guide.
+              A code editor shows the complete code sample, including file
+              structure, and updates automatically as users scroll through the
+              guide.
             </p>
           </PinnedMediaScrollItem>
 
@@ -254,21 +245,19 @@ export default function Quickstarts() {
           <Column>
             <h2>Design updates</h2>
             <p>
-              I shared these initial designs with the team and met with my
-              product manager and the lead engineer on the project to discuss
-              next steps. After discussing the technical feasibility, we opted
-              to take the automation one step further by adding the ability to
-              create or change an application directly from the Quickstart, thus
-              eliminating the need to switch from the Quickstart to the
-              dashboard at all.
+              I shared the initial designs with the team and met with my PM and
+              lead engineer to discuss next steps. After confirming technical
+              feasibility, we took automation a step further by adding the
+              ability to create or change an application directly from the
+              Quickstart, eliminating the need to switch to the dashboard at
+              all.
             </p>
 
             <Image publicId="createAppV3_swzyle" alt="screenshot" padded />
 
             <p>
-              We also decided that since the code samples wouldn’t be relevant
-              until later in the Quickstart that we could put all of the
-              application configuration steps on the right side of the new
+              Since code samples weren’t relevant until later in the flow, we
+              moved application configuration steps to the right side of the new
               layout and have the content update automatically as the user
               scrolls through the guide.
             </p>
@@ -290,11 +279,10 @@ export default function Quickstarts() {
               too far.
             </p>
             <p>
-              The reactions to the new version of the quickstart were
-              overwhelmingly positive, with participants noting that it was
-              intuitive and easy to use and that having the code samples update
-              as they scrolled through the instructions made following along a
-              “no-brainer.”
+              Reactions to the new version of the quickstart were overwhelmingly
+              positive, with participants noting that it was intuitive and easy
+              to use and that having the code samples update as they scrolled
+              through the instructions made following along a “no-brainer.”
             </p>
             <Blockquote>
               It’s so clear and so precise that anyone could just follow it
@@ -312,15 +300,14 @@ export default function Quickstarts() {
           <Column>
             <h2>Implementation and outcomes</h2>
             <p>
-              Once the design was validated I had regular syncs with my PM and
-              engineering teams throughout the implementation process.
+              Once the design was validated, I synced regularly with my PM and
+              engineering teams throughout implementation.
             </p>
             <p>
-              After the new Quickstarts launched I conducted an additional round
-              of unmoderated usability testing. Results were overwhelmingly
-              positive, with just a few minor UI fixes needed. The time to
-              complete the Quickstart went from around 30 minutes to about 10-15
-              minutes.
+              After launch, I ran another round of unmoderated usability
+              testing. Results were very positive, with only a few minor UI
+              fixes needed. Time to complete the Quickstart dropped from around
+              30 minutes to about 10-15 minutes.
             </p>
             <p className="display-xl">
               New design reduced onboarding time by more than{" "}

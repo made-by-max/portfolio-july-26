@@ -10,7 +10,7 @@ const EMAIL = "hi@maxtaylor.design";
 const PAGE_LINKS = [
   { href: "/", label: "Home" },
   { href: "/work", label: "Work" },
-  { href: "/play", label: "Play" },
+  { href: "/play", label: "Side Quests" },
   { href: "/about", label: "About" },
 ];
 

@@ -26,7 +26,7 @@ I recently built a small design system for personal use using Claude Code and th
 ## Why I decided to build my own design system
 
 ### I wanted a basic design system for personal projects
-I've been doing a lot of side projects and experiments lately - some vibe coding, some playing with design to code workflows, and some just good old fashioned coding - and a lot of these projects could stand to have a design system to work with. Since I'm just working on side projects I didn't have an existing design system to work with and I though rather than using an open source system I'd try my hand at building my own, because...
+I've been doing a lot of side projects and experiments lately - some vibe coding, some playing with design to code workflows, and some just good old fashioned coding - and a lot of these projects could stand to have a design system to work with. Since I'm just working on side projects I didn't have an existing design system to work with and I thought rather than using an open source system I'd try my hand at building my own, because...
 
 ### I wanted more hands-on practice with design systems
 I haven't really had much chance to work on design systems in my day jobs, but when I have I've really enjoyed it. I'm a very systematic thinker and things like setting up tokens, building the semantic layer, and thinking about all the potential places where something could be used or misused just really clicks in my brain. It's definitely an area I'd like to explore more.
@@ -59,11 +59,11 @@ Naming convention:
 
 Once the tokens file was complete and I'd reviewed it I prompted Claude to:
 - create a separate dark mode theme
-- generate CSS files for both my base theme and my dark mode them
+- generate CSS files for both my base theme and my dark mode theme
 - run the build with `node build.js`
 
 ### JSON to Figma import
-After that was in place I wanted to set up my variables in Figma. I spent quite awhile looking for plugins that would automatically setup my variables from a JSON file. They all required a specific JSON format and most of the ones I tried didn't specify the format and just gave a generic error message when it was wrong.
+After that was in place I wanted to set up my variables in Figma. I spent quite a while looking for plugins that would automatically setup my variables from a JSON file. They all required a specific JSON format and most of the ones I tried didn't specify the format and just gave a generic error message when it was wrong.
 
 I ended up having Claude convert my existing tokens.json to a new json file using the [Design Tokens Community Group format](https://www.designtokens.org/tr/drafts/format/) and used the Variables Import plugin, which did an okay job. It handled the colors really well, but I ended up doing a fair bit of manual cleanup for sizes and the variable organization.
 
@@ -185,7 +185,7 @@ And finally I gave it the same prompt but also gave it access to the Figma desig
 I decided to use pre-built components because my goal with this project was setting up the system and I didn't want to get bogged down with creating individual components. I went with Radix because it's pretty standard and has accessibility built in. I chose Radix over Shadcn because I wanted to have full control over the CSS and not be locked in to using Tailwind.
 
 ### CSS Modules
-There's [a lot of options](https://www.locofy.ai/blog/5-ways-to-handle-css-in-react) for writing CSS in React and everyone seems to have their own opinion about which is best. I opted for CSS modules mostly because it's what makes the most sense to me. It let's me write pure CSS (as opposed to Styled Components) and each component has its own scoped CSS.
+There's [a lot of options](https://www.locofy.ai/blog/5-ways-to-handle-css-in-react) for writing CSS in React and everyone seems to have their own opinion about which is best. I opted for CSS modules mostly because it's what makes the most sense to me. It lets me write pure CSS (as opposed to Styled Components) and each component has its own scoped CSS.
 
 ### JSX vs TSX
 I opted to create the components in JavaScript vs TypeScript because I wanted the flexibility to create my side projects in either JSX or TSX. I'm still getting comfortable with TypeScript and while I'm trying to incorporate it into more of my projects I still want the option to not use it.
@@ -214,6 +214,6 @@ I already had a pretty decent understanding of tokens from using CSS custom prop
 To me, it makes more sense for the code to be the source of truth and I'm happy that I created my components in code and moved them to Figma rather than vice versa. But at the same time, as I start thinking about adding new components I'm already second guessing myself about whether to create them in design or code and it seems like it's going to be a hassle keeping the two in sync.
 
 ### It made me question the role of Figma
-I long ago came to the conclusion that prototyping in Figma isn't worth the headache. And a lot of their recent business decisions have me looking at other tools for personal use. But the difficulty of maintaining parity between design and code seems like a major weakness in an age where more designers are jumping into coding tools to create their prototypes. People talk about tools like Claude Design and Google Stitch being Figma killers, but I think that's short-sighted. I think there will always be a place for a design tool for exploration and early iteration, whether it's Figma or something else. And less-technical designers may choose cling to their vector tools for as long as they can. But for high fidelity designs and prototypes, I think the future is going to be in a tool where designers can use coded components in some sort of visual playground.
+I long ago came to the conclusion that prototyping in Figma isn't worth the headache. And a lot of their recent business decisions have me looking at other tools for personal use. But the difficulty of maintaining parity between design and code seems like a major weakness in an age where more designers are jumping into coding tools to create their prototypes. People talk about tools like Claude Design and Google Stitch being Figma killers, but I think that's short-sighted. I think there will always be a place for a design tool for exploration and early iteration, whether it's Figma or something else. And less-technical designers may choose to cling to their vector tools for as long as they can. But for high fidelity designs and prototypes, I think the future is going to be in a tool where designers can use coded components in some sort of visual playground.
 
  [Figma](https://www.figma.com/design/eSjPmPCWTVxlgznxFueKOu/Max-Design-System?node-id=0-1&t=8P7EpcxlzDnrvb8V-1) and [Storybook](https://www.chromatic.com/library?appId=69f92193452a54329513fbd3) links if you want to check them out.
