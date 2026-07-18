@@ -4,7 +4,7 @@ import { ContentWrapper } from "@/components/layout";
 import PlayList from "./PlayList";
 
 export const metadata: Metadata = {
-  title: "Play",
+  title: "Side Quests",
   description: "Blog posts, notes, projects, and experiments",
 };
 

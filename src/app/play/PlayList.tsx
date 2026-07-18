@@ -39,7 +39,7 @@ export default function PlayList({ items, allTags }: Props) {
       <Section>
         <Grid columns={[1]}>
           <Column>
-            <h1 className="display-xl">Play</h1>
+            <h1 className="display-xl">Side Quests</h1>
             <div
               role="group"
               aria-label="Filter by tag"

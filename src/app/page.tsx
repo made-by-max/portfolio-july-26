@@ -36,7 +36,10 @@ export default async function HomePage() {
         <Grid columns={[1]}>
           <Column>
             <h1 className="display-xxl text-in">Max Taylor</h1>
-            <p className="body-l text-in text-in-delay-1">Product designer.</p>
+            <p className="body-l text-in text-in-delay-1">
+              Systems-focused product designer simplifying complex problems and
+              exploring the space between design and code
+            </p>
           </Column>
         </Grid>
       </Section>
@@ -47,7 +50,7 @@ export default async function HomePage() {
         <Section>
           <Grid columns={[1]}>
             <Column>
-              <h2 className="display-m">Featured Work</h2>
+              <h2 className="display-m">Selected Case Studies</h2>
             </Column>
           </Grid>
         </Section>
@@ -79,7 +82,7 @@ export default async function HomePage() {
         <Section>
           <Grid columns={[1]}>
             <Column>
-              <h2 className="display-m">Featured Play</h2>
+              <h2 className="display-m">Side Quests</h2>
             </Column>
           </Grid>
           {/* FeaturedContentGrid is an auto-fit grid, not a fixed columns

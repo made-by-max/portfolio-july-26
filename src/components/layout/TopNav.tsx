@@ -7,7 +7,7 @@ import styles from "./TopNav.module.css";
 
 const LINKS = [
   { href: "/work", label: "Work" },
-  { href: "/play", label: "Play" },
+  { href: "/play", label: "Side Quests" },
   { href: "/about", label: "About" },
 ];
 
