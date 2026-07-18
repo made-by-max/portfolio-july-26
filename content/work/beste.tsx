@@ -18,9 +18,9 @@ import { Stat, TweetEmbed } from "@/components/ui";
 export const meta: CaseStudyMeta = {
   title: "An AI Digital Assistant for Best Buy",
   description:
-    "An internal RAG-powered AI assistant embedded in Best Buy's developer portal",
+    "An internal RAG-powered AI assistant embedded in Best Buy’s developer portal",
   overview:
-    "Best’e is an AI-driven digital assistant within Best Buy’s Internal Developer Portal that improves developer productivity by reducing the barriers to discoverability. Best’e is backed by a Retrievel Augmented Generation architecture accessible via a natural language prompt.",
+    "Best’e is an AI-driven digital assistant within Best Buy’s Internal Developer Portal that improves developer productivity by reducing the barriers to discoverability. Best’e is backed by a Retrieval Augmented Generation architecture accessible via a natural language prompt.",
   labels: ["Developer Experience", "AI"],
   featured: true,
   image: "beste-featured-image_jk9xmc",
@@ -58,18 +58,16 @@ export default function Beste() {
           <Column>
             <h2>Discoverability is a major issue for Best Buy engineers</h2>
             <p>
-              It’s not easy to discover information within Best Buy. There’s too
-              many teams, services, and tools for anybody to keep track of and
-              information is spread across Confluence, Slack, GitHub, and other
-              tools. Finding accurate and up-to-date information frequently
-              comes down to knowing who to ask, which presents barriers to new
-              team members and doesn’t work at scale. Engineers waste an
-              estimated 80,000 hours a year searching for information.
+              Best Buy has too many teams, services, and tools for anyone to
+              track, and information is scattered across Confluence, Slack,
+              GitHub, and more. Finding accurate, up-to-date answers usually
+              comes down to knowing who to ask — which shuts out new team
+              members and doesn’t scale. Engineers waste an estimated 80,000
+              hours a year just searching for information.
             </p>
             <p>
-              Best’e can reduce the amount of time spent searching for
-              information by answering basic questions about common problems,
-              tools, services, policies, and acronyms at Best Buy.
+              Best’e cuts that search time by answering common questions about
+              Best Buy’s problems, tools, services, policies, and acronyms.
             </p>
           </Column>
         </Grid>
@@ -80,10 +78,10 @@ export default function Beste() {
           <Column>
             <h2>Crafting the Best’e UI</h2>
             <p>
-              Best’e is located in the Best Buy Internal Developer Portal. It’s
-              accessed via a floating action button on every page, which opens
-              up a side panel, so that users can ask questions within the
-              context of whatever they’re working on.
+              Best’e lives in the Best Buy Internal Developer Portal, accessed
+              via a floating action button on every page. It opens a side panel
+              so users can ask questions right in the context of whatever
+              they’re working on.
             </p>
             <Image publicId="besteui_yp8mqg" alt="screenshot" padded />
           </Column>
@@ -95,17 +93,18 @@ export default function Beste() {
           <Column>
             <h2>Best’e users are invested</h2>
             <p>
-              Because Best’e is an internal tool for Best Buy engineers, users
-              are extremely invested in making useful suggestions, and are very
-              interested in where Best’e is pulling its data from.
+              Because Best’e is an internal tool built for Best Buy engineers,
+              users are invested in improving it — they make useful suggestions
+              and want to know exactly where its answers come from.
             </p>
             <p>
-              Users are prompted to rate Best’e’s response to each question and
-              can follow-up with quick responses or free form text.
+              Users rate Best’e’s response to each question, with the option to
+              follow up with quick responses or free-form text.
             </p>
-            <p>
-              80% of users who engage with the feedback widget opt to leave a
-              comment.
+
+            <p className="display-xl">
+              <Stat value={80} suffix="%" /> of users who engage with the
+              feedback widget opt to leave a comment
             </p>
 
             <Image publicId="bestFeedback_qjf40n" alt="screenshot" padded />
@@ -122,33 +121,30 @@ export default function Beste() {
       <Section>
         <Grid columns={[1]}>
           <Column>
-            <h2>Best’e Experiments</h2>
+            <h2>Best’e experiments</h2>
             <p>
-              Gen-AI assistants were still relatively new when Best’e launched
-              in late 2023, so in addition to these core features, we also
-              introduced a few experiments to improve the Best’e experience.
+              Gen-AI assistants were still new when Best’e launched in late
+              2023, so alongside these core features, we ran a few experiments
+              to improve the experience.
             </p>
             <Image publicId="bestExperiments_duxniv" alt="screenshot" padded />
 
             <p>
-              During the alpha release of Best’e, users were encouraged to
-              experiment with different Large Language Models to see which was
-              giving the most accurate responses. Users could use the drop down
-              menu to select different options.
+              During the alpha release, users could switch between different
+              LLMs from a drop-down menu to see which gave the most accurate
+              responses.
             </p>
             <p>
-              We had some issues early on with topics that could be answered
-              very differently in different contexts, so we were experimenting
-              with letting users pick from potential categories, or showing the
-              category Best’e thought it was answering in order to hone in on
-              the best answer.
+              Early on, some topics had answers that varied a lot by context, so
+              we experimented with letting users pick a category, or showing
+              which category Best’e thought it was answering in, to hone in on
+              the right response.
             </p>
 
             <p>
               We found that users were asking a lot of the same questions over
-              and over, so we focused a lot of effort on ensuring the accuracy
-              of those answers. We also added an autocomplete feature for
-              frequent questions.
+              and over, so we focused on nailing the accuracy of those answers
+              and added autocomplete for frequent questions.
             </p>
           </Column>
         </Grid>
@@ -159,13 +155,11 @@ export default function Beste() {
           <Column>
             <h2>Outcomes</h2>
             <p>
-              The initial response to Best’e has been quite positive, and
-              engineers have been eager to test it out. It’s still in the early
-              stages of development and is relying on a fairly small number of
-              data sources, which limits the types of questions that can be
-              answered. However, given its early success, we are confident that
-              as we add more data sources Best’e will deliver tremendous value
-              towards improving developer efficiency.
+              Despite the limited number of data sets in the early iterations,
+              the initial response to Best'e was very positive and engineers
+              within the company were eager to test it out. The utility of
+              Best'e will likely continue to grow as more sources are added and
+              more users provide feedback.
             </p>
           </Column>
         </Grid>
