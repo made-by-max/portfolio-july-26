@@ -4,6 +4,14 @@
   margin: 0;
 }
 
+/* Case-study body content only — when Image/Video sits inline with
+   surrounding text (not inside PinnedMediaScroll/ImageTabs, which don't
+   pass `padded`), this adds breathing room around the media + its
+   caption together, on top of whatever padding Column already applies. */
+.padded {
+  padding-block: var(--size-12-fluid);
+}
+
 .figure img,
 .figure video {
   display: block;

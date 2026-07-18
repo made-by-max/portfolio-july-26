@@ -53,10 +53,6 @@ export function CaseStudyHero({
       </Column>
       <Column>
         <div className={`${styles.imageFrame} text-in text-in-delay-3`}>
-          <span
-            className={`corner-mark ${styles.imageMark}`}
-            aria-hidden="true"
-          />
           {media}
         </div>
       </Column>

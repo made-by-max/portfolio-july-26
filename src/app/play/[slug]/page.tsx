@@ -73,7 +73,7 @@ export default async function PlayItemPage({ params }: Props) {
 
   return (
     <ContentWrapper>
-      <Section texture>
+      <Section>
         {isCode ? (
           item.video ? (
             <CodeHero

@@ -11,6 +11,7 @@ import {
   Blockquote,
   ListStack,
   ImageTabs,
+  Video,
 } from "@/components/layout";
 import { Stat, TweetEmbed } from "@/components/ui";
 
@@ -29,7 +30,7 @@ export const meta: CaseStudyMeta = {
 export default function DocsIA() {
   return (
     <>
-      <Section texture>
+      <Section>
         {meta.video ? (
           <CaseStudyHero
             title={meta.title}
@@ -95,40 +96,44 @@ export default function DocsIA() {
       <Section>
         <Grid columns={[1]}>
           <Column>
-            <h3>Experience level was a key factor</h3>
+            <h3>IA vs SEO: Why not both?</h3>
             <p>
-              I conducted interviews with 7 developers with various levels of
-              experience with Auth0 and with Identity and Access Management
-              (IAM) in general
+              Based on some of the feedback we'd gotten from customers, as well
+              as my own use of the docs, I strongly suspected that our
+              information architecture was largely to blame. However, I got a
+              lot of pushback from my PM, who thought we should be focusing more
+              on SEO, since 70% of our traffic came from search. I didn't think
+              that number told the whole story, so I decided it was time to
+              actually talk to some users.
             </p>
           </Column>
         </Grid>
-        <Grid columns={[1, 1]}>
+      </Section>
+      <GridSpacer columns={[1, 1]} />
+      <Section>
+        <Grid columns={[1]}>
           <Column>
-            <p>Developers who liked our docs:</p>
-            <ul>
-              <li>
-                Had more pre-existing Identity and Access management (IAM)
-                knowledge
-              </li>
-              <li>
-                Relied more on Google searches to find docs or community forum
-                posts
-              </li>
-            </ul>
-          </Column>
-          <Column>
-            <p>Developers who struggled with our docs:</p>
-            <ul>
-              <li>Had less Identity and Access management (IAM) knowledge</li>
-              <li>
-                Relied more on our sidebar navigation because they didn’t know
-                the concepts well enough to choose good search terms
-              </li>
-              <li>
-                Ended up jumping back and forth between lots of open of tabs
-              </li>
-            </ul>
+            <h3>Information architecture was a clear pain point</h3>
+            <p>
+              I interviewed developers with various levels of experience with
+              Auht0 and with Identity and Access Management (IAM) in general.
+            </p>
+
+            <p>
+              Developers who were happy with our docs generally had more domain
+              knowledge and relied more on search, indicating that our SEO
+              efforts were working well for that audience.
+            </p>
+
+            <p>
+              Developers who struggled with our docs (and were therefore our
+              target audience) had less domain knowledge and typically relied
+              more on our sidebar navigation. They frequently reported feeling
+              lost and frustrated while navigating the docs. They were less
+              likely to use search, since formulating a good search query
+              requires a certain level of domain knowledge. Increased empasis on
+              SEO was unlikely to move the needle for these users.
+            </p>
           </Column>
         </Grid>
       </Section>
@@ -140,59 +145,19 @@ export default function DocsIA() {
           <Column>
             <h3>Making sense of the mess</h3>
             <p>
-              I performed a content audit of all 1000+ pages of docs, putting
-              together a massive spreadsheet highlighting the problems in the
-              IA. (I am precisely the kind of nerd 🤓 who loves this stuff). Our
-              sidebar navigation was manually generated, but our breadcrumbs
-              were automatically generated based on the file structure of our
-              CMS. The two had diverged over time.
+              To better understand the problems with our information
+              architecture, I performed a content audit of all 1000+ pages of
+              docs, putting together a massive spreadsheet highlighting the
+              problems in the IA. (I am precisely the kind of nerd 🤓 who loves
+              this stuff).
             </p>
+
+            <p>Things were even worse than I'd expected.</p>
+
+            <p></p>
           </Column>
         </Grid>
       </Section>
-
-      <GridSpacer columns={[1]} />
-
-      <Section>
-        <ImageTabs>
-          <ImageTabsItem
-            image="inconsistentHierarchy_tgbdun"
-            alt="Snapshot restore terminal output"
-          >
-            <h3>Many pages had inconsistent hierarchies.</h3>
-            <p>
-              Content might be multiple levels deep in the sidebar navigation,
-              but appear to be at the top level in the breadcrumb navigation.
-            </p>
-          </ImageTabsItem>
-
-          <ImageTabsItem
-            image="mismatchedNav_jja7yu"
-            alt="A code sample that shows the React code, but not where to put it or how to use it."
-          >
-            <h3>Some pages were in multiple categories</h3>
-            <p>
-              Pages frequently had mismatches where the content resided in
-              completely different categories in the sidebar versus the
-              breadcrumbs.
-            </p>
-          </ImageTabsItem>
-
-          <ImageTabsItem
-            image="orphan_sejwxt"
-            alt="A code sample that shows the React code, but not where to put it or how to use it."
-          >
-            <h3>More than half the pages were orphans</h3>
-            <p>
-              Entire sections were completely missing from the sidebar
-              navigation.
-            </p>
-          </ImageTabsItem>
-        </ImageTabs>
-      </Section>
-
-      <GridSpacer columns={[1, 1]} />
-
       <Section>
         <Grid columns={[1, 1]}>
           <Column>
@@ -233,23 +198,224 @@ export default function DocsIA() {
         </Grid>
       </Section>
 
-      <GridSpacer columns={[1, 1]} />
+      <Section>
+        <ImageTabs>
+          <ImageTabsItem
+            image="inconsistentHierarchy_tgbdun"
+            alt="Snapshot restore terminal output"
+          >
+            <h3>Many pages had inconsistent hierarchies.</h3>
+            <p>
+              Content might be multiple levels deep in the sidebar navigation,
+              but appear to be at the top level in the breadcrumb navigation.
+            </p>
+          </ImageTabsItem>
+
+          <ImageTabsItem
+            image="mismatchedNav_jja7yu"
+            alt="A code sample that shows the React code, but not where to put it or how to use it."
+          >
+            <h3>Some pages were in multiple categories</h3>
+            <p>
+              Pages frequently had mismatches where the content resided in
+              completely different categories in the sidebar versus the
+              breadcrumbs.
+            </p>
+          </ImageTabsItem>
+
+          <ImageTabsItem
+            image="orphan_sejwxt"
+            alt="A code sample that shows the React code, but not where to put it or how to use it."
+          >
+            <h3>More than half the pages were orphans</h3>
+            <p>
+              Entire sections were completely missing from the sidebar
+              navigation.
+            </p>
+          </ImageTabsItem>
+        </ImageTabs>
+      </Section>
+      <Section>
+        <Grid columns={[1]}>
+          <Column>
+            <p>
+              Our docs had originally been authored in a git-based system and
+              the navigation was manually generated in a yaml file. Then we
+              migrated to a new CMS and our breadcrumbs were generated based on
+              the file structure in the CMS, but our sidebar navigation was
+              still being manually generated. Over time the two had diverged
+              significantly. It was no wonder users were struggling to find
+              their way through the docs!
+            </p>
+          </Column>
+        </Grid>
+      </Section>
+
+      <GridSpacer columns={[1]} />
+
+      <Section>
+        <Grid columns={[2, 3]}>
+          <Column>
+            <h2>Information architecture improvements</h2>
+          </Column>
+          <Column>
+            <ListStack>
+              <div className="listStack">
+                <h4>Fixing the underlying mismatch</h4>
+                <p>
+                  First I worked with our engineering team and technical writers
+                  to resolve the technical issues that were causing the
+                  mismatch. Instead of manually generating the sidebar from a
+                  yaml file, we configured it to pull from the CMS so the
+                  sidebar and breadcrumbs would always be in sync.
+                </p>
+              </div>
+              <div className="listStack">
+                <h4>Card sorting</h4>
+                <p>
+                  I performed both open and closed card sorting with two groups
+                  of developers - Auth0 customers and non-Auth0 customers. I
+                  identified two different mental models. Developers tended to
+                  group topics either by feature or by a loose jobs to be done
+                  structure. Experience with Auth0 did not seem to be a factor.
+                </p>
+              </div>
+              <div className="listStack">
+                <h4>Tree testing</h4>
+                <p>
+                  I created two proposed versions of our navigation based on the
+                  mental models identified in the card sorting and performed
+                  tree testing, again with both Auth0 customers and
+                  non-customers. The feature-based navigation outperformed the
+                  jobs to be done approach, and also aligned with the
+                  educational materials created by our devrel team.
+                </p>
+              </div>
+            </ListStack>
+          </Column>
+        </Grid>
+      </Section>
+      <Section>
+        <Grid columns={[1]}>
+          <Column>
+            <h3>Breaking up the monolith</h3>
+            <p>
+              Based on my findings from the card sorting and wayfinding tests, I
+              split the docs content into 7 main categories, each with its own
+              sub-menu: Get started, Authentication, Manage Users, Customize,
+              Secure, Deploy and Monitor, and Troubleshoot.
+            </p>
+
+            <Image publicId="sidebars_knqe3u" alt="screenshot" padded />
+          </Column>
+        </Grid>
+      </Section>
 
       <Section>
         <Grid columns={[1]}>
           <Column>
-            <h2>Fixing the information architecture</h2>
+            <h2>Landing pages provide a high-level overview</h2>
             <p>
-              First I worked with our engineering team and technical writers to
-              resolve the underlying issues. Instead of manually generating the
-              sidebar from a yaml file, we pulled from the CMS so the sidebar
-              and breadcrumbs would always be in sync.
+              In addition to the navigation improvements, we wanted to introduce
+              developers to each of these sections, while also helping them get
+              a better high level understanding of the Auth0 product.
             </p>
-
             <p>
-              Next I performed both open and closed card sorts with both regular
-              Auth0 users and non-users to better understand their mental
-              models.
+              Our technical writing staff developed new content for each landing
+              page and the homepage and I tested three different design ideas
+              with users.
+            </p>
+          </Column>
+        </Grid>
+      </Section>
+
+      <Section>
+        <ImageTabs>
+          <ImageTabsItem
+            image="landingpageillustration_xaxp4w"
+            alt="screenshot"
+          >
+            <h3>Brand illustration</h3>
+            <p>
+              A simple illustration created by our brand design team. Users
+              found this to be too abstract and not useful.
+            </p>
+          </ImageTabsItem>
+
+          <ImageTabsItem
+            image="landingpagesimplediagram_l4xskp"
+            alt="screenshot"
+          >
+            <h3>Pipeline diagram</h3>
+            <p>
+              A simplified diagram that provided users with a big picture
+              overview of the Auth0 pipeline. Testers unanimously preferred this
+              option, and thought that it provided just the right level of
+              detail.
+            </p>
+          </ImageTabsItem>
+
+          <ImageTabsItem image="landingpagearch_slq2yg" alt="screenshot">
+            <h3>Architectual diagram</h3>
+            <p>
+              A detailed architectural diagram of the Auth0 ecosystem. Most
+              developers found it to be too complex for a landing page.
+            </p>
+          </ImageTabsItem>
+        </ImageTabs>
+      </Section>
+
+      <Section>
+        <Grid columns={[1]}>
+          <Column>
+            <h2>Finalizing the Design</h2>
+            <p>
+              I made some small tweaks based on some of the feedback from our
+              usability testing and then designed the new sidebar sections, then
+              paired with our frontend engineering team to iterate on the
+              behavior of the new sidebar, how users would move from one section
+              to another, and the mobile version of the navigation menu.
+            </p>
+            <Video
+              publicId="nav-demo_z4orvn"
+              alt="a video of the navigation"
+              autoplay
+              padded
+            />
+          </Column>
+        </Grid>
+      </Section>
+
+      <Section>
+        <Grid columns={[1]}>
+          <Column>
+            <h2>Outcomes</h2>
+            <p>
+              When I first assessed the docs site, 75% of pages had some sort of
+              navigational error. After I restructured the information
+              architecture I fixed the ingestion pipeline to ensure that the
+              breadcrumbs and sidebar navigation always stayed in sync,
+              resulting in a 400% improvement in navigation accuracy.
+            </p>
+            <h3>Qualitative Feedback</h3>
+            <p>
+              Documentation can be challenging to measure quantitatively.
+              Metrics can tell us if a user is staying on a certain page for
+              more or less time than before, but they can’t tell us if that’s
+              because they found the information they needed more quickly or
+              because they were in the wrong place.
+            </p>
+            <p>
+              Therefore, most of the impact of this initiative was measured
+              through qualitative feedback, including follow-up interviews with
+              users, and monitoring the feedback from the customer satisfaction
+              widget embedded on every page of our documentation.
+            </p>
+            <p>
+              The response to the new design was overwhelmingly positive, with
+              users reporting that the new menus were much easier to navigate
+              and that the landing pages gave them more context and helped them
+              get a better sense of the Auth0 product as a whole.
             </p>
           </Column>
         </Grid>

@@ -28,7 +28,7 @@ export const meta: CaseStudyMeta = {
 export default function Quickstarts() {
   return (
     <>
-      <Section texture>
+      <Section>
         {meta.video ? (
           <CaseStudyHero
             title={meta.title}
@@ -222,7 +222,7 @@ export default function Quickstarts() {
           </PinnedMediaScrollItem>
 
           <PinnedMediaScrollItem
-            image="codesamplesV3_xzy7so"
+            image="codesamplesV1_cg6iga"
             alt="A code sample that shows the React code, but not where to put it or how to use it."
           >
             <h3>Complete code samples</h3>
@@ -263,7 +263,7 @@ export default function Quickstarts() {
               dashboard at all.
             </p>
 
-            <Image publicId="createAppV3_swzyle" alt="screenshot" />
+            <Image publicId="createAppV3_swzyle" alt="screenshot" padded />
 
             <p>
               We also decided that since the code samples wouldn’t be relevant
@@ -273,7 +273,7 @@ export default function Quickstarts() {
               scrolls through the guide.
             </p>
 
-            <Image publicId="codesamplesV3_xzy7so" alt="screenshot" />
+            <Image publicId="codesamplesV3_xzy7so" alt="screenshot" padded />
           </Column>
         </Grid>
       </Section>

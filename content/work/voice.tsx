@@ -25,7 +25,7 @@ export const meta: CaseStudyMeta = {
 export default function Voice() {
   return (
     <>
-      <Section texture>
+      <Section>
         {meta.video ? (
           <CaseStudyHero
             title={meta.title}
@@ -82,7 +82,7 @@ export default function Voice() {
             </p>
           </Column>
           <Column>
-            <Image publicId="scratch-paper_wmdnuw" alt="screenshot" />
+            <Image publicId="scratch-paper_wmdnuw" alt="screenshot" padded />
           </Column>
         </Grid>
         <Grid columns={[1]}>
@@ -211,7 +211,7 @@ export default function Voice() {
             </p>
           </Column>
         </Grid>
-        <Grid columns={[1, 1]}>
+        <Grid columns={[1]}>
           <Column>
             <h3>Adding microphone controls to the touch screen interface</h3>
             <p>
@@ -220,13 +220,12 @@ export default function Voice() {
               microphone controls (in case wake words were not available) and
               status to thier interface.
             </p>
-          </Column>
-          <Column>
-            <Image publicId="intra-active_yl2u0g" alt="screenshot" />
+
+            <Image publicId="intra-active_yl2u0g" alt="screenshot" padded />
           </Column>
         </Grid>
 
-        <Grid columns={[1, 1]}>
+        <Grid columns={[1]}>
           <Column>
             <h3>Adding microphone controls to the touch screen interface</h3>
             <p>
@@ -235,13 +234,12 @@ export default function Voice() {
               microphone controls (in case wake words were not available) and
               status to thier interface.
             </p>
-          </Column>
-          <Column>
-            <Image publicId="intra-active_yl2u0g" alt="screenshot" />
+
+            <Image publicId="intra-active_yl2u0g" alt="screenshot" padded />
           </Column>
         </Grid>
 
-        <Grid columns={[1, 1]}>
+        <Grid columns={[1]}>
           <Column>
             <h3>Mapping findings to the correct report fields</h3>
             <p>
@@ -250,13 +248,16 @@ export default function Voice() {
               to the report, ensuring that it mapped to the correct fields and
               formatted the findings with the correct structure.
             </p>
-          </Column>
-          <Column>
-            <Image publicId="report-transcript_fnid3t" alt="screenshot" />
+
+            <Image
+              publicId="report-transcript_fnid3t"
+              alt="screenshot"
+              padded
+            />
           </Column>
         </Grid>
 
-        <Grid columns={[1, 1]}>
+        <Grid columns={[1]}>
           <Column>
             <h3>Adhering to EU regulations for AI and medical devices</h3>
             <p>
@@ -268,9 +269,12 @@ export default function Voice() {
               disclaimer that all AI content be carefully reviewed by a
               physician.
             </p>
-          </Column>
-          <Column>
-            <Image publicId="data-review-cropped_ztttj2" alt="screenshot" />
+
+            <Image
+              publicId="data-review-cropped_ztttj2"
+              alt="screenshot"
+              padded
+            />
           </Column>
         </Grid>
       </Section>
@@ -291,31 +295,10 @@ export default function Voice() {
               time and allow them to devote more time to patient care.
             </p>
 
-            <BlockquoteStack>
-              <div>
-                [Voice reporting] would give us a lot of time to explain to the
-                patient properly what we did or to do things in the proper way,
-                because sometimes we’re in a rush and we don’t have enough time
-                to do all the things we have to do.
-              </div>
-              <div>
-                I spent a lot of time doing a structured report. ... And if you
-                avoid spending a lot of time doing that...with this tool we can
-                save a lot of time and use this time for the procedure and the
-                patient.”
-              </div>
-              <div>
-                when there is one or two polyps, that is, you have that in your
-                mind and there's no mistakes. But if there are three or four or
-                five, then you sometimes, often we forget details and most of
-                the times, do not have a clinical implication. If we do it
-                during the procedure, you avoid these kind of problems.
-              </div>
-              <div>
-                If this was the report I got [from Voice], I would add the
-                sentence here, and I would print it.
-              </div>
-            </BlockquoteStack>
+            <Blockquote>
+              If this was the report I got [from Voice], I would add the
+              sentence here, and I would print it.
+            </Blockquote>
           </Column>
         </Grid>
       </Section>

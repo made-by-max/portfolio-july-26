@@ -58,17 +58,7 @@
   }
 }
 
-/* CaseStudyHero-only: plain frame around the hero image, plus one sparse
-   crosshair mark at a corner (a one-off framing moment for the single
-   biggest visual per case-study page, not a pattern applied to every
-   image). */
+/* CaseStudyHero-only: plain frame around the hero image. */
 .imageFrame {
-  position: relative;
   border: 1px solid var(--line-soft);
-}
-
-.imageMark {
-  inset-block-start: 0;
-  inset-inline-end: 0;
-  transform: translate(50%, -50%);
 }

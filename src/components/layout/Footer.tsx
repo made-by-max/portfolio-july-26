@@ -26,7 +26,7 @@ const SOCIAL_LINKS = [
 // the footer itself sits outside the ContentWrapper/Section framing.
 export function Footer() {
   return (
-    <footer className={`${styles.footer} bg-dot-grid`}>
+    <footer className={styles.footer}>
       {/* Oversized, low-opacity, clipped at the footer's edge — a one-time
           signature flourish, not a pattern reused elsewhere. */}
       <span className={styles.watermark} aria-hidden="true">

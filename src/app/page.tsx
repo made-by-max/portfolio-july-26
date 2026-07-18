@@ -25,7 +25,7 @@ export default async function HomePage() {
 
   return (
     <ContentWrapper>
-      <Section glow>
+      <Section>
         {/* Asymmetric, hand-placed — deliberately not pinned to a
             container corner like ContentWrapper's mark. */}
         <span

@@ -5,6 +5,10 @@ type Props = {
   publicId: string;
   alt: string;
   autoplay?: boolean;
+  /** Case-study body content only — adds padding-block around the media
+   * (and caption, if present) for an image/video sitting inline with
+   * surrounding text. Default false — no change from current behavior. */
+  padded?: boolean;
   children?: React.ReactNode;
 };
 
@@ -15,13 +19,16 @@ export async function Video({
   publicId,
   alt,
   autoplay = false,
+  padded = false,
   children,
 }: Props) {
   const { width, height } = await getVideoDimensions(publicId);
   const src = buildVideoUrl(publicId);
 
   return (
-    <figure className={styles.figure}>
+    <figure
+      className={padded ? `${styles.figure} ${styles.padded}` : styles.figure}
+    >
       <video
         src={src}
         width={width}

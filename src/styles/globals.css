@@ -31,7 +31,7 @@
   /* Readable line-length cap for body/heading text — 2/3 of --max-width,
      new token since nothing else in the tokens file expresses this ratio. */
   --text-max-width: calc(var(--max-width) * 2 / 3);
-  --prose-max-width: 70ch;
+  --prose-max-width: 60ch;
   /* Scroll cap for fenced code blocks (600px) — new token, same "dedicated
      constant" pattern as the max-width tokens above rather than the
      --size-* spacing scale, since it doesn't fit that scale. */
@@ -191,34 +191,6 @@ a:active {
     opacity: 1;
     transform: none;
   }
-}
-
-/* Decorative accents — quiet background texture, never the focal point.
-   Every rule here reuses --line-soft/--line-bold at reduced opacity (no new
-   colors), and each is a single class: drop it, or edit the one opacity
-   value, to dial back or remove entirely without touching layout. */
-
-/* Faint dot-grid for large, mostly-empty background areas (hero sections,
-   footer) — reads as texture from a distance, disappears up close. */
-.bg-dot-grid {
-  background-image: radial-gradient(
-    circle,
-    oklch(from var(--line-soft) l c h / 5%) 1px,
-    transparent 1px
-  );
-  background-size: var(--size-4) var(--size-4);
-}
-
-/* Single soft radial sweep — cap at one use per page (the homepage hero).
-   Reuses --line-bold rather than --accent, so it stays a felt-not-seen
-   background effect instead of a color wash. */
-.bg-radial-glow {
-  background-image: radial-gradient(
-    ellipse 60% 55% at 30% 15%,
-    oklch(from var(--line-bold) l c h / 8%),
-    transparent 70%
-  );
-  background-repeat: no-repeat;
 }
 
 /* Sparse "anchor point" crosshair — border-colored, not accent, and meant

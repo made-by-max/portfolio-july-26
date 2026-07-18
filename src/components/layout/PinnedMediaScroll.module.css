@@ -5,8 +5,8 @@
   /* Both sticky panels below pin at the same offset — enough to clear the
      fixed TopNav (--nav-height) plus a real gap under it, rather than
      sitting flush against it. */
-  --sticky-offset: calc(var(--nav-height) + var(--size-4));
-  --media-panel-size: calc(100vh - var(--sticky-offset) - var(--size-6));
+  --sticky-offset: calc(var(--nav-height) + var(--size-20));
+  --media-panel-size: calc(70vh - var(--sticky-offset) - var(--size-6));
 }
 
 .textColumn {
