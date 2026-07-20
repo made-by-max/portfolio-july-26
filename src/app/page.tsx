@@ -31,10 +31,12 @@ export default async function HomePage() {
 
         <Grid columns={[1]}>
           <Column>
-            <h1 className="display-xxl text-in">Max Taylor</h1>
-            <p className="body-l text-in text-in-delay-1">
-              Systems-focused product designer simplifying complex problems and
-              exploring the space between design and code
+            <h1 className="display-xxl head">Max Taylor</h1>
+            <p className="display-m subhead">
+              Product Designer
+            </p>
+            <p className="display-xl text-in text-in-delay-2">
+              I turn &rdquo;it&apos;s complicated&rdquo; into products that ship.
             </p>
           </Column>
         </Grid>

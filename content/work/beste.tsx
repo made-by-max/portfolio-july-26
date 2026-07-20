@@ -20,13 +20,8 @@ export const meta: CaseStudyMeta = {
   description:
     "An internal RAG-powered AI assistant embedded in Best Buy’s developer portal",
   overview:
-<<<<<<< HEAD
-    "Best’e is an AI-driven digital assistant within Best Buy’s Internal Developer Portal that improves developer productivity by reducing the barriers to discoverability. Best’e is backed by a Retrievel Augmented Generation architecture accessible via a natural language prompt.",
-  labels: ["Developer Experience", "AI", "0 - 1"],
-=======
     "Best’e is an AI-driven digital assistant within Best Buy’s Internal Developer Portal that improves developer productivity by reducing the barriers to discoverability. Best’e is backed by a Retrieval Augmented Generation architecture accessible via a natural language prompt.",
-  labels: ["Developer Experience", "AI"],
->>>>>>> 6e329c37a0c1ff239069647f4f68c9f8c3f2115e
+  labels: ["Developer Experience", "AI", "0 - 1"],
   featured: true,
   image: "beste-featured-image_jk9xmc",
   date: "2024-01-15",

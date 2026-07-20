@@ -19,10 +19,12 @@ export default function AboutPage() {
   return (
     <ContentWrapper>
       <Section>
+
         <Grid columns={[1]}>
           <Column>
-            <h1 className="display-xxl text-in">👋 Hey there, I'm Max!</h1>
-            <p className="body-l text-in text-in-delay-1">
+            <h1 className="display-xxl head">👋 Hey there, I&#39;m Max!</h1>
+
+            <p className="display-xl text-in text-in-delay-2">
               I work hard so my dog can have a better life
             </p>
           </Column>

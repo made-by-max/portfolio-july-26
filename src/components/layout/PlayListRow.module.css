@@ -41,3 +41,14 @@
   justify-content: flex-end;
   gap: var(--size-1);
 }
+
+/* Media queries can't reference custom properties, so this is a literal
+   value — keep it in sync with --breakpoint-mobile in sizes.css. Tags
+   are secondary metadata; at mobile widths there isn't room for both the
+   title and a wrapping tag list without the row feeling cramped, so tags
+   drop and the title gets the full row. */
+@media (max-width: 48rem) {
+  .tags {
+    display: none;
+  }
+}

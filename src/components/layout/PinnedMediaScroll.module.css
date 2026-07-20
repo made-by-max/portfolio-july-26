@@ -110,4 +110,13 @@
   .mediaColumn {
     display: none;
   }
+
+  /* Desktop-only runway: reserves space equal to the sticky media panel's
+     own height so its last pin has room to scroll through (see the
+     comment on .textColumn above). The mobile layout has no sticky panel
+     to feed, so this padding just becomes dead space at the bottom of the
+     stack — zero it out here. */
+  .textColumn {
+    padding-block-end: 0;
+  }
 }
