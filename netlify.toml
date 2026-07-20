@@ -4,3 +4,9 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  # Cloudinary API key/secret are used server-only at build time (see
+  # src/lib/cloudinary.ts) to fetch asset dimensions via the Admin API.
+  # They never reach the published `out` directory — the scanner is
+  # picking them up in Netlify's own internal build working dir, which
+  # isn't what gets deployed.
+  SECRETS_SCAN_OMIT_PATHS = ".netlify/**"
