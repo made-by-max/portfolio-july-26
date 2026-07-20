@@ -44,7 +44,7 @@ export default function AboutPage() {
               that's most of what product design is too.
             </p>
             <p>
-              As a senior product designer with over a decade of experience I
+              As a senior product designer with over a decade of experience, I
               specialize in simplifying complexity — finding the patterns,
               naming the problems clearly, and creating the kind of shared
               understanding that gets teams and stakeholders aligned around the
@@ -56,7 +56,7 @@ export default function AboutPage() {
               figure out what you're actually solving.
             </p>
             <p>
-              Lately I've been investing heavily in my engineering skills, and
+              Lately, I've been investing heavily in my engineering skills, and
               particularly in working with design systems on both sides of the
               design-to-code handoff. That end-to-end thinking, where a naming
               decision at the token level ripples up into the component API, is
@@ -66,7 +66,7 @@ export default function AboutPage() {
               one side of.
             </p>
             <p>
-              I'm based in Portland, OR, and when I'm not working you might find
+              I'm based in Portland, OR, and when I'm not working, you might find
               me lifting heavy weights at my local powerlifting gym, hiking in
               the Columbia River Gorge, reading three books at once, or just
               hanging out and taking long walks with my dog, Rufus.

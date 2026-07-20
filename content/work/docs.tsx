@@ -57,8 +57,8 @@ export default function DocsIA() {
         <Grid columns={[1]}>
           <Column>
             <p>
-              A strong developer experience has always been a core part of
-              Auth0’s DNA. Since their founding they have deliberately built a
+              A strong developer experience has always been core to Auth0’s DNA.
+              Since their founding they have deliberately built a
               developer-first product and it continues to be a key part of their
               success to this day. Naturally, maintaining excellent developer
               documentation is an essential part of that strategy.
@@ -72,11 +72,11 @@ export default function DocsIA() {
       <Section>
         <Grid columns={[1]}>
           <Column>
-            <h2>Auth0 Docs - love ‘em or hate ‘em</h2>
+            <h2>Auth0 docs — love ‘em or hate ‘em</h2>
             <p>
-              We got a lot of feedback that our docs were amazing. They were
-              frequently cited as a competitive differentiator. We also got a
-              lot of feedback that our docs were terrible and impossible to
+              We got a lot of feedback that our docs were amazing and they were
+              frequently cited as a competitive differentiator. But we also got
+              a lot of feedback that our docs were terrible and impossible to
               navigate.
             </p>
           </Column>
@@ -100,13 +100,12 @@ export default function DocsIA() {
           <Column>
             <h3>IA vs SEO: Why not both?</h3>
             <p>
-              Based on some of the feedback we'd gotten from customers, as well
-              as my own use of the docs, I strongly suspected that our
-              information architecture was largely to blame. However, I got a
-              lot of pushback from my PM, who thought we should be focusing more
-              on SEO, since 70% of our traffic came from search. I didn't think
-              that number told the whole story, so I decided it was time to
-              actually talk to some users.
+              Based on customer feedback and my own use of the docs, I strongly
+              suspected that our information architecture was largely to blame.
+              I got a lot fof pushback from my PM, however. He argued that we
+              should be focusing more on SEO, since 70% of our traffic came from
+              search. I didn’t think that number told the whole story, so I
+              decided it was time to actually talk to users.
             </p>
           </Column>
         </Grid>
@@ -156,7 +155,9 @@ export default function DocsIA() {
               this stuff).
             </p>
 
-            <p>Things were even worse than I'd expected.</p>
+            <p>Things were even worse than I’d expected.</p>
+
+            <p></p>
           </Column>
         </Grid>
       </Section>
@@ -206,7 +207,7 @@ export default function DocsIA() {
             image="inconsistentHierarchy_tgbdun"
             alt="A docs page nested several levels deep in the sidebar navigation, but shown at the top level in the breadcrumb trail"
           >
-            <h3>Many pages had inconsistent hierarchies.</h3>
+            <h3>Many pages had inconsistent hierarchies</h3>
             <p>
               Content might be multiple levels deep in the sidebar navigation,
               but appear to be at the top level in the breadcrumb navigation.
@@ -241,13 +242,13 @@ export default function DocsIA() {
         <Grid columns={[1]}>
           <Column>
             <p>
-              Our docs had originally been authored in a git-based system and
-              the navigation was manually generated in a yaml file. Then we
-              migrated to a new CMS and our breadcrumbs were generated based on
-              the file structure in the CMS, but our sidebar navigation was
-              still being manually generated. Over time the two had diverged
-              significantly. It was no wonder users were struggling to find
-              their way through the docs!
+              Our docs had originally been authored in a git-based system, with
+              navigation manually generated from a yaml file. Then we migrated
+              to a new CMS, where breadcrumbs were generated from the file
+              structure in the CMS, but the sidebar navigation was still being
+              manually generated. Over time the two had diverged significantly.
+              It was no wonder users were struggling to find their way through
+              the docs!
             </p>
           </Column>
         </Grid>
@@ -265,11 +266,10 @@ export default function DocsIA() {
               <div className="listStack">
                 <h4>Fixing the underlying mismatch</h4>
                 <p>
-                  First I worked with our engineering team and technical writers
-                  to resolve the technical issues that were causing the
-                  mismatch. Instead of manually generating the sidebar from a
-                  yaml file, we configured it to pull from the CMS so the
-                  sidebar and breadcrumbs would always be in sync.
+                  First, I worked with our engineering team and our technical
+                  writers to resolve the mismatch at the source. Instead of
+                  manually generating, we configured it to pull from the CMS, so
+                  the sidebar and breadcrumbs would always stay in sync.
                 </p>
               </div>
               <div className="listStack">
@@ -277,20 +277,20 @@ export default function DocsIA() {
                 <p>
                   I performed both open and closed card sorting with two groups
                   of developers - Auth0 customers and non-Auth0 customers. I
-                  identified two different mental models. Developers tended to
-                  group topics either by feature or by a loose jobs to be done
-                  structure. Experience with Auth0 did not seem to be a factor.
+                  identified two distinct mental models. Developers tended to
+                  group topics either by feature or by a loose jobs-to-be-done
+                  structure. Experience with Auth0 didn’t appear to be a factor
+                  in their mental models.
                 </p>
               </div>
               <div className="listStack">
                 <h4>Tree testing</h4>
                 <p>
-                  I created two proposed versions of our navigation based on the
-                  mental models identified in the card sorting and performed
-                  tree testing, again with both Auth0 customers and
-                  non-customers. The feature-based navigation outperformed the
-                  jobs to be done approach, and also aligned with the
-                  educational materials created by our devrel team.
+                  I built two proposed versions of our navigation based on those
+                  mental models and ran tree testing, again with both Auth0
+                  customers and non-customers. The feature-based navigation
+                  outperformed the jobs-to-be-done approach, and also aligned
+                  with the educational materials our devrel team had created.
                 </p>
               </div>
             </ListStack>
@@ -302,8 +302,8 @@ export default function DocsIA() {
           <Column>
             <h3>Breaking up the monolith</h3>
             <p>
-              Based on my findings from the card sorting and wayfinding tests, I
-              split the docs content into 7 main categories, each with its own
+              Based on the card sorting and tree testing findings, I split the
+              docs content into seven main categories, each with its own
               sub-menu: Get started, Authentication, Manage Users, Customize,
               Secure, Deploy and Monitor, and Troubleshoot.
             </p>
@@ -322,13 +322,13 @@ export default function DocsIA() {
           <Column>
             <h2>Landing pages provide a high-level overview</h2>
             <p>
-              In addition to the navigation improvements, we wanted to introduce
-              developers to each of these sections, while also helping them get
-              a better high level understanding of the Auth0 product.
+              Beyond the navigation improvements, we wanted to introduce
+              developers to each section and give them a better high-level
+              understanding of the Auth0 product.
             </p>
             <p>
               Our technical writing staff developed new content for each landing
-              page and the homepage and I tested three different design ideas
+              page and the homepage, and I tested three different design ideas
               with users.
             </p>
           </Column>
@@ -344,7 +344,7 @@ export default function DocsIA() {
             <h3>Brand illustration</h3>
             <p>
               A simple illustration created by our brand design team. Users
-              found this to be too abstract and not useful.
+              found it too abstract to be useful.
             </p>
           </ImageTabsItem>
 
@@ -354,10 +354,9 @@ export default function DocsIA() {
           >
             <h3>Pipeline diagram</h3>
             <p>
-              A simplified diagram that provided users with a big picture
-              overview of the Auth0 pipeline. Testers unanimously preferred this
-              option, and thought that it provided just the right level of
-              detail.
+              A simplified diagram giving users a big-picture overview of the
+              Auth0 pipeline. Testers unanimously preferred this option, saying
+              it provided just the right level of detail.
             </p>
           </ImageTabsItem>
 
@@ -379,13 +378,13 @@ export default function DocsIA() {
       <Section>
         <Grid columns={[1]}>
           <Column>
-            <h2>Finalizing the Design</h2>
+            <h2>Finalizing the design</h2>
             <p>
-              I made some small tweaks based on some of the feedback from our
-              usability testing and then designed the new sidebar sections, then
-              paired with our frontend engineering team to iterate on the
-              behavior of the new sidebar, how users would move from one section
-              to another, and the mobile version of the navigation menu.
+              I made small tweaks based on usability testing feedback, then
+              designed the new sidebar sections and paired with our frontend
+              engineering team to iterate on the sidebar’s behavior, how users
+              would move between sections, and the mobile version of the
+              navigation menu.
             </p>
             <Video
               publicId="nav-demo_z4orvn"
@@ -405,18 +404,17 @@ export default function DocsIA() {
             <h2>Outcomes</h2>
             <p>
               When I first assessed the docs site, 75% of pages had some sort of
-              navigational error. After I restructured the information
-              architecture I fixed the ingestion pipeline to ensure that the
-              breadcrumbs and sidebar navigation always stayed in sync,
-              resulting in a 400% improvement in navigation accuracy.
+              navigational error. After restructuring the information
+              architecture and fixing the ingestion pipeline to keep breadcrumbs
+              and sidebar navigation in sync, we saw a 400% improvement in
+              navigation accuracy.
             </p>
-            <h3>Qualitative Feedback</h3>
+            <h3>Qualitative feedback</h3>
             <p>
               Documentation can be challenging to measure quantitatively.
-              Metrics can tell us if a user is staying on a certain page for
-              more or less time than before, but they can’t tell us if that’s
-              because they found the information they needed more quickly or
-              because they were in the wrong place.
+              Metrics can tell us whether a user spent more or less time on a
+              page than before, but not whether that’s because they found what
+              they needed faster or because they were in the wrong place.
             </p>
             <p>
               Therefore, most of the impact of this initiative was measured
@@ -425,10 +423,10 @@ export default function DocsIA() {
               widget embedded on every page of our documentation.
             </p>
             <p>
-              The response to the new design was overwhelmingly positive, with
-              users reporting that the new menus were much easier to navigate
-              and that the landing pages gave them more context and helped them
-              get a better sense of the Auth0 product as a whole.
+              The response to the new design was overwhelmingly positive. Users
+              reported that the new menus were much easier to navigate, and that
+              the landing pages gave them more context and a better sense of the
+              Auth0 product as a whole.
             </p>
           </Column>
         </Grid>
