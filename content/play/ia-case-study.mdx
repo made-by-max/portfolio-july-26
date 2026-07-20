@@ -13,7 +13,7 @@ type: "blog"
 
 A strong developer experience has always been a core part of Auth0’s DNA. Since our founding we have deliberately built a developer-first product and it continues to be a key part of our success to this day. Naturally, maintaining excellent developer documentation is an essential part of our strategy.
 
-![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*2i8iolOrmtBeTQDJFWbvHg.png)
+![Auth0's developer documentation site](https://miro.medium.com/v2/resize:fit:720/format:webp/1*2i8iolOrmtBeTQDJFWbvHg.png)
 
 
 
@@ -54,7 +54,7 @@ I knew from casually browsing the docs site that there were some definite proble
 
 ### A Tale of Two IAs
 
-One of the first problems we had to deal with was that we didn’t just have an unclear information architecture…we actually had **two** unclear architectures. Prior to summer 2020, all of our docs and the sidebar were maintained on Github. Then we migrated most of our docs to the Contentful CMS. After the migration, our sidebar was being manually generated in a yaml file hosted in Github, while the breadcrumbs were dynamically generated based on the file structure of the docs in Contentful.
+One of the first problems we had to deal with was that we didn’t just have an unclear information architecture…we actually had **two** unclear architectures. Prior to summer 2020, all of our docs and the sidebar were maintained on GitHub. Then we migrated most of our docs to the Contentful CMS. After the migration, our sidebar was being manually generated in a yaml file hosted in Github, while the breadcrumbs were dynamically generated based on the file structure of the docs in Contentful.
 
 Over time, these two architectures diverged, reaching a point where over 50% of our content was orphaned and didn’t show up in the sidebar at all. Some orphans were individual pages that could only be reached by following a series of in-page links and in some cases entire sections were missing from the sidebar.
 
@@ -68,9 +68,9 @@ Additionally, 25% of our content experienced a mismatch between the breadcrumbs 
 ![A screenshot of Auth0’s docs, showing a mismatch between the breadcrumbs and sidebar](https://miro.medium.com/v2/resize:fit:720/format:webp/1*dR8Rf8loUOvpzzTAKZ6oeA.png)
 
 
-The two separate IAs also had inconsistent hierarchies, with some categories being a top level category in the breadcrumbs while being a second or third level category in the sidebar.
+The two separate IAs also had inconsistent hierarchies, with some categories being a top-level category in the breadcrumbs while being a second or third level category in the sidebar.
 
-![A screenshot of Auth0’s docs, showing a mismatch between the breadcrumbs and sidebar](https://miro.medium.com/v2/resize:fit:720/format:webp/1*hH3po_WFCNT2umVkMa1zdg.png)
+![A screenshot of Auth0’s docs, showing Universal Login as a top-level category in the breadcrumbs but nested under Login in the sidebar](https://miro.medium.com/v2/resize:fit:720/format:webp/1*hH3po_WFCNT2umVkMa1zdg.png)
 
 Universal Login is a parent category in the breadcrumbs, but is nested under Login in the sidebar.
 
@@ -80,7 +80,7 @@ Our first order of business was to address the underlying technical issues that 
 
 Once the technical side of things was cleaned up, I wanted to focus on how to make our IA easier to navigate for new users less familiar with identity.
 
-Our sidebar was quite long, with over 20 top level categories, and the category names could be confusing or meaningless for users who weren’t familiar with Auth0 or identity concepts. The categories were roughly in the order in which a user might want to learn about the product, but that wasn’t really clear from the way they were displayed.
+Our sidebar was quite long, with over 20 top-level categories, and the category names could be confusing or meaningless for users who weren’t familiar with Auth0 or identity concepts. The categories were roughly in the order in which a user might want to learn about the product, but that wasn’t really clear from the way they were displayed.
 
 ![A screenshot of Auth0’s docs, showing a very long sidebar](https://miro.medium.com/v2/resize:fit:720/format:webp/1*9ZwNU08h88slwhCK2ND4KQ.png)
 
@@ -113,11 +113,11 @@ The results of the card sorts tended to take one of two approaches.
 
 Some users were very task oriented and would group topics in categories such as “Settings” for anything that gets configured in the dashboard and “Information” for concepts they needed to learn about. They generally divided topics between conceptual information and actionable steps.
 
-![An illustration of the task based card sort](https://miro.medium.com/v2/resize:fit:720/format:webp/1*Xppclp-k-FMFQDxPAO_YZA.png)
+![An illustration of the task-based card sort](https://miro.medium.com/v2/resize:fit:720/format:webp/1*Xppclp-k-FMFQDxPAO_YZA.png)
 
 Others grouped topics more around features, for example creating groups like authentication and integrations.
 
-![An illustration of the feature based card sort](https://miro.medium.com/v2/resize:fit:720/format:webp/1*KZ4S-LqryhJ_ZVtwco0FgA.png)
+![An illustration of the feature-based card sort](https://miro.medium.com/v2/resize:fit:720/format:webp/1*KZ4S-LqryhJ_ZVtwco0FgA.png)
 
 
 ## Wayfinding
@@ -128,13 +128,11 @@ I knew the next step after card sorting would be doing a wayfinding test to vali
 
 For the task-based approach I grouped the docs into the following categories: Set up, Configure, Customize, Secure, Troubleshoot, and Deploy.
 
-![An illustration of the feature based navigation](https://miro.medium.com/v2/resize:fit:720/format:webp/1*1OU822yEBZDzBM0tSFIb9w.png)
+![An illustration of the task-based navigation](https://miro.medium.com/v2/resize:fit:720/format:webp/1*1OU822yEBZDzBM0tSFIb9w.png)
 
+For the more feature-based approach I grouped the docs into these categories: Get Started, Authenticate, Manage Users, Customize, Secure, and Get Support.
 
-
-or the more feature-based approach I grouped the docs into these categories: Get Started, Authenticate, Manage Users, Customize, Secure, and Get Support.
-
-![An illustration of the feature based navigation](https://miro.medium.com/v2/resize:fit:720/format:webp/1*J07WcKk1rIyLkPSL6Fm5gA.png)
+![An illustration of the feature-based navigation](https://miro.medium.com/v2/resize:fit:720/format:webp/1*J07WcKk1rIyLkPSL6Fm5gA.png)
 
 
 Testers were given 5 different topics and asked to navigate to those topics using both versions of the sidebar navigation. We tested with Auth0 customers, developers who have never used Auth0, and Auth0 employees.
@@ -152,8 +150,7 @@ We made some small tweaks based on some of the feedback from our usability testi
 
 ![A screenshot of the secure sidebar](https://miro.medium.com/v2/resize:fit:720/format:webp/1*yib94eGzDU8eKoIl6BdS5Q.png)
 
-
-![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*tmzrWkzdGNfSN_x3dYzpyw.png)
+![A screenshot of another category in the redesigned sidebar navigation](https://miro.medium.com/v2/resize:fit:720/format:webp/1*tmzrWkzdGNfSN_x3dYzpyw.png)
 
 ## Next Steps
 
@@ -161,7 +158,7 @@ This is just the beginning. Because we’re taking our existing categories and g
 
 Since I learned from our card sorting and wayfinding tests that some users prefer to have information presented in a more task-oriented way that separates conceptual information from actionable steps, I’ll be looking into how we might accommodate those needs within the new information architecture I created.
 
-While doing internal validation, I got some feedback that many of our features, like organizations or extensibility, could spread across multiple categories and that more advanced users might struggle to find all the information they need on those topics. I’ll continue to work to address these concerns and ensure our docs accommodating both new and advanced users.
+While doing internal validation, I got some feedback that many of our features, like organizations or extensibility, could spread across multiple categories and that more advanced users might struggle to find all the information they need on those topics. I’ll continue to work to address these concerns and ensure our docs accommodate both new and advanced users.
 
 In addition to the improvements to the sidebar that are launching this week, we’re also working on many other improvements to improve the experience for both new and experienced users. Our technical writers will be working on creating new content specifically for this audience, we’ll be adding more progressive disclosure to the different sections, and we’ll be improving the way pages are structured and information is presented. It’s an exciting time to be working on the Auth0 docs!
 

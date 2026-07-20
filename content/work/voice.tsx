@@ -32,14 +32,14 @@ export default function Voice() {
             overview={meta.overview}
             video={meta.video}
             videoAutoplay={meta.videoAutoplay}
-            alt={meta.title}
+            alt="Endoscopy procedure room monitor showing the AI voice scribe capturing findings in real time"
           />
         ) : meta.image ? (
           <CaseStudyHero
             title={meta.title}
             overview={meta.overview}
             image={meta.image}
-            alt={meta.title}
+            alt="Endoscopy procedure room monitor showing the AI voice scribe capturing findings in real time"
           />
         ) : (
           <CaseStudyHero title={meta.title} overview={meta.overview} />
@@ -82,9 +82,15 @@ export default function Voice() {
             </p>
           </Column>
           <Column>
-            <Image publicId="scratch-paper_wmdnuw" alt="screenshot" padded />
+            <Image
+              publicId="scratch-paper_wmdnuw"
+              alt="A nurse's handwritten notes on a scrap of paper, the old way of tracking findings during a procedure"
+              padded
+            />
           </Column>
         </Grid>
+      </Section>
+      <Section>
         <Grid columns={[1]}>
           <Column>
             <p>
@@ -104,7 +110,7 @@ export default function Voice() {
       </Section>
 
       <Section>
-        <Grid columns={[3, 2]}>
+        <Grid columns={[1, 1]}>
           <Column>
             <h2>
               Physicians were excited, but had concerns about control and
@@ -128,12 +134,12 @@ export default function Voice() {
               <div className="listStack">
                 <h4>Comfort with voice interfaces</h4>
                 <p>
-                  Most regularly used technologies like Siri or Alexa ane were
+                  Most who regularly used technologies like Siri or Alexa were
                   comfortable with voice interfaces.
                 </p>
               </div>
               <div className="listStack">
-                <h4>Automony</h4>
+                <h4>Autonomy</h4>
                 <p>
                   Doctors wanted to be able to control when the scribe was
                   recording.
@@ -157,7 +163,7 @@ export default function Voice() {
           <Column>
             <h2>User testing a voice interface presented unique challenges</h2>
             <p>
-              In order validate the doctor&rsquo;s mental model before the
+              In order to validate the doctor’s mental model before the
               backend was in place I used Claude to create a realistic
               transcript of a colonoscopy procedure, complete with side
               conversations and interruptions. I then used ElevenLabs to turn it
@@ -171,7 +177,7 @@ export default function Voice() {
               wanted and only when they wanted.
             </p>
             <p>
-              At the end of the video user&rsquo;s were shown a Figma prototype
+              At the end of the video users were shown a Figma prototype
               of the post procedure report where they could see how the relevant
               information had been captured and mapped to the report in a
               structured format.{" "}
@@ -218,24 +224,14 @@ export default function Voice() {
               The intra-procedure experience used a touch screen connected to
               the endoscopy tower to capture images and videos. We needed to add
               microphone controls (in case wake words were not available) and
-              status to thier interface.
+              status to their interface.
             </p>
 
-            <Image publicId="intra-active_yl2u0g" alt="screenshot" padded />
-          </Column>
-        </Grid>
-
-        <Grid columns={[1]}>
-          <Column>
-            <h3>Adding microphone controls to the touch screen interface</h3>
-            <p>
-              The intra-procedure experience used a touch screen connected to
-              the endoscopy tower to capture images and videos. We needed to add
-              microphone controls (in case wake words were not available) and
-              status to thier interface.
-            </p>
-
-            <Image publicId="intra-active_yl2u0g" alt="screenshot" padded />
+            <Image
+              publicId="intra-active_yl2u0g"
+              alt="Endoscopy tower touch screen with microphone controls and recording status added alongside the image and video capture tools"
+              padded
+            />
           </Column>
         </Grid>
 
@@ -251,7 +247,7 @@ export default function Voice() {
 
             <Image
               publicId="report-transcript_fnid3t"
-              alt="screenshot"
+              alt="Post-procedure report with voice-transcribed findings mapped into their correct structured fields"
               padded
             />
           </Column>
@@ -272,7 +268,7 @@ export default function Voice() {
 
             <Image
               publicId="data-review-cropped_ztttj2"
-              alt="screenshot"
+              alt="Post-procedure report highlighting AI-populated fields with a disclaimer prompting physician review"
               padded
             />
           </Column>
@@ -289,7 +285,7 @@ export default function Voice() {
             <p>
               Our user research team performed in-person testing of the
               end-to-end reporting experience and physicians were very impressed
-              with both the voice caapture technology and the overall ability to
+              with both the voice capture technology and the overall ability to
               reduce the reporting burden and cognitive load. They anticipated
               that the voice feature would save them a significant amount of
               time and allow them to devote more time to patient care.

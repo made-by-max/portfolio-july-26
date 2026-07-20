@@ -25,24 +25,23 @@ When I was trying to get them all working together it was surprisingly hard to f
 
 3\. Sign up for a [Supabase account](https://supabase.com/) and create a new project if you haven't already. Make sure you save your database password somewhere safe - you'll need that later.
 
-<Image publicId="Screenshot_2026-03-31_at_1.48.24_PM_igqpnk" alt="a screenshot of the supabase create new project page" />
+<Image publicId="Screenshot_2026-03-31_at_1.48.24_PM_igqpnk" alt="Supabase's Create a new project form, including the database password field" />
 
 
 4\. Find the Connections section in Supabase and select ORM connections and make sure Prisma is selected.
 
-<Image publicId="Screenshot_2026-03-31_at_1.56.16_PM_eqjtxe" alt="a screenshot of the connections page in supabase" />
+<Image publicId="Screenshot_2026-03-31_at_1.56.16_PM_eqjtxe" alt="Supabase's Connections page with ORM connections open and Prisma selected" />
 
 
 5\. Copy the DATABASE\_URL and DIRECT\_URL into the .env file in your project folder, replacing \[YOUR-PASSWORD] with your Supabase password.
 
 6\. Go to your prisma.config.ts file and change datasource from DATABASE\_URL to DIRECT\_URL. *Note that this was a *[*change in Prisma ORM v7.*](https://www.prisma.io/docs/orm/reference/prisma-config-reference#datasourceurl)* In older versions of Prisma you could add both your database and direct URLs.*
 
-<Image publicId="Screenshot_2026-03-31_at_11.06.49_AM_umedox" alt="a screenshot of the prisma.config file" />
-![](</media/Screenshot 2026-03-31 at 11.06.49 AM.png>)
+<Image publicId="Screenshot_2026-03-31_at_11.06.49_AM_umedox" alt="prisma.config.ts with the datasource changed from DATABASE_URL to DIRECT_URL" />
 
 7\. Create your Prisma schema in the schema.prisma file.
 
-<Image publicId="Screenshot_2026-03-31_at_2.03.29_PM_cwar2j" alt="a screenshot of the schema.prisma file with the schema added" />
+<Image publicId="Screenshot_2026-03-31_at_2.03.29_PM_cwar2j" alt="schema.prisma file with the Prisma schema added" />
 
 
 8\. Upload your schema to Supabase.
@@ -51,7 +50,7 @@ When I was trying to get them all working together it was surprisingly hard to f
 
 You should now see your tables updated in Supabase!
 
-<Image publicId="Screenshot_2026-03-31_at_2.02.49_PM_i2bnwg" alt="a screenshot of the created tables in supabase" />
+<Image publicId="Screenshot_2026-03-31_at_2.02.49_PM_i2bnwg" alt="Supabase table editor showing the tables created by the Prisma migration" />
 
 If you want to make any changes or updates to your Prisma schema run
 

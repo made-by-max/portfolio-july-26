@@ -29,6 +29,12 @@ function getTSXFiles(dir: string): string[] {
     .map((f) => path.join(dir, f));
 }
 
+// Manual display order (homepage's "Selected Case Studies" and /work both
+// read off getWorkItems(), so this is the single place to change it) —
+// filesystem read order doesn't reflect any deliberate curation, and
+// dates don't line up with the order these should actually be shown in.
+const WORK_ORDER = ["voice", "docs", "quickstarts", "beste"];
+
 // Case studies live as plain .tsx files exporting a `meta` object (see
 // content/work/*.tsx), so building the list requires dynamically importing
 // each module rather than parsing frontmatter off disk.
@@ -36,7 +42,7 @@ export async function getWorkItems(): Promise<WorkItem[]> {
   const dir = path.join(CONTENT_ROOT, "work");
   const files = getTSXFiles(dir);
 
-  return Promise.all(
+  const items = await Promise.all(
     files.map(async (filePath) => {
       const slug = path.basename(filePath, ".tsx");
       const mod = await import(`../../content/work/${slug}.tsx`);
@@ -50,6 +56,10 @@ export async function getWorkItems(): Promise<WorkItem[]> {
 
       return { ...parsed.data, slug };
     })
+  );
+
+  return items.sort(
+    (a, b) => WORK_ORDER.indexOf(a.slug) - WORK_ORDER.indexOf(b.slug)
   );
 }
 

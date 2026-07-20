@@ -63,7 +63,11 @@
 
 .button[data-variant="secondary"] {
   background-color: transparent;
-  border-color: var(--line-bold);
+  /* --line-bold is tuned for decorative dividers (~1.4-1.9:1) — too low
+     for a button, where the border is the only thing conveying its
+     clickable shape (WCAG 1.4.11 non-text contrast, 3:1 minimum).
+     --text-soft clears that comfortably in both themes. */
+  border-color: var(--text-soft);
   color: var(--text-primary);
 }
 

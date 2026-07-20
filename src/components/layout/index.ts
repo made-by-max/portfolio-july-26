@@ -7,6 +7,7 @@ export { GridSpacer } from "./GridSpacer";
 
 export { Image } from "./Image";
 export { Video } from "./Video";
+export { WideScrollImage } from "./WideScrollImage";
 export { ListStack } from "./ListStack";
 
 export { ImageTabs } from "./ImageTabs";

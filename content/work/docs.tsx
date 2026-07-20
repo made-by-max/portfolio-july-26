@@ -20,7 +20,7 @@ export const meta: CaseStudyMeta = {
   description:
     "A research-informed approach to information architecture that improved navigation by 400%",
   overview:
-    "I conducted user interviews, a content audit, card sorting, and usability testing to completely overhaul the information architecutre of Auth0's developer documentation.",
+    "I conducted user interviews, a content audit, card sorting, and usability testing to completely overhaul the information architecture of Auth0's developer documentation.",
   labels: ["Developer Experience", "User Research", "IA"],
   featured: true,
   image: "docs-featured-image_nhms2n",
@@ -37,14 +37,14 @@ export default function DocsIA() {
             overview={meta.overview}
             video={meta.video}
             videoAutoplay={meta.videoAutoplay}
-            alt={meta.title}
+            alt="Auth0 developer documentation site showing the redesigned sidebar navigation"
           />
         ) : meta.image ? (
           <CaseStudyHero
             title={meta.title}
             overview={meta.overview}
             image={meta.image}
-            alt={meta.title}
+            alt="Auth0 developer documentation site showing the redesigned sidebar navigation"
           />
         ) : (
           <CaseStudyHero title={meta.title} overview={meta.overview} />
@@ -81,6 +81,8 @@ export default function DocsIA() {
             </p>
           </Column>
         </Grid>
+      </Section>
+      <Section>
         <Grid columns={[1, 1]}>
           <Column>
             <TweetEmbed id="1423673225872121860" />
@@ -109,14 +111,16 @@ export default function DocsIA() {
           </Column>
         </Grid>
       </Section>
-      <GridSpacer columns={[1, 1]} />
+
+      <GridSpacer columns={[1]} />
+
       <Section>
         <Grid columns={[1]}>
           <Column>
             <h3>Information architecture was a clear pain point</h3>
             <p>
               I interviewed developers with various levels of experience with
-              Auht0 and with Identity and Access Management (IAM) in general.
+              Auth0 and with Identity and Access Management (IAM) in general.
             </p>
 
             <p>
@@ -131,7 +135,7 @@ export default function DocsIA() {
               more on our sidebar navigation. They frequently reported feeling
               lost and frustrated while navigating the docs. They were less
               likely to use search, since formulating a good search query
-              requires a certain level of domain knowledge. Increased empasis on
+              requires a certain level of domain knowledge. Increased emphasis on
               SEO was unlikely to move the needle for these users.
             </p>
           </Column>
@@ -153,8 +157,6 @@ export default function DocsIA() {
             </p>
 
             <p>Things were even worse than I'd expected.</p>
-
-            <p></p>
           </Column>
         </Grid>
       </Section>
@@ -202,7 +204,7 @@ export default function DocsIA() {
         <ImageTabs>
           <ImageTabsItem
             image="inconsistentHierarchy_tgbdun"
-            alt="Snapshot restore terminal output"
+            alt="A docs page nested several levels deep in the sidebar navigation, but shown at the top level in the breadcrumb trail"
           >
             <h3>Many pages had inconsistent hierarchies.</h3>
             <p>
@@ -213,7 +215,7 @@ export default function DocsIA() {
 
           <ImageTabsItem
             image="mismatchedNav_jja7yu"
-            alt="A code sample that shows the React code, but not where to put it or how to use it."
+            alt="A docs page placed in two different categories depending on whether you look at the sidebar or the breadcrumb trail"
           >
             <h3>Some pages were in multiple categories</h3>
             <p>
@@ -225,7 +227,7 @@ export default function DocsIA() {
 
           <ImageTabsItem
             image="orphan_sejwxt"
-            alt="A code sample that shows the React code, but not where to put it or how to use it."
+            alt="A docs page with no corresponding entry anywhere in the sidebar navigation"
           >
             <h3>More than half the pages were orphans</h3>
             <p>
@@ -306,7 +308,11 @@ export default function DocsIA() {
               Secure, Deploy and Monitor, and Troubleshoot.
             </p>
 
-            <Image publicId="sidebars_knqe3u" alt="screenshot" padded />
+            <Image
+              publicId="sidebars_knqe3u"
+              alt="Redesigned docs sidebar split into seven categories: Get Started, Authentication, Manage Users, Customize, Secure, Deploy and Monitor, and Troubleshoot"
+              padded
+            />
           </Column>
         </Grid>
       </Section>
@@ -333,7 +339,7 @@ export default function DocsIA() {
         <ImageTabs>
           <ImageTabsItem
             image="landingpageillustration_xaxp4w"
-            alt="screenshot"
+            alt="Landing page concept using an abstract brand illustration as its hero image"
           >
             <h3>Brand illustration</h3>
             <p>
@@ -344,7 +350,7 @@ export default function DocsIA() {
 
           <ImageTabsItem
             image="landingpagesimplediagram_l4xskp"
-            alt="screenshot"
+            alt="Landing page concept using a simplified diagram of the Auth0 pipeline as its hero image"
           >
             <h3>Pipeline diagram</h3>
             <p>
@@ -355,7 +361,10 @@ export default function DocsIA() {
             </p>
           </ImageTabsItem>
 
-          <ImageTabsItem image="landingpagearch_slq2yg" alt="screenshot">
+          <ImageTabsItem
+            image="landingpagearch_slq2yg"
+            alt="Landing page concept using a detailed architectural diagram of the Auth0 ecosystem as its hero image"
+          >
             <h3>Architectual diagram</h3>
             <p>
               A detailed architectural diagram of the Auth0 ecosystem. Most
@@ -364,6 +373,8 @@ export default function DocsIA() {
           </ImageTabsItem>
         </ImageTabs>
       </Section>
+
+      <GridSpacer columns={[1]} />
 
       <Section>
         <Grid columns={[1]}>
@@ -378,13 +389,15 @@ export default function DocsIA() {
             </p>
             <Video
               publicId="nav-demo_z4orvn"
-              alt="a video of the navigation"
+              alt="Demo of the redesigned sidebar navigation, showing how users move between sections and the mobile menu behavior"
               autoplay
               padded
             />
           </Column>
         </Grid>
       </Section>
+
+      <GridSpacer columns={[1]} />
 
       <Section>
         <Grid columns={[1]}>

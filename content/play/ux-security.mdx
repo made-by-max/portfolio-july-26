@@ -7,10 +7,9 @@ date: "2020-03-13"
 type: "blog"
 ---
 
-![](https://miro.medium.com/v2/resize:fit:1100/format:webp/1*eHKR92uPSlwDRDac1rRQlw.png)
+![Illustration representing the balance between user experience and security in an authentication flow](https://miro.medium.com/v2/resize:fit:1100/format:webp/1*eHKR92uPSlwDRDac1rRQlw.png)
 
-
-At Auth0 we provide the tools for application builders to implement authentication and access management so that they can focus on what makes their product unique, rather than on authentication. Our product design team is responsible for both shaping the experience that developers use to implement Auth0 into their product and for informing the design of the authentication experience for our customer’s customers.
+At Auth0 we provide the tools for application builders to implement authentication and access management so that they can focus on what makes their product unique, rather than on authentication. Our product design team is responsible for both shaping the experience that developers use to implement Auth0 into their product and for informing the design of the authentication experience for our customers’ customers.
 
 That’s a big responsibility. Not only do our customers rely on us to provide secure authentication, they also rely on us to create a positive experience for their users. A well designed and frictionless signup experience can make a huge impact on our customers’ conversion rates and on their users’ level of satisfaction with their product.
 
@@ -27,9 +26,9 @@ At Auth0 we’ve developed several ways of predicting legitimate logins to impro
 Most security-savvy users are aware that enabling multi-factor authentication (MFA) or two-factor authentication is one of the best ways to protect your accounts online. In May 2019 Google reported that enabling multi-factor authentication can block up to 100% of automated attacks, 99% of bulk phishing attacks, and 66% of targeted attacks.
 
 
- ![MFA prompt](https://miro.medium.com/v2/resize:fit:720/format:webp/1*0Jzgk0GLaOWadP-DBh0ecg.png)
+![MFA prompt](https://miro.medium.com/v2/resize:fit:720/format:webp/1*0Jzgk0GLaOWadP-DBh0ecg.png)
 
-But that protection comes at a cost to the user experience. Adding a second factor to the authentication process interrupts the user’s flow. Even a simple factor, like a one time password, requires the user to wait for the SMS or email to arrive, change apps, copy a code, and go back to the original app and paste in the code before returning to the original flow. While mobile operating systems are making it easier to enter a one time password with less context switching, it still disrupts the user flow. Authentication apps, such as Authy and Google Authenticator, provide greater levels of security but are even more disruptive to the user flow.
+But that protection comes at a cost to the user experience. Adding a second factor to the authentication process interrupts the user’s flow. Even a simple factor, like a one-time password, requires the user to wait for the SMS or email to arrive, change apps, copy a code, and go back to the original app and paste in the code before returning to the original flow. While mobile operating systems are making it easier to enter a one time password with less context switching, it still disrupts the user flow. Authentication apps, such as Authy and Google Authenticator, provide greater levels of security but are even more disruptive to the user flow.
 
 Wouldn’t it be nice if you had the protection of multi-factor authentication without the inconvenience? That’s the idea behind Auth0’s Contextual MFA feature. Contextual MFA uses certain signals, such as the device you’re using, your geographic location, or your IP to determine how likely it is that a login attempt is legitimate. As the feature learns your login habits it will learn to predict which login attempts are legitimate and only prompt for multi-factor authentication if the confidence score is low.
 
@@ -39,23 +38,23 @@ CAPTCHA, or Completely Automated Public Turing test to tell Computers and Humans
 
 ![A CAPTCHA prompt](https://miro.medium.com/v2/resize:fit:720/format:webp/1*qW9e-mCAQqgO6pP2gKR58Q.png)
 
-CAPTCHA can be an effective tool to stop many automated attacks, but again, this protection comes at a cost to the user experience. Like MFA, CAPTCHA interrupts the user flow and requires users to decipher difficult to read text or identify objects in grainy photos. If you get it wrong you frequently have to begin the entire process all over again. CAPTCHA also suffers from many accessibility issues. Users with visual impairments may not be able to solve the CAPTCHA at all. Sometimes an audio CAPTCHA is presented as an alternative, but this may not be a feasible solution for users with hearing difficulties, who are in a noisy environment, or don’t have a sound enabled on their system.
+CAPTCHA can be an effective tool to stop many automated attacks, but again, this protection comes at a cost to the user experience. Like MFA, CAPTCHA interrupts the user flow and requires users to decipher difficult-to-read text or identify objects in grainy photos. If you get it wrong you frequently have to begin the entire process all over again. CAPTCHA also suffers from many accessibility issues. Users with visual impairments may not be able to solve the CAPTCHA at all. Sometimes an audio CAPTCHA is presented as an alternative, but this may not be a feasible solution for users with hearing difficulties, who are in a noisy environment, or don’t have sound enabled on their system.
 
 These extra barriers can be significant enough to prevent users from signing up or logging in to an application. According to one study, adding CAPTCHA to a form can reduce conversions by up to 33%!
 
-At Auth0 we work hard to ensure that our customers’ users don’t have to deal with CAPTCHA. Our automated attack protection analyzes traffic patterns in order to determine whether a login is being initiated by a human or a bot and only require CAPTCHA if we’re reasonably certain traffic is coming from a bot. Like with Contextual MFA, a legitimate user’s login experience should never be interrupted.
+At Auth0 we work hard to ensure that our customers’ users don’t have to deal with CAPTCHA. Our automated attack protection analyzes traffic patterns in order to determine whether a login is being initiated by a human or a bot and only requires CAPTCHA if we’re reasonably certain traffic is coming from a bot. Like with Contextual MFA, a legitimate user’s login experience should never be interrupted.
 
 ## Not all products are secured equally
 Helping to secure your application is what Auth0 is all about, but we also understand that certain applications need to be more secure than others. For instance, an online banking app should have more friction in the authentication experience than a product that doesn’t store sensitive personal information.
 
-## Long lived sessions
+## Long-lived sessions
 At Auth0, we recognize that while it’s important for applications with access to sensitive data to log users out after they’ve been idle for just a few minutes, many of our customers with lower risk products may not want that for their users.
 
 Media companies, for example, often find that users visit their site once every few weeks. If users are required to authenticate and can’t remember their password they’re likely to just abandon the site. For companies that rely on ad revenue that can be a huge blow to their bottom line.
 
 Other companies, such as insurance or utility companies, might have customers who interact with their site once a month or once a quarter. It’s quite common for users to forget their password after such a long time, which can lead to increased customer service calls and decreased customer satisfaction.
 
-Auth0’s long lived sessions feature addresses these and other similar use cases. Our customers can now customize session limits with up to 100 days of inactivity and up to one year in total depending on the balance of risk and user experience that’s right for them. Customers with a lower risk profile can remove friction for their users by enabling longer session lengths, while customers with higher risk profiles can automatically log users out after a much shorter period of time.
+Auth0’s long-lived sessions feature addresses these and other similar use cases. Our customers can now customize session limits with up to 100 days of inactivity and up to one year in total depending on the balance of risk and user experience that’s right for them. Customers with a lower risk profile can remove friction for their users by enabling longer session lengths, while customers with higher risk profiles can automatically log users out after a much shorter period of time.
 
 ## Obfuscation as a necessary evil
 Part of designing a good user experience is making sure a user can easily understand what’s happening and what their next course of action should be. Unfortunately, there are times when making things easy for our users also puts them at risk.
@@ -69,7 +68,7 @@ What kind of subpar UX designer would design such a bad experience? Aren’t the
 
 While it’s true that a vague error message can be annoying and frustrating, it can also help to protect you. For example, if an application’s error message was “this username does not exist” when the username is invalid, but “incorrect password” when the username is valid it would allow attackers to compile a list of valid usernames for an application. That information could then be used in brute force attacks, such as dictionary attacks or credential stuffing attacks. A dictionary attack is when a hacker uses a known username combined with common passwords like 123456 or passw0rd to try to hack into an account. A credential stuffing attack is when an attacker uses credentials obtained from a data breach on one service to hack into the user’s account on another service.
 
-Using complex and unique passwords help to prevent brute force attacks once a malicious actor has your username, but obfuscated error messages can prevent them from validating your username in the first place.
+Using complex and unique passwords helps to prevent brute force attacks once a malicious actor has your username, but obfuscated error messages can prevent them from validating your username in the first place.
 
 ## Conclusion
 Securing the world’s identities while providing a positive authentication experience for end users might seem like a daunting task, but it’s not impossible.

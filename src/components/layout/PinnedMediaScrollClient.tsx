@@ -21,17 +21,25 @@ export function PinnedMediaScrollClient({ items }: Props) {
   const [active, setActive] = useState(0);
   const activeRef = useRef(0);
   const blockRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
+    // A block becomes active as soon as its text is pinned in place, not
+    // once the previous block has fully scrolled away. Reading the real
+    // computed `top` off a sticky blockContent (rather than duplicating
+    // --sticky-offset as a hardcoded pixel value here) means this can
+    // never drift out of sync with the CSS again.
+    const firstContent = contentRefs.current[0];
+    const offset = firstContent
+      ? parseFloat(getComputedStyle(firstContent).top)
+      : 0;
+
     const handleScroll = () => {
       let next = 0;
       for (let i = 0; i < blockRefs.current.length; i++) {
         const el = blockRefs.current[i];
         if (!el) continue;
-        // A block becomes active when its top reaches the sticky inset offset.
-        // 112px is --nav-height (80px) + --size-4 (32px) — keep in sync
-        // with --sticky-offset in PinnedMediaScroll.module.css.
-        if (el.getBoundingClientRect().top <= 112) {
+        if (el.getBoundingClientRect().top <= offset) {
           next = i;
         }
       }
@@ -57,7 +65,12 @@ export function PinnedMediaScrollClient({ items }: Props) {
             }}
             className={styles.block}
           >
-            <div className={styles.blockContent}>
+            <div
+              ref={(el) => {
+                contentRefs.current[i] = el;
+              }}
+              className={styles.blockContent}
+            >
               {item.content}
               <div className={styles.mobileMedia}>
                 <CloudinaryImage

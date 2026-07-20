@@ -3,19 +3,32 @@
    padding. */
 .quoteBody {
   position: relative;
+
 }
 
+/* quote.svg has no fill baked in, so it's applied as a mask (not a plain
+   <img src>, which couldn't be recolored via CSS) — background-color is
+   what actually paints it, letting it inherit the accent color like the
+   text-based mark it replaced. aspect-ratio matches the source SVG's own
+   viewBox (512 × 379.51) so mask-size: 100% 100% fills the box without
+   distorting or letterboxing it. */
 .mark {
   position: absolute;
   inset-block-start: 0;
   inset-inline-start: 0;
-  /* Nudges the mark up and to the left so it precedes/overlaps the first
-     line of text, rather than sitting flush inside it. Approximate by
-     design — a judgment call, easy to retune. */
-  transform: translate(-55%, -35%);
-  font-size: var(--font-size-8);
-  line-height: 1;
-  color: var(--accent);
+  /* Nudges the mark down and further left so it precedes/overlaps the
+     first line of text, rather than sitting flush inside it. Approximate
+     by design — a judgment call, easy to retune. */
+  transform: translate(-140%, -10%);
+  block-size: var(--size-4);
+  aspect-ratio: 512 / 379.51;
+  background-color: var(--accent);
+  mask-image: url("../../assets/quote.svg");
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  -webkit-mask-image: url("../../assets/quote.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
   pointer-events: none;
 }
 
@@ -25,13 +38,18 @@
 
 /* Standalone (single-child) mode — box is half its parent Column's width
    (not half the site's --max-width), centered, with generous padding
-   relative to that smaller box. No border/shadow here — that's a
-   stacked-mode-only device for conveying card depth. */
+   relative to that smaller box. Tinted background + a bold accent border
+   give it the same "featured" weight as the stack mode's active card. */
 .quote {
-  margin: 0;
+    margin-block: var(--size-10-fluid);
+  margin-inline: 0;
   inline-size: 50%;
   margin-inline: auto;
   padding: var(--size-6);
+  padding-inline-start: var(--size-12);
+  border-block-start: 12px solid var(--accent-deep);
+  background-color: var(--surface);
+  border-radius: 4px;
 }
 
 /* Interactive stack mode */
@@ -97,15 +115,23 @@
      below, peeking cards keep just this base amount. */
   box-shadow: 0 var(--size-0) var(--size-1) rgb(0 0 0 / 6%);
   transition:
-    transform var(--duration-base) var(--ease-out),
+    /* Every card stays mounted and just moves to a new depth/position as
+       the stack cycles — on-screen movement between states, not an
+       enter/exit, so this one gets --ease-in-out rather than --ease-out
+       (the rest of the list is still fades/color, which keep --ease-out). */
+    transform var(--duration-base) var(--ease-in-out),
     opacity var(--duration-base) var(--ease-out),
-    box-shadow var(--duration-base) var(--ease-out);
+    box-shadow var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out);
 }
 
 .card[data-depth="0"] {
   transform: translate(0, 0) rotate(0deg);
   opacity: 1;
   z-index: 4;
+  border: 2px solid var(--accent);
+  background-color: var(--accent-soft);
   box-shadow: 0 var(--size-1) var(--size-2) rgb(0 0 0 / 10%);
 }
 

@@ -194,5 +194,73 @@
   "image:beste-featured-image_jk9xmc": {
     "width": 7188,
     "height": 4044
+  },
+  "image:bestExperiments_duxniv": {
+    "width": 2304,
+    "height": 1322
+  },
+  "image:besteui_yp8mqg": {
+    "width": 2166,
+    "height": 1368
+  },
+  "image:bestFeedback_qjf40n": {
+    "width": 2172,
+    "height": 1366
+  },
+  "image:tailsforce_czkh0y": {
+    "width": 2400,
+    "height": 1300
+  },
+  "image:claude-ds-cover_knkkfl": {
+    "width": 2400,
+    "height": 1300
+  },
+  "image:intracover_ee7hwz": {
+    "width": 2400,
+    "height": 1300
+  },
+  "image:intra-new_c2z6nn": {
+    "width": 5760,
+    "height": 3240
+  },
+  "image:endomodule-old_bwk57r": {
+    "width": 5760,
+    "height": 3240
+  },
+  "image:pre-new_u5o72t": {
+    "width": 5760,
+    "height": 3240
+  },
+  "image:intra-old_tbzsat": {
+    "width": 5760,
+    "height": 3240
+  },
+  "image:app-switcher_ufh1xh": {
+    "width": 5760,
+    "height": 3240
+  },
+  "image:endomodule-new_omgyjr": {
+    "width": 5760,
+    "height": 3240
+  },
+  "image:hub_ywfqox": {
+    "width": 3393,
+    "height": 1930
+  },
+  "image:intermediate_sgbaw1": {
+    "width": 27986,
+    "height": 3365
+  },
+  "image:vision_gori1s": {
+    "width": 28044,
+    "height": 3343
+  },
+  "image:unhappy_y5vewb": {
+    "width": 32768,
+    "height": 2940
+  },
+  "image:unhappy_btu0xh": {
+    "width": 18621,
+    "height": 1671
   }
 }

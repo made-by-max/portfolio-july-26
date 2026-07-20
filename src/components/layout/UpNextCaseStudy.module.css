@@ -14,23 +14,23 @@
   display: flex;
   align-items: center;
   gap: var(--size-3);
-  color: var(--text-soft);
-  transition: color var(--duration-fast) var(--ease-out);
+  color: var(--text-primary);
 }
 
 .arrow {
   flex: none;
   inline-size: var(--size-5);
   block-size: var(--size-5);
-  transition: transform var(--duration-fast) var(--ease-out);
+  opacity: 0;
+  transform: translateX(calc(-1 * var(--size-2)));
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .link:hover .title {
-    color: var(--text-primary);
-  }
-
   .link:hover .arrow {
-    transform: translateX(var(--size-1));
+    opacity: 1;
+    transform: translateX(0);
   }
 }

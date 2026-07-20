@@ -30,11 +30,7 @@ export default function AboutPage() {
       </Section>
 
       <Section>
-        <span
-          className="corner-mark"
-          style={{ insetBlockStart: "18%", insetInlineEnd: "12%" }}
-          aria-hidden="true"
-        />
+
         <Grid columns={[1]}>
           <Column>
             <p>

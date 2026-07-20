@@ -1,7 +1,9 @@
 /* Extra breathing room around headings and images in a play item's MDX
    body — the typography scale itself only sets font size/weight, not this
-   spacing, so it's applied here rather than globally (case studies use
-   their own explicit GridSpacer rhythm instead). */
+   spacing, so it's applied here rather than globally. Unguarded (no
+   :not(:first-child)) because play content is one continuous MDX flow in
+   a single Column, not split across GridSpacer'd Sections like case
+   studies — see work/[slug]/page.module.css for that guarded version. */
 .content h2 {
   margin-block-start: var(--size-12-fluid);
 }

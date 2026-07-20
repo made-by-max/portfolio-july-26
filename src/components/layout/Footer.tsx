@@ -10,14 +10,14 @@ const EMAIL = "hi@maxtaylor.design";
 const PAGE_LINKS = [
   { href: "/", label: "Home" },
   { href: "/work", label: "Work" },
-  { href: "/play", label: "Play" },
+  { href: "/play", label: "Side Quests" },
   { href: "/about", label: "About" },
 ];
 
 // Placeholder profile URLs — swap in the real ones.
 const SOCIAL_LINKS = [
-  { href: "#", label: "LinkedIn" },
-  { href: "#", label: "GitHub" },
+  { href: "https://www.linkedin.com/in/madebymax/", label: "LinkedIn" },
+  { href: "https://github.com/made-by-max", label: "GitHub" },
 ];
 
 // Lives outside ContentWrapper, no border of its own. Reuses the layout
@@ -30,7 +30,7 @@ export function Footer() {
       {/* Oversized, low-opacity, clipped at the footer's edge — a one-time
           signature flourish, not a pattern reused elsewhere. */}
       <span className={styles.watermark} aria-hidden="true">
-        max
+        made by max
       </span>
       <div className={styles.inner}>
         <Grid columns={[2, 1, 1]}>

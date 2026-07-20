@@ -36,11 +36,11 @@
 
   /* Oversized decorative wordmark (Footer watermark only) — scales with
      viewport so it keeps bleeding off the edge at any width, new token
-     since nothing in the display scale goes this large. Sized up from an
-     earlier pass now that the watermark is a single short word ("max")
-     rather than the full name — needs to be bigger to still read as a
-     dramatic, edge-bleeding flourish. */
-  --font-size-watermark: clamp(10rem, 34vw, 28rem);
+     since nothing in the display scale goes this large. Sized down from
+     an earlier pass tuned for the single short word "max" — "made by
+     max" is almost 4x longer, so the old size pushed most of the phrase
+     off-screen instead of reading as a dramatic-but-legible flourish. */
+  --font-size-watermark: clamp(3rem, 11vw, 9rem);
 
   /*font weight*/
   --font-weight-medium: 500;
@@ -190,7 +190,7 @@
     margin-block-start: 0;
   }
   .listStack h3,
-  h4 {
+  .listStack h4 {
     font-size: var(--font-size-3);
     font-weight: var(--font-weight-bold);
     margin-block-end: var(--size-0);

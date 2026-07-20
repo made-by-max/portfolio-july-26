@@ -2,6 +2,7 @@ import { Children } from "react";
 import styles from "./Blockquote.module.css";
 import { BlockquoteStack } from "./BlockquoteStack";
 
+
 type Props = {
   children: React.ReactNode;
 };
@@ -17,9 +18,7 @@ export function Blockquote({ children }: Props) {
     return (
       <blockquote className={styles.quote}>
         <div className={styles.quoteBody}>
-          <span className={styles.mark} aria-hidden="true">
-            “
-          </span>
+          <span className={styles.mark} aria-hidden="true" />
           <div className={`body-l ${styles.content}`}>{children}</div>
         </div>
       </blockquote>

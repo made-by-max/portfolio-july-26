@@ -8,6 +8,7 @@ import {
   GridSpacer,
   UpNextCaseStudy,
 } from "@/components/layout";
+import styles from "./page.module.css";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -54,7 +55,9 @@ export default async function WorkCaseStudyPage({ params }: Props) {
 
   return (
     <ContentWrapper>
-      <Content />
+      <div className={styles.content}>
+        <Content />
+      </div>
       {nextItem && (
         <>
           {/* The case study content above ends with whatever column

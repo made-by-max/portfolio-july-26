@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Tag } from "@/components/ui";
 import styles from "./PlayListRow.module.css";
 
@@ -20,6 +21,7 @@ export function PlayListRow({ title, href, tags, onTagClick }: Props) {
     <div className={styles.row}>
       <Link href={href} className={styles.title}>
         <span className="display-xs">{title}</span>
+        <ArrowRight className={styles.arrow} aria-hidden="true" />
       </Link>
       <div className={styles.tags}>
         {tags.map((tag) => (

@@ -3,11 +3,16 @@
    reasonable starting point (~4 cards at --max-width); expect this to be
    tuned once real content/imagery is in place.
 
-   Grid-line technique: the grid's own background is the line color, and
-   a 1px gap lets it peek through at every internal boundary; each item
-   then paints over it with the page's own background. This produces a
-   divider between every adjacent item, in both directions, regardless of
-   how auto-fit wraps at a given width — no JS measurement needed.
+   Divider technique: each .item draws its own trailing edges (bottom +
+   right), and .grid itself draws the leading edges (top + left) that
+   frame the whole thing — so a line between two cards is really just one
+   card's own border, never a gap-and-background trick. That matters here
+   specifically because auto-fit only collapses a column track when NO row
+   uses it — a short last row still gets real (empty) grid cells for the
+   missing columns. Those cells simply have no .item in them, so there's
+   nothing to paint any border on and nothing left over to look like a
+   stray colored box (the previous gap + container-background approach
+   needed every cell filled to avoid exactly that).
 
    No wrapper padding around the grid itself, same as the layout system's
    own Grid/Column split — content inset lives on .item (below), so the
@@ -15,19 +20,29 @@
    short. */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
-  gap: 1px;
-  background-color: var(--line-soft);
+  /* min(24rem, 100%) instead of a bare 24rem — on a narrow phone, the
+     content area itself can be under 24rem (24rem is wider than several
+     common phone viewports once ContentWrapper's own gutter is
+     subtracted), so an unguarded minmax() minimum would force horizontal
+     overflow. Capping it at 100% lets the single column shrink to fit
+     instead, with no separate mobile breakpoint needed. */
+  grid-template-columns: repeat(auto-fit, minmax(min(24rem, 100%), 1fr));
+  border-block-start: 1px solid var(--line-soft);
+  border-inline-start: 1px solid var(--line-soft);
 }
 
-/* Each item spans 4 row tracks (image/title/description/tags) and
-   subgrids them from .grid, so those regions size to the tallest card in
-   the same visual row and line up across every card — see
+/* Each item spans 3 row tracks (image/title/description) and subgrids
+   them from .grid, so those regions size to the tallest card in the same
+   visual row and line up across every card — see
    FeaturedContentCard.module.css for the matching child-side subgrid. */
 .item {
-  grid-row: span 4;
+  grid-row: span 3;
   display: grid;
   grid-template-rows: subgrid;
+  border-block-end: 1px solid var(--line-soft);
+  border-inline-end: 1px solid var(--line-soft);
   background-color: var(--color-background);
-  padding: var(--size-6);
+  /* Tighter than the previous --size-6 — a card's own inset should read
+     as snug, not as generous as a full page Section. */
+  padding: var(--size-3);
 }

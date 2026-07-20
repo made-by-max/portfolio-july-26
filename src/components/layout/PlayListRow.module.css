@@ -2,20 +2,34 @@
   display: flex;
   align-items: flex-start;
   gap: var(--size-3);
-  padding-block: var(--size-3);
+  padding-block: var(--size-1);
 }
 
 .title {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--size-2);
   flex: 2 1 0;
   min-inline-size: 0;
-  color: var(--text-soft);
+  color: var(--text-primary);
   text-decoration: none;
-  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.arrow {
+  flex: none;
+  inline-size: var(--size-3);
+  block-size: var(--size-3);
+  opacity: 0;
+  transform: translateX(calc(-1 * var(--size-1)));
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .title:hover {
-    color: var(--text-primary);
+  .title:hover .arrow {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 

@@ -7,9 +7,9 @@ type Size = "small" | "medium" | "large";
 type Variant = "primary" | "secondary" | "ghost";
 
 const ICON_SIZE: Record<Size, number> = {
-  small: 14,
-  medium: 16,
-  large: 20,
+  small: 16,
+  medium: 20,
+  large: 24,
 };
 
 type CommonProps = {

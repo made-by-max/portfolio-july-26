@@ -1,0 +1,137 @@
+---
+title: "Breaking Down Silos at Olympus"
+tags: ["work", "design"]
+isDraft: false
+featured: true
+date: "2026-04-08"
+type: "project"
+description: "A system-wide workflow to decrease context switching and get leadership buy-in"
+image: "intracover_ee7hwz"
+---
+
+import { Image, WideScrollImage, Grid, Column, ListStack } from "@/components/layout";
+import { Stat } from "@/components/ui";
+
+## Users don’t care about your org chart
+Like a lot of large organizations, the product teams at Olympus have a tendency to develop features in silos, without necessarily considering how the bigger picture impacts users.
+
+This was particularly apparent in the design for the digital hub, a specialized computer that integrates into the equipment tower in the endoscopy suite and runs the software that doctors use during their procedures.
+
+<Image publicId="hub_ywfqox" alt="The Olympus Digital Hub, a specialized computer built into the endoscopy tower that runs the software doctors use during procedures" />
+
+The digital hub was initially intended to run computer-aided detection software, which uses AI to help identify potential anomalies.
+
+<Image publicId="endomodule-old_bwk57r" alt="The original Endo Module home screen, with cards for selecting which application to run" />
+
+Then our automated imaging solutions team added a separate application to manage capturing images and videos during a procedure.
+
+<Image publicId="intra-old_tbzsat" alt="The original imaging application, showing a live endoscope feed with buttons to capture video, capture an image, or end the exam" />
+
+Later the voice team needed to integrate with the digital hub to run the software that would allow endoscopists to capture findings verbally.
+
+There were also other teams that would potentially be adding additional apps.
+
+### Three applications with entirely separate user flows
+Each of these teams was developing these features in isolation, as well as partnering with separate outside vendors.
+
+Each was added as a separate application, with its own login flow and settings, rather than as a unified product suite, meaning users had to log in three separate times to start a procedure. Switching between apps required exiting all the way out of their current application.
+
+<Image publicId="app-switcher_ufh1xh" alt="The original app switcher, showing three separate applications each with its own login and settings" />
+
+## Working across teams to create a user-centered workflow
+I collaborated with the designers and product managers from each team to understand the needs of their applications and began working on a user flow to remove redundancy and improve the interoperability of the different applications.
+
+<Grid columns={[2, 3]}>
+  <Column>
+    ### Initial Workflow
+    I started by mapping the existing experience, to highlight the pain points and get buy-in from senior leadership to address these issues.
+  </Column>
+  <Column>
+    <ListStack>
+      <div className="listStack">
+        <h4>Procedure prep</h4>
+        <p>18 steps, 11 navigation changes</p>
+      </div>
+      <div className="listStack">
+        <h4>Active procedure</h4>
+        <p>16 steps, 5 navigation changes</p>
+      </div>
+      <div className="listStack">
+        <h4>Procedure wrap-up</h4>
+        <p>8 steps, 4 navigation changes</p>
+      </div>
+    </ListStack>
+  </Column>
+</Grid>
+
+<WideScrollImage publicId="unhappy_y5vewb" alt="Full user-flow map of the existing three-app workflow, showing every step and navigation change across procedure prep, the active procedure, and wrap-up" />
+
+<Grid columns={[2, 3]}>
+  <Column>
+    ### Updated Workflow
+    Next I created a flow demonstrating how the user experience could be drastically improved simply by rethinking the authentication experience and improving the navigation between applications.
+  </Column>
+  <Column>
+    <ListStack>
+      <div className="listStack">
+        <h4>Procedure prep</h4>
+        <p>10 steps, 7 navigation changes</p>
+      </div>
+      <div className="listStack">
+        <h4>Active procedure</h4>
+        <p>2 steps, 0 navigation changes</p>
+      </div>
+      <div className="listStack">
+        <h4>Procedure wrap-up</h4>
+        <p>2 steps, 1 navigation change</p>
+      </div>
+    </ListStack>
+  </Column>
+</Grid>
+
+<WideScrollImage publicId="intermediate_sgbaw1" alt="Full user-flow map of the updated workflow, showing the reduced steps and navigation changes after simplifying authentication and cross-app navigation" />
+
+<Grid columns={[2, 3]}>
+  <Column>
+    ### North Star Workflow
+    Finally, I put together a long-term vision in which authentication is further simplified by allowing doctors to log in by scanning their ID badge and the system defaults to the appropriate settings based on the procedure type so the staff just needs to confirm it’s correct, rather than configuring it manually.
+  </Column>
+  <Column>
+    <ListStack>
+      <div className="listStack">
+        <h4>Procedure prep</h4>
+        <p>7 steps, 3 navigation changes</p>
+      </div>
+      <div className="listStack">
+        <h4>Active procedure</h4>
+        <p>2 steps, 0 navigation changes</p>
+      </div>
+      <div className="listStack">
+        <h4>Procedure wrap-up</h4>
+        <p>0 steps, 0 navigation changes</p>
+      </div>
+    </ListStack>
+  </Column>
+</Grid>
+
+<WideScrollImage publicId="vision_gori1s" alt="Full user-flow map of the North Star workflow, showing badge-scan login and automatic default settings reducing the process to as few as zero navigation changes" />
+
+<p className="display-xl">This workflow has <Stat value={78} suffix="%" /> fewer steps than the existing one.</p>
+
+## Design updates for the improved workflow
+The proposed solution presents default selections for confirmation, rather than manual configuration.
+
+<Image publicId="pre-new_u5o72t" alt="The new pre-procedure page, presenting default settings for the doctor to confirm instead of configuring them manually" />
+
+Settings can be configured for individual applications, with a global settings option for shared settings.
+
+<Image publicId="endomodule-new_omgyjr" alt="The new settings page, with per-application settings alongside a global settings option for shared preferences" />
+
+A new sidebar lowers the burden of switching between applications.
+
+<Image publicId="intra-new_c2z6nn" alt="The new intra-procedure page with a sidebar for switching between applications without leaving the current one" />
+
+## A lack of ownership meant appealing to senior product leadership
+Once I had a workflow that met the needs of each team without sacrificing the user experience, I worked with design leadership to put together a presentation for senior product leadership.
+
+Due to our tight delivery deadlines, we knew these changes would be out of scope for our current release. However, these user flows really helped to illustrate to key stakeholders just how bad the current experience is, and we were able to get sign-off to pursue a more coordinated and unified experience for subsequent software releases.

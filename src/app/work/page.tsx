@@ -7,6 +7,7 @@ import {
   Column,
   GridSpacer,
   CaseStudyCard,
+  ListStack,
   PlayListRow,
 } from "@/components/layout";
 
@@ -33,7 +34,7 @@ export default async function WorkPage() {
       <Section>
         <Grid columns={[1]}>
           <Column>
-            <h1 className="display-xl">Work</h1>
+            <h1 className="display-xl">Case Studies</h1>
           </Column>
         </Grid>
       </Section>
@@ -43,7 +44,7 @@ export default async function WorkPage() {
           {/* Matches CaseStudyCard's own [1,1] split, same reasoning as
               the homepage's featured work list — the spacer's dividers
               read as continuing straight through the card's own. */}
-          <GridSpacer columns={[1, 1]} />
+          {/*<GridSpacer columns={[1, 1]} />*/}
           <Section>
             <CaseStudyCard
               title={item.title}
@@ -53,10 +54,11 @@ export default async function WorkPage() {
               imageAlt={item.title}
               href={`/work/${item.slug}/`}
             />
+            <GridSpacer columns={[1]} />
           </Section>
-          {index === caseStudies.length - 1 && playTaggedWork.length > 0 && (
+          {/*{index === caseStudies.length - 1 && playTaggedWork.length > 0 && (
             <GridSpacer columns={[1, 1]} />
-          )}
+          )}*/}
         </div>
       ))}
 
@@ -64,15 +66,17 @@ export default async function WorkPage() {
         <Section>
           <Grid columns={[1]}>
             <Column>
-              <h2 className="display-m">Also</h2>
-              {playTaggedWork.map((item) => (
-                <PlayListRow
-                  key={item.slug}
-                  title={item.title}
-                  href={`/play/${item.slug}/`}
-                  tags={item.tags}
-                />
-              ))}
+              <h2 className="display-m">Related content</h2>
+              <ListStack>
+                {playTaggedWork.map((item) => (
+                  <PlayListRow
+                    key={item.slug}
+                    title={item.title}
+                    href={`/play/${item.slug}/`}
+                    tags={item.tags}
+                  />
+                ))}
+              </ListStack>
             </Column>
           </Grid>
         </Section>

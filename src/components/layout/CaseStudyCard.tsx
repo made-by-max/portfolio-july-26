@@ -37,7 +37,7 @@ export function CaseStudyCard({
               </Tag>
             ))}
           </div>
-          <h3 className="display-l">{title}</h3>
+          <h3 className={`display-l ${styles.title}`}>{title}</h3>
           <p className={`body-m ${styles.description}`}>{description}</p>
           <Button variant="primary" href={href} linkType="internal">
             View case study

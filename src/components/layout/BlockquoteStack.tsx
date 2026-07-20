@@ -64,9 +64,7 @@ export function BlockquoteStack({ children }: Props) {
             aria-hidden={depth !== 0}
           >
             <div className={styles.quoteBody}>
-              <span className={styles.mark} aria-hidden="true">
-                “
-              </span>
+              <span className={styles.mark} aria-hidden="true" />
               <div className={`body-l ${styles.content}`}>{item}</div>
             </div>
           </div>

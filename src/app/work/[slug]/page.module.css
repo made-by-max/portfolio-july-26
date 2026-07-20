@@ -1,0 +1,19 @@
+/* Extra breathing room before a heading — h2/h3 always get it, even as
+   the first thing in a Column (stacks on top of Column's own padding and
+   GridSpacer's rhythm there; that's intentional, not a bug to guard
+   against). Same fluid tokens /play/[slug]'s MDX content uses, applied
+   here since case study content has no shared CSS module of its own
+   otherwise. */
+.content h2:not(:first-child) {
+  margin-block-start: var(--size-12-fluid);
+}
+
+.content h3:not(:first-child) {
+  margin-block-start: var(--size-10-fluid);
+}
+
+/* h4 keeps the :not(:first-child) guard — only h2/h3 were asked to apply
+   unconditionally. */
+.content h4:not(:first-child) {
+  margin-block-start: var(--size-8-fluid);
+}

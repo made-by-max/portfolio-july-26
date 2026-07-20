@@ -51,19 +51,51 @@
 }
 
 .link {
+  position: relative;
   display: flex;
   align-items: center;
   padding-inline: var(--size-3);
   border-inline-start: 1px solid var(--line-bold);
   color: var(--text-soft);
   text-decoration: none;
-  transition: color var(--duration-fast) var(--ease-out);
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
 }
+
+/* Underline — sits flush with the nav's own bottom edge (over its
+   border-block-end), growing in from the inline-start on hover. Hover
+   only, not active — see .link[data-active] below. */
+/*.link::before {
+  content: "";
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline: 0;
+  block-size: 5px;
+  background-color: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-fast) var(--ease-out);
+}*/
 
 @media (hover: hover) and (pointer: fine) {
   .link:hover {
     color: var(--text-primary);
   }
+
+  .link:hover::before {
+    transform: scaleX(1);
+  }
+}
+
+.link[data-active] {
+  color: var(--text-primary);
+  /* var(--surface) alone isn't reliably "lighter" here — surface and
+     surface-2 swap which one is the lighter step between themes (light
+     mode: surface > surface-2; dark mode: surface-2 > surface). Lightening
+     surface-2 by a fixed relative amount instead guarantees this reads as
+     lighter than the page in both themes, not just one. */
+  /*background-color: oklch(from var(--surface-2) calc(l + 0.08) c h);*/
 }
 
 .menuButton {
@@ -131,13 +163,20 @@
     padding: var(--size-3) var(--size-4);
     color: var(--text-soft);
     text-decoration: none;
-    transition: color var(--duration-fast) var(--ease-out);
+    transition:
+      color var(--duration-fast) var(--ease-out),
+      background-color var(--duration-fast) var(--ease-out);
   }
 
   @media (hover: hover) and (pointer: fine) {
     .mobileLink:hover {
       color: var(--text-primary);
     }
+  }
+
+  .mobileLink[data-active] {
+    color: var(--text-primary);
+    background-color: oklch(from var(--surface-2) calc(l + 0.08) c h);
   }
 
   .mobileLink:not(:first-child) {

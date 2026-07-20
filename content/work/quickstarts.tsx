@@ -35,14 +35,14 @@ export default function Quickstarts() {
             overview={meta.overview}
             video={meta.video}
             videoAutoplay={meta.videoAutoplay}
-            alt={meta.title}
+            alt="Auth0's interactive Quickstart guide with a live code editor that updates alongside the instructions"
           />
         ) : meta.image ? (
           <CaseStudyHero
             title={meta.title}
             overview={meta.overview}
             image={meta.image}
-            alt={meta.title}
+            alt="Auth0's interactive Quickstart guide with a live code editor that updates alongside the instructions"
           />
         ) : (
           <CaseStudyHero title={meta.title} overview={meta.overview} />
@@ -81,7 +81,7 @@ export default function Quickstarts() {
             <p>
               In order to get a better understanding of what developers liked
               about our quickstarts as well as areas for improvement, I
-              conducted usability testing with six developers with varying
+              conducted usability testing with 6 developers with varying
               levels of experience with React. Experienced React developers
               typically completed our React Quickstart in about 15 minutes. Less
               experienced developers took closer to 30, and typically required
@@ -91,33 +91,33 @@ export default function Quickstarts() {
         </Grid>
       </Section>
 
-      <GridSpacer columns={[1, 1]} />
+      <GridSpacer columns={[1]} />
 
       <Section>
         <PinnedMediaScroll>
           <PinnedMediaScrollItem
             image="accountcreationold_mnnbu3"
-            alt="Snapshot restore terminal output"
+            alt="Original Quickstart introduction with the account-creation benefit buried in a paragraph of text, easy to miss"
           >
             <h3>Unclear benefits of account creation</h3>
             <p>
               One of the key features of our Quickstarts is that if users have a
               free Auth0 account and are logged in, the code samples in the
               Quickstart automatically update to include information tied to a
-              user&rsquo;s application.
+              user’s application.
             </p>
 
             <p>
               Developers loved this feature...if they were aware of it. But
               testing showed that, while creating an account is recommended, the
-              information is buried in the introduction and doesn&rsquo;t do an
+              information is buried in the introduction and doesn’t do an
               adequate job of conveying the advantages of doing so.
             </p>
           </PinnedMediaScrollItem>
 
           <PinnedMediaScrollItem
             image="codesampleOld_owiy0p"
-            alt="A code sample that shows the React code, but not where to put it or how to use it."
+            alt="Original Quickstart code sample shown as an incomplete snippet with no file name or placement instructions"
           >
             <h3>Incomplete code samples</h3>
             <p>
@@ -134,7 +134,7 @@ export default function Quickstarts() {
 
           <PinnedMediaScrollItem
             image="contextswitchingold_qwx0mp"
-            alt="Snapshot restore terminal output"
+            alt="Original Quickstart flow requiring users to switch between the Auth0 dashboard and their code editor to configure URLs"
           >
             <h3>Too much context switching</h3>
             <p>
@@ -152,10 +152,10 @@ export default function Quickstarts() {
         </PinnedMediaScroll>
       </Section>
 
-      <GridSpacer columns={[1, 1]} />
+      <GridSpacer columns={[1]} />
 
       <Section>
-        <Grid columns={[1, 1]}>
+        <Grid columns={[1, 2]}>
           <Column>
             <h2>Redesign Goals</h2>
           </Column>
@@ -206,15 +206,13 @@ export default function Quickstarts() {
         </Grid>
       </Section>
 
-      <GridSpacer columns={[1, 1]} />
-
       <Section>
         <PinnedMediaScroll>
           <PinnedMediaScrollItem
             image="signinV1_fwqljb"
-            alt="Snapshot restore terminal output"
+            alt="Redesigned Quickstart with a dedicated sign-up step that clearly explains the benefits of creating an account"
           >
-            <h3>Dedicated sign up step</h3>
+            <h3>Dedicated sign-up step</h3>
             <p>
               Users are prompted to log in or create an account and the benefits
               of doing so are more clear.
@@ -223,7 +221,7 @@ export default function Quickstarts() {
 
           <PinnedMediaScrollItem
             image="codesamplesV1_cg6iga"
-            alt="A code sample that shows the React code, but not where to put it or how to use it."
+            alt="Redesigned Quickstart showing a complete code sample with file structure, in an editor that updates as the user scrolls"
           >
             <h3>Complete code samples</h3>
             <p>
@@ -235,7 +233,7 @@ export default function Quickstarts() {
 
           <PinnedMediaScrollItem
             image="configureV1_xucgqa"
-            alt="A code sample that shows the React code, but not where to put it or how to use it."
+            alt="Redesigned Quickstart letting users configure their application settings without leaving the page"
           >
             <h3>Reduced context switching</h3>
             <p>
@@ -263,7 +261,11 @@ export default function Quickstarts() {
               dashboard at all.
             </p>
 
-            <Image publicId="createAppV3_swzyle" alt="screenshot" padded />
+            <Image
+              publicId="createAppV3_swzyle"
+              alt="Quickstart step for creating or selecting an Auth0 application directly inline, without visiting the dashboard"
+              padded
+            />
 
             <p>
               We also decided that since the code samples wouldn’t be relevant
@@ -273,7 +275,11 @@ export default function Quickstarts() {
               scrolls through the guide.
             </p>
 
-            <Image publicId="codesamplesV3_xzy7so" alt="screenshot" padded />
+            <Image
+              publicId="codesamplesV3_xzy7so"
+              alt="Final Quickstart layout with configuration steps on the right and code samples that update automatically as the user scrolls"
+              padded
+            />
           </Column>
         </Grid>
       </Section>
@@ -286,7 +292,7 @@ export default function Quickstarts() {
             <h2>New design was a hit with testers</h2>
             <p>
               I ran unmoderated usability testing with 14 users to validate the
-              new design and make sure we weren&rsquo;t taking the automation
+              new design and make sure we weren’t taking the automation
               too far.
             </p>
             <p>
@@ -323,7 +329,7 @@ export default function Quickstarts() {
               minutes.
             </p>
             <p className="display-xl">
-              New design reduced onboarding time by more than{" "}
+              The redesigned Quickstarts reduced onboarding time by more than{" "}
               <Stat value={50} suffix="%" />{" "}
             </p>
           </Column>

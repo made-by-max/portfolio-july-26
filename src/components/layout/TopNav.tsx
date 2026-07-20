@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import styles from "./TopNav.module.css";
 
@@ -11,11 +12,15 @@ const LINKS = [
   { href: "/about", label: "About" },
 ];
 
-// Fixed, always-visible chrome — no scroll-reactive behavior, no active
-// link state (not yet built). Mobile collapses the link list into a
+// Fixed, always-visible chrome. Mobile collapses the link list into a
 // hamburger-triggered dropdown panel rather than a full-screen overlay.
 export function TopNav() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  // "/work" should stay active on /work/[slug] too, but "/" must only
+  // match the home page itself (every route starts with "/").
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <header className={styles.nav}>
@@ -26,7 +31,12 @@ export function TopNav() {
 
         <nav className={styles.links} aria-label="Primary">
           {LINKS.map((link) => (
-            <Link key={link.href} href={link.href} className={styles.link}>
+            <Link
+              key={link.href}
+              href={link.href}
+              className={styles.link}
+              data-active={isActive(link.href) || undefined}
+            >
               {link.label}
             </Link>
           ))}
@@ -54,6 +64,7 @@ export function TopNav() {
             key={link.href}
             href={link.href}
             className={styles.mobileLink}
+            data-active={isActive(link.href) || undefined}
             onClick={() => setOpen(false)}
           >
             {link.label}

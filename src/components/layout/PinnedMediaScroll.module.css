@@ -31,8 +31,9 @@
 .blockContent {
   /* Sticky boundary is the parent .block, so each block's content pins
      while that block is on-screen, then naturally unsticks as the next
-     block scrolls in. Keep in sync with the JS threshold in
-     PinnedMediaScrollClient.tsx (it can't read this custom property). */
+     block scrolls in. PinnedMediaScrollClient.tsx reads this element's
+     computed `top` at runtime rather than duplicating --sticky-offset as
+     a pixel constant, so the two can't drift out of sync. */
   position: sticky;
   inset-block-start: var(--sticky-offset);
   padding-block: var(--size-6);
@@ -71,7 +72,10 @@
   position: absolute;
   inset: 0;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  /* Was a hardcoded 0.4s/ease — using the shared duration token and
+     --ease-out (an entering/crossfading element, per the animation
+     skill's easing rules) instead of a one-off magic number. */
+  transition: opacity var(--duration-base) var(--ease-out);
 }
 
 .mediaLayerActive {

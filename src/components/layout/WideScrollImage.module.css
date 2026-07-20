@@ -1,0 +1,69 @@
+.wrapper {
+  margin: 0;
+}
+
+.imageArea {
+  position: relative;
+}
+
+.scrollContainer {
+  overflow-x: auto;
+  overflow-y: hidden;
+  cursor: grab;
+  /* Stops a horizontal scroll that hits its end from chaining into the
+     browser's own gesture (e.g. Safari's swipe-to-go-back) once the user
+     keeps dragging/swiping past the edge. */
+  overscroll-behavior-inline: contain;
+  /* Thinned rather than hidden — still fully functional/discoverable
+     (native scroll + scrollbar are explicitly supposed to keep working),
+     just quieter so it doesn't visually compete with the edge fades
+     sitting over the same area. Unsupported browsers just keep the
+     default scrollbar, which is fine. */
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-bold) transparent;
+}
+
+.scrollContainer[data-dragging] {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.image {
+  display: block;
+  /* Fixed height, real aspect ratio — width is left to grow past the
+     container on purpose; that overflow is what scrollContainer scrolls. */
+  block-size: 800px;
+  inline-size: auto;
+  max-inline-size: none;
+  -webkit-user-drag: none;
+}
+
+.fadeLeft,
+.fadeRight {
+  position: absolute;
+  inset-block: 0;
+  inline-size: var(--size-7-fluid);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.fadeLeft {
+  inset-inline-start: 0;
+  background: linear-gradient(to right, #fff, transparent);
+}
+
+.fadeRight {
+  inset-inline-end: 0;
+  background: linear-gradient(to left, #fff, transparent);
+}
+
+.fadeLeft[data-visible],
+.fadeRight[data-visible] {
+  opacity: 1;
+}
+
+.caption {
+  margin-block-start: var(--size-1);
+  color: var(--text-soft);
+}

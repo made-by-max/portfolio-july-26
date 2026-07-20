@@ -28,11 +28,7 @@ export default async function HomePage() {
       <Section>
         {/* Asymmetric, hand-placed — deliberately not pinned to a
             container corner like ContentWrapper's mark. */}
-        <span
-          className="corner-mark"
-          style={{ insetBlockStart: "18%", insetInlineEnd: "12%" }}
-          aria-hidden="true"
-        />
+
         <Grid columns={[1]}>
           <Column>
             <h1 className="display-xxl text-in">Max Taylor</h1>
@@ -44,7 +40,7 @@ export default async function HomePage() {
         </Grid>
       </Section>
 
-      <GridSpacer columns={[1]} />
+      <GridSpacer columns={[1, 1]} />
 
       {featuredWork.length > 0 && (
         <Section>
@@ -61,7 +57,7 @@ export default async function HomePage() {
               between "Featured Work" and the first card, and between
               cards themselves — so the card's own divider reads as
               continuing straight through the gap. */}
-          <GridSpacer columns={[1, 1]} />
+
           <Section>
             <CaseStudyCard
               title={item.title}
@@ -71,10 +67,11 @@ export default async function HomePage() {
               imageAlt={item.title}
               href={`/work/${item.slug}/`}
             />
+            <GridSpacer columns={[1]} />
           </Section>
-          {index === featuredWork.length - 1 && featuredPlay.length > 0 && (
+          {/*{index === featuredWork.length - 1 && featuredPlay.length > 0 && (
             <GridSpacer columns={[1, 1]} />
-          )}
+          )}*/}
         </div>
       ))}
 
@@ -88,14 +85,13 @@ export default async function HomePage() {
           {/* FeaturedContentGrid is an auto-fit grid, not a fixed columns
               array, so there's no real column structure to match here —
               an evenly-spaced fallback per GridSpacer's own docs. */}
-          <GridSpacer columns={[1, 1, 1, 1]} />
+
           <FeaturedContentGrid>
             {featuredPlay.map((item) => (
               <FeaturedContentCard
                 key={item.slug}
                 title={item.title}
                 description={item.description}
-                tags={item.tags}
                 image={item.image}
                 imageAlt={item.title}
                 href={`/play/${item.slug}/`}

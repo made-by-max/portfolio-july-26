@@ -21,7 +21,7 @@ export const meta: CaseStudyMeta = {
     "An internal RAG-powered AI assistant embedded in Best Buy's developer portal",
   overview:
     "Best’e is an AI-driven digital assistant within Best Buy’s Internal Developer Portal that improves developer productivity by reducing the barriers to discoverability. Best’e is backed by a Retrievel Augmented Generation architecture accessible via a natural language prompt.",
-  labels: ["Developer Experience", "AI"],
+  labels: ["Developer Experience", "AI", "0 - 1"],
   featured: true,
   image: "beste-featured-image_jk9xmc",
   date: "2024-01-15",
@@ -37,14 +37,14 @@ export default function Beste() {
             overview={meta.overview}
             video={meta.video}
             videoAutoplay={meta.videoAutoplay}
-            alt={meta.title}
+            alt="Best'e chat panel open in the Best Buy Internal Developer Portal, answering a natural-language question with a RAG-sourced response"
           />
         ) : meta.image ? (
           <CaseStudyHero
             title={meta.title}
             overview={meta.overview}
             image={meta.image}
-            alt={meta.title}
+            alt="Best'e chat panel open in the Best Buy Internal Developer Portal, answering a natural-language question with a RAG-sourced response"
           />
         ) : (
           <CaseStudyHero title={meta.title} overview={meta.overview} />
@@ -74,7 +74,7 @@ export default function Beste() {
           </Column>
         </Grid>
       </Section>
-
+      <GridSpacer columns={[1, 1]} />
       <Section>
         <Grid columns={[1]}>
           <Column>
@@ -85,11 +85,15 @@ export default function Beste() {
               up a side panel, so that users can ask questions within the
               context of whatever they’re working on.
             </p>
-            <Image publicId="besteui_yp8mqg" alt="screenshot" padded />
+            <Image
+              publicId="besteui_yp8mqg"
+              alt="Best'e's floating action button and side panel open over a page in the Best Buy Internal Developer Portal"
+              padded
+            />
           </Column>
         </Grid>
       </Section>
-
+      <GridSpacer columns={[1, 1, 1]} />
       <Section>
         <Grid columns={[1]}>
           <Column>
@@ -108,7 +112,11 @@ export default function Beste() {
               comment.
             </p>
 
-            <Image publicId="bestFeedback_qjf40n" alt="screenshot" padded />
+            <Image
+              publicId="bestFeedback_qjf40n"
+              alt="Best'e's feedback widget prompting a rating for its response, with quick-response and free-text follow-up options"
+              padded
+            />
 
             <p>
               Users can also make general suggestions for improving Best’e,
@@ -118,7 +126,7 @@ export default function Beste() {
           </Column>
         </Grid>
       </Section>
-
+      <GridSpacer columns={[1]} />
       <Section>
         <Grid columns={[1]}>
           <Column>
@@ -128,7 +136,11 @@ export default function Beste() {
               in late 2023, so in addition to these core features, we also
               introduced a few experiments to improve the Best’e experience.
             </p>
-            <Image publicId="bestExperiments_duxniv" alt="screenshot" padded />
+            <Image
+              publicId="bestExperiments_duxniv"
+              alt="Best'e's experimental model-selection dropdown for comparing responses across different large language models"
+              padded
+            />
 
             <p>
               During the alpha release of Best’e, users were encouraged to
@@ -153,7 +165,7 @@ export default function Beste() {
           </Column>
         </Grid>
       </Section>
-
+      <GridSpacer columns={[1, 1]} />
       <Section>
         <Grid columns={[1]}>
           <Column>

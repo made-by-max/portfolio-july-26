@@ -28,7 +28,7 @@
   --color-prim-white: oklch(1 0 0);
 
   /* cobalt blue */
-  --color-prim-accent: oklch(0.46 0.2 254);
+  --color-prim-accent: oklch(0.46 0.2 248);
 
   /*Semantics*/
 
@@ -50,13 +50,37 @@
   /*type*/
   --text-primary: light-dark(var(--gray-9), var(--gray-0));
   --text-soft: light-dark(var(--gray-6), var(--gray-4));
-  --text-softer: light-dark(var(--gray-5), var(--gray-6));
-
-  --accent: var(--color-prim-accent);
-  --accent-deep: oklch(
-    from var(--color-prim-accent) calc(l - 0.09) calc(c - 0.02) h
+  /* Neither --gray-5 (light) nor --gray-6 (dark) actually cleared 4.5:1
+     text contrast against --color-background (WCAG AA audit) — 55%/63%
+     do, so this steps off the shared gray scale rather than reusing an
+     existing --gray-N step. Still built from the same --gray-chroma/
+     --gray-hue primitives, just at a lightness tuned for AA instead of
+     the scale's fixed steps. */
+  --text-softer: light-dark(
+    oklch(55% var(--gray-chroma, none) var(--gray-hue, none)),
+    oklch(63% var(--gray-chroma, none) var(--gray-hue, none))
   );
-  --accent-soft: oklch(from var(--color-prim-accent) 0.93 calc(c * 0.16) h);
+
+  /* --color-prim-accent (0.46 L) reads fine on the light theme's near-white
+     background but drops to ~2.65:1 against the dark theme's near-black
+     one — fails AA for text (4.5:1) and even the 3:1 non-text minimum
+     (focus rings, the nav underline, blockquote borders all use --accent).
+     Lightened for dark mode only; light mode keeps the canonical brand
+     value unchanged. */
+  --accent: light-dark(
+    var(--color-prim-accent),
+    oklch(from var(--color-prim-accent) 0.67 calc(c * 0.92) h)
+  );
+  --accent-deep: oklch(from var(--accent) calc(l - 0.09) calc(c - 0.02) h);
+  /* Same AA problem one level deeper: the light-mode formula (L 0.93) is
+     already near-white, so on dark backgrounds --text-primary (near-white
+     there too) landed on top of it at ~1.2:1 — nearly invisible. Dark
+     mode gets its own low-lightness tint instead of reusing the light
+     formula's shape. */
+  --accent-soft: light-dark(
+    oklch(from var(--color-prim-accent) 0.93 calc(c * 0.16) h),
+    oklch(from var(--color-prim-accent) 0.3 calc(c * 0.5) h)
+  );
   --on-accent: var(--color-prim-white);
 
   /* Section background variants. Default stays transparent (inherits the
