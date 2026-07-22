@@ -18,12 +18,12 @@ export const metadata: Metadata = {
 
 export default async function WorkPage() {
   const workItems = await getWorkItems();
-  // CaseStudyCard is image-only (no video support) — guard here rather
-  // than widening its props for a case the content model now allows
-  // (image/video are both optional, with a Hero-level video fallback)
-  // but this thumbnail card doesn't handle.
-  const caseStudies = workItems.filter(
-    (item): item is typeof item & { image: string } => Boolean(item.image)
+  // CaseStudyMetaSchema enforces "at least one of image/video" at build
+  // time, but that isn't visible to the TS type, hence the filter — the
+  // video/image branch below (same pattern as the case-study pages'
+  // CaseStudyHero usage) is what actually narrows each field to string.
+  const caseStudies = workItems.filter((item) =>
+    Boolean(item.image || item.video)
   );
   const playTaggedWork = getPublishedPlayItems().filter((item) =>
     item.tags.includes("work")
@@ -46,14 +46,25 @@ export default async function WorkPage() {
               read as continuing straight through the card's own. */}
           {/*<GridSpacer columns={[1, 1]} />*/}
           <Section>
-            <CaseStudyCard
-              title={item.title}
-              description={item.description}
-              labels={item.labels}
-              image={item.image}
-              imageAlt={item.title}
-              href={`/work/${item.slug}/`}
-            />
+            {item.video ? (
+              <CaseStudyCard
+                title={item.title}
+                description={item.description}
+                labels={item.labels}
+                video={item.video}
+                alt={item.title}
+                href={`/work/${item.slug}/`}
+              />
+            ) : item.image ? (
+              <CaseStudyCard
+                title={item.title}
+                description={item.description}
+                labels={item.labels}
+                image={item.image}
+                alt={item.title}
+                href={`/work/${item.slug}/`}
+              />
+            ) : null}
             <GridSpacer columns={[1]} />
           </Section>
           {/*{index === caseStudies.length - 1 && playTaggedWork.length > 0 && (

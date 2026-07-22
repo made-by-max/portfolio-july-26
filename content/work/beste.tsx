@@ -24,6 +24,7 @@ export const meta: CaseStudyMeta = {
   labels: ["Developer Experience", "AI", "0 - 1"],
   featured: true,
   image: "beste-featured-image_jk9xmc",
+  video: "beste_iqkvfp",
   date: "2024-01-15",
 };
 
@@ -111,9 +112,10 @@ export default function Beste() {
               feedback widget opt to leave a comment
             </p>
 
-            <Image
-              publicId="bestFeedback_qjf40n"
+            <Video
+              publicId="bestfdbk_bzowum"
               alt="Best'e's feedback widget prompting a rating for its response, with quick-response and free-text follow-up options"
+              autoplay
               padded
             />
 
@@ -168,9 +170,9 @@ export default function Beste() {
             <h2>Outcomes</h2>
             <p>
               Despite the limited number of data sets in the early iterations,
-              the initial response to Best'e was very positive and engineers
+              the initial response to Best’e was very positive and engineers
               within the company were eager to test it out. The utility of
-              Best'e will likely continue to grow as more sources are added and
+              Best’e will likely continue to grow as more sources are added and
               more users provide feedback.
             </p>
           </Column>

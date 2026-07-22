@@ -12,13 +12,13 @@ import {
 
 export default async function HomePage() {
   const { work, play } = await getFeaturedItems();
-  // CaseStudyCard/FeaturedContentCard are image-only (no video support) —
-  // guard here rather than widening either card's props for a case the
-  // content model now allows (image/video are both optional, with a
-  // Hero-level video fallback) but these thumbnail cards don't handle.
-  const featuredWork = work.filter(
-    (item): item is typeof item & { image: string } => Boolean(item.image)
-  );
+  // CaseStudyMetaSchema enforces "at least one of image/video" at build
+  // time, but that isn't visible to the TS type, hence the filter — the
+  // video/image branch below (same pattern as the case-study pages'
+  // CaseStudyHero usage) is what actually narrows each field to string.
+  // FeaturedContentCard (play) is still image-only, so that guard stays
+  // as-is.
+  const featuredWork = work.filter((item) => Boolean(item.image || item.video));
   const featuredPlay = play.filter(
     (item): item is typeof item & { image: string } => Boolean(item.image)
   );
@@ -36,7 +36,7 @@ export default async function HomePage() {
               Product Designer
             </p>
             <p className="display-xl text-in text-in-delay-2">
-              I turn &rdquo;it&apos;s complicated&rdquo; into products that ship.
+              I turn &rdquo;it’s complicated&rdquo; into products that ship.
             </p>
           </Column>
         </Grid>
@@ -61,14 +61,25 @@ export default async function HomePage() {
               continuing straight through the gap. */}
 
           <Section>
-            <CaseStudyCard
-              title={item.title}
-              description={item.description}
-              labels={item.labels}
-              image={item.image}
-              imageAlt={item.title}
-              href={`/work/${item.slug}/`}
-            />
+            {item.video ? (
+              <CaseStudyCard
+                title={item.title}
+                description={item.description}
+                labels={item.labels}
+                video={item.video}
+                alt={item.title}
+                href={`/work/${item.slug}/`}
+              />
+            ) : item.image ? (
+              <CaseStudyCard
+                title={item.title}
+                description={item.description}
+                labels={item.labels}
+                image={item.image}
+                alt={item.title}
+                href={`/work/${item.slug}/`}
+              />
+            ) : null}
             <GridSpacer columns={[1]} />
           </Section>
           {/*{index === featuredWork.length - 1 && featuredPlay.length > 0 && (

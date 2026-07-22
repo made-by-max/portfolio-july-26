@@ -7,7 +7,7 @@ import {
   Image,
   Blockquote,
   BlockquoteStack,
-  ListStack,
+  ListStack,Video
 } from "@/components/layout";
 
 export const meta: CaseStudyMeta = {
@@ -18,6 +18,7 @@ export const meta: CaseStudyMeta = {
     "I integrated an AI scribe during endoscopic procedures to reduce physicians’ cognitive load and report writing time, leveraging creative prototyping for user testing and cross-team collaboration for implementation.",
   labels: ["Healthcare", "AI", "0 - 1"],
   featured: true,
+  video: "reportfill_tshlgi",
   image: "voice-featured-image_sndh1d",
   date: "2026-03-31",
 };
@@ -171,6 +172,14 @@ export default function Voice() {
               start and stop recording, with real-time feedback on the monitor
               so they could be confident it was recording only when they wanted.
             </p>
+
+            <Video
+              publicId="demo-clip_ffvbrz"
+              alt="Video of a procedure room with an audio track of a colonoscopy procedure"
+
+              padded
+            />
+
             <p>
               At the end of the video, users were shown a Figma prototype of the
               post-procedure report, showing how the relevant information had
@@ -221,11 +230,14 @@ export default function Voice() {
               status to their interface.
             </p>
 
-            <Image
-              publicId="intra-active_yl2u0g"
+            <Video
+              publicId="intraprocedure_pof6ki"
               alt="Endoscopy tower touch screen with microphone controls and recording status added alongside the image and video capture tools"
+              autoplay
               padded
             />
+
+
           </Column>
         </Grid>
 
@@ -239,9 +251,10 @@ export default function Voice() {
               formatted the findings with the correct structure.
             </p>
 
-            <Image
-              publicId="report-transcript_fnid3t"
+            <Video
+              publicId="reportfill_tshlgi"
               alt="Post-procedure report with voice-transcribed findings mapped into their correct structured fields"
+              autoplay
               padded
             />
           </Column>
@@ -258,9 +271,10 @@ export default function Voice() {
               disclaimer that all AI content must be reviewed by a physician.
             </p>
 
-            <Image
-              publicId="data-review-cropped_ztttj2"
+            <Video
+              publicId="AI_approval_ksomoi"
               alt="Post-procedure report highlighting AI-populated fields with a disclaimer prompting physician review"
+              autoplay
               padded
             />
           </Column>

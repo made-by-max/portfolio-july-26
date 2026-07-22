@@ -38,7 +38,7 @@ export function CaseStudyHero({
   alt,
 }: Props) {
   const media = video ? (
-    <Video publicId={video} alt={alt} autoplay={videoAutoplay ?? false} />
+    <Video publicId={video} alt={alt} autoplay={videoAutoplay ?? true} />
   ) : image ? (
     <Image publicId={image} alt={alt} />
   ) : null;

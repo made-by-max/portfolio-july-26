@@ -24,6 +24,7 @@ export const meta: CaseStudyMeta = {
   labels: ["Developer Experience", "User Research", "IA"],
   featured: true,
   image: "docs-featured-image_nhms2n",
+  video: "doscpipeline_zpm1xw",
   date: "2022-03-05",
 };
 
@@ -308,9 +309,10 @@ export default function DocsIA() {
               Secure, Deploy and Monitor, and Troubleshoot.
             </p>
 
-            <Image
-              publicId="sidebars_knqe3u"
+            <Video
+              publicId="docsnav_xuyjwa"
               alt="Redesigned docs sidebar split into seven categories: Get Started, Authentication, Manage Users, Customize, Secure, Deploy and Monitor, and Troubleshoot"
+              autoplay
               padded
             />
           </Column>
@@ -387,8 +389,8 @@ export default function DocsIA() {
               navigation menu.
             </p>
             <Video
-              publicId="nav-demo_z4orvn"
-              alt="Demo of the redesigned sidebar navigation, showing how users move between sections and the mobile menu behavior"
+              publicId="doscpipeline_zpm1xw"
+              alt="Demo of the redesigned sidebar navigation, showing how users move between sections"
               autoplay
               padded
             />

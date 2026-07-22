@@ -10,6 +10,7 @@ import {
   Image,
   Blockquote,
   ListStack,
+  Video
 } from "@/components/layout";
 import { Stat } from "@/components/ui";
 
@@ -22,6 +23,7 @@ export const meta: CaseStudyMeta = {
   labels: ["Developer Experience", "User Research", "Onboarding"],
   featured: true,
   image: "featuredImage_fjxnfc",
+  video: "sqjustscroll_ezr8ej",
   date: "2022-03-05",
 };
 
@@ -266,9 +268,10 @@ export default function Quickstarts() {
               scrolls through the guide.
             </p>
 
-            <Image
-              publicId="codesamplesV3_xzy7so"
+            <Video
+              publicId="qsscroll_rsfev7"
               alt="Final Quickstart layout with configuration steps on the right and code samples that update automatically as the user scrolls"
+              autoplay
               padded
             />
           </Column>
