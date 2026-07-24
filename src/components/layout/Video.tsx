@@ -1,4 +1,5 @@
 import { getVideoDimensions, buildVideoUrl } from "@/lib/cloudinary";
+import { VideoClient } from "./VideoClient";
 import styles from "./Media.module.css";
 
 type Props = {
@@ -29,16 +30,12 @@ export async function Video({
     <figure
       className={padded ? `${styles.figure} ${styles.padded}` : styles.figure}
     >
-      <video
+      <VideoClient
         src={src}
+        alt={alt}
         width={width}
         height={height}
-        aria-label={alt}
-        autoPlay={autoplay}
-        muted={autoplay}
-        loop={autoplay}
-        controls={!autoplay}
-        playsInline
+        autoplay={autoplay}
       />
       {children ? (
         <figcaption className={styles.caption}>{children}</figcaption>

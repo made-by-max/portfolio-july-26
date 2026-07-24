@@ -38,9 +38,9 @@ export function CaseStudyCard({
   alt,
   href,
 }: Props) {
-  // Video always autoplays here (muted/looped, no controls) — a thumbnail
-  // card behaves like a preview loop regardless of the case study's own
-  // videoAutoplay setting, which governs the full-size CaseStudyHero instead.
+  // Video always autoplays here (muted/looped) — a thumbnail card behaves
+  // like a preview loop regardless of the case study's own videoAutoplay
+  // setting, which governs the full-size CaseStudyHero instead.
   const media = video ? (
     <Video publicId={video} alt={alt} autoplay />
   ) : image ? (
