@@ -103,7 +103,7 @@ export default function DocsIA() {
             <p>
               Based on customer feedback and my own use of the docs, I strongly
               suspected that our information architecture was largely to blame.
-              I got a lot fof pushback from my PM, however. He argued that we
+              I got a lot of pushback from my PM, however. He argued that we
               should be focusing more on SEO, since 70% of our traffic came from
               search. I didn’t think that number told the whole story, so I
               decided it was time to actually talk to users.
