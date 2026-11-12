@@ -9,7 +9,7 @@ import {
   useState,
   useSyncExternalStore,
 } from "react";
-import { X, LoaderCircle } from "lucide-react";
+import { X } from "lucide-react";
 import cloudinaryLoader from "@/lib/cloudinary-loader";
 import styles from "./Lightbox.module.css";
 
@@ -437,15 +437,6 @@ function LightboxView({
           onPointerCancel={endDrag}
           onClick={handleImageClick}
         />
-        {loadState === "loading" ? (
-          <div
-            className={styles.spinner}
-            role="status"
-            aria-label="Loading image"
-          >
-            <LoaderCircle size={24} aria-hidden="true" />
-          </div>
-        ) : null}
         {loadState === "error" ? (
           <p className={`body-s ${styles.status}`} role="status">
             This image couldn&rsquo;t be loaded.

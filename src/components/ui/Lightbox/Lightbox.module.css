@@ -144,7 +144,7 @@
   touch-action: none;
 }
 
-/* Image, spinner and error message share one grid cell, centred. */
+/* Image, placeholder and error message share one grid cell, centred. */
 .stage > * {
   grid-area: 1 / 1;
 }
@@ -197,29 +197,13 @@
   pointer-events: none;
 }
 
-/* Spinner and error message can now sit on top of the placeholder image,
-   so they get a surface chip to stay visible over any image content. */
-.spinner,
+/* Error message can sit on top of the placeholder image, so it gets a
+   surface chip to stay visible over any image content. */
 .status {
+  margin: 0;
   padding: var(--size-1);
   border-radius: 999px;
   background-color: var(--surface);
-}
-
-.spinner {
-  display: inline-flex;
-  color: var(--text-soft);
-  animation: lightbox-spin calc(var(--duration-base) * 3) linear infinite;
-}
-
-@keyframes lightbox-spin {
-  to {
-    rotate: 1turn;
-  }
-}
-
-.status {
-  margin: 0;
   color: var(--text-soft);
 }
 
