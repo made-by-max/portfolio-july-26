@@ -89,6 +89,21 @@
   object-fit: cover;
 }
 
+/* Lightbox trigger defaults to fit-content; the pinned image fills its
+   layer, so the button has to as well (otherwise img's 100% would resolve
+   against a shrink-to-fit parent). Double class for specificity over the
+   trigger's own rule. */
+.mediaLayer .mediaTrigger {
+  inline-size: 100%;
+}
+
+/* Clicks are ignored while scrolling or crossfading — drop the zoom-in
+   cursor during that window so it doesn't promise a click that won't do
+   anything. */
+.mediaPanel[data-busy] .mediaTrigger {
+  cursor: default;
+}
+
 /* Sticky pin-and-crossfade doesn't translate to narrow viewports — fall
    back to a simple linear stack with each image inline under its text.
    Media queries can't reference custom properties, so this is a literal

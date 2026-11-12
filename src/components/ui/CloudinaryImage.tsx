@@ -13,10 +13,16 @@ type Props = {
 // passed as HTML attributes so the browser reserves the correct aspect ratio.
 const MAX_DELIVERY_WIDTH = 2000;
 
-export function CloudinaryImage({ publicId, width, height, alt }: Props) {
+// Exported so other components (e.g. ImageTabsClient's preloading) can
+// request the exact same URL and hit the browser cache.
+export function getCloudinaryImageSrc(publicId: string, width: number) {
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
   const deliveryWidth = Math.min(width, MAX_DELIVERY_WIDTH);
-  const src = `https://res.cloudinary.com/${cloudName}/image/upload/w_${deliveryWidth},q_auto,f_auto/${publicId}`;
+  return `https://res.cloudinary.com/${cloudName}/image/upload/w_${deliveryWidth},q_auto,f_auto/${publicId}`;
+}
+
+export function CloudinaryImage({ publicId, width, height, alt }: Props) {
+  const src = getCloudinaryImageSrc(publicId, width);
 
   // eslint-disable-next-line @next/next/no-img-element
   return (

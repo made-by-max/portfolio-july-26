@@ -1,9 +1,10 @@
 /* Shared by both modes — the mark positions against this, not the outer
    box, so it stays anchored to the text regardless of the box's own
-   padding. */
+   padding. margin: 0 resets the UA blockquote margins (the carousel uses
+   a <blockquote> here; standalone mode uses a <div>). */
 .quoteBody {
   position: relative;
-
+  margin: 0;
 }
 
 /* quote.svg has no fill baked in, so it's applied as a mask (not a plain
@@ -36,29 +37,76 @@
   color: var(--text-primary);
 }
 
-/* Standalone (single-child) mode — box is half its parent Column's width
-   (not half the site's --max-width), centered, with generous padding
-   relative to that smaller box. Tinted background + a bold accent border
-   give it the same "featured" weight as the stack mode's active card. */
-.quote {
-    margin-block: var(--size-10-fluid);
-  margin-inline: 0;
+/* Box treatment shared by both modes — half its parent Column's width
+   (not half the site's --max-width), centered. Tinted background + a bold
+   accent border give it a "featured" weight. */
+.quote,
+.carousel {
+  margin-block: var(--size-10-fluid);
   inline-size: 50%;
   margin-inline: auto;
-  padding: var(--size-6);
-  padding-inline-start: var(--size-12);
   border-block-start: 12px solid var(--accent-deep);
   background-color: var(--surface);
   border-radius: 4px;
 }
 
-/* Interactive stack mode */
-.stackWrapper {
+/* Standalone (single-child) mode — generous padding, with extra on the
+   inline-start side to make room for the mark. */
+.quote {
+  padding: var(--size-6);
+  padding-inline-start: var(--size-12);
+}
+
+/* ---- Carousel (multi-child) mode ------------------------------------ */
+
+/* Same overall padding as standalone mode, except inline-start: the
+   track is a scroll container and clips anything outside it, so the
+   mark's room lives inside each slide instead (see .slide). */
+.carousel {
+  padding: var(--size-6);
+  padding-inline-start: 0;
+}
+
+/* Native scroll-snap track, one snap point per quote. Flex rows stretch
+   every slide to the tallest one, so the track's height is set by the
+   longest quote and never jumps between slides — no JS measurement.
+   position: relative makes the track the slides' offsetParent, which the
+   arrow buttons use to scroll to a slide. */
+.track {
+  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--size-3);
-  inline-size: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  /* Arrow-button slides animate via this; the global reduced-motion rule
+     in globals.css forces it back to `auto`. */
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+/* Older Safari doesn't support scrollbar-width. */
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  flex: 0 0 100%;
+  min-inline-size: 0;
+  scroll-snap-align: start;
+  /* One quote per swipe, even on a fast flick. */
+  scroll-snap-stop: always;
+  /* Room for the mark (same total inset as standalone mode). The small
+     block-start padding keeps the mark's slight upward nudge from being
+     clipped by the track. */
+  padding-inline-start: var(--size-12);
+  padding-block-start: var(--size-0);
+}
+
+.controls {
+  display: flex;
+  justify-content: end;
+  gap: var(--size-1);
+  margin-block-start: var(--size-3);
 }
 
 .arrow {
@@ -70,12 +118,14 @@
   justify-content: center;
   inline-size: var(--size-6);
   block-size: var(--size-6);
+  padding: 0;
   border-radius: 999px;
-  border: 1px solid var(--line-soft);
+  border: 1px solid var(--line-bold);
   background: none;
   color: var(--text-primary);
-  font-size: var(--font-size-5);
-  transition: background-color var(--duration-fast) var(--ease-out);
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -84,129 +134,27 @@
   }
 }
 
-/* CSS-only uniform sizing: every quote (not just the current 4-layer
-   window — see BlockquoteStack) is stacked into this single grid cell via
-   .card's grid-row/grid-column below. Grid's auto row-sizing takes the
-   tallest participant, so .stack's height is naturally driven by the
-   longest quote among ALL siblings in this instance, stays constant as
-   the active quote changes, and needs no JS measurement pass.
-
-   --stack-rotate-* are rotation angles for the peeking "messy pile" cards
-   below, alternating direction per layer so the stack reads as
-   tossed/organic rather than a mechanically uniform fan. Component-scoped
-   new custom properties, flagged per CLAUDE.md — there's no existing
-   rotation token to reference. */
-.stack {
-  position: relative;
-  inline-size: 50%;
-  display: grid;
-  --stack-rotate-1: 3deg;
-  --stack-rotate-2: -4deg;
-  --stack-rotate-3: 5deg;
+.arrow:active {
+  transform: scale(0.97);
 }
 
-.card {
-  grid-row: 1 / -1;
-  grid-column: 1 / -1;
-  padding: var(--size-6);
-  border: 1px solid var(--line-soft);
-  background-color: var(--color-background);
-  /* Subtle depth for every card — the active one gets a stronger shadow
-     below, peeking cards keep just this base amount. */
-  box-shadow: 0 var(--size-0) var(--size-1) rgb(0 0 0 / 6%);
-  transition:
-    /* Every card stays mounted and just moves to a new depth/position as
-       the stack cycles — on-screen movement between states, not an
-       enter/exit, so this one gets --ease-in-out rather than --ease-out
-       (the rest of the list is still fades/color, which keep --ease-out). */
-    transform var(--duration-base) var(--ease-in-out),
-    opacity var(--duration-base) var(--ease-out),
-    box-shadow var(--duration-base) var(--ease-out),
-    border-color var(--duration-base) var(--ease-out),
-    background-color var(--duration-base) var(--ease-out);
-}
-
-.card[data-depth="0"] {
-  transform: translate(0, 0) rotate(0deg);
-  opacity: 1;
-  z-index: 4;
-  border: 2px solid var(--accent);
-  background-color: var(--accent-soft);
-  box-shadow: 0 var(--size-1) var(--size-2) rgb(0 0 0 / 10%);
-}
-
-/* Peeking layers: offset increases at each layer back, diagonally in both
-   x and y, with a small alternating rotation so the pile reads as
-   scattered rather than a flat, uniform fan. */
-.card[data-depth="1"] {
-  transform: translate(
-      calc(var(--size-0) + var(--size-1)),
-      calc(var(--size-0) + var(--size-1))
-    )
-    rotate(var(--stack-rotate-1));
-  opacity: 0.9;
-  z-index: 3;
-  box-shadow: 0 var(--size-1) var(--size-2) rgb(0 0 0 / 8%);
-}
-
-.card[data-depth="2"] {
-  transform: translate(var(--size-3), var(--size-3)) rotate(var(--stack-rotate-2));
-  opacity: 0.8;
-  z-index: 2;
-  box-shadow: 0 var(--size-0) var(--size-1) rgb(0 0 0 / 6%);
-}
-
-.card[data-depth="3"] {
-  transform: translate(var(--size-4), var(--size-4)) rotate(var(--stack-rotate-3));
-  opacity: 0.7;
-  z-index: 1;
-  box-shadow: 0 var(--size-0) var(--size-0) rgb(0 0 0 / 4%);
-}
-
-/* Quotes outside the current 4-layer window — invisible, but still
-   occupying the shared grid cell so they still count toward .stack's
-   height (see the .stack comment above). */
-.card[data-depth="hidden"] {
-  opacity: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* The quote body (mark + text) crossfades faster and independently of the
-   card's own settle motion. Only the active card's text is ever legible —
-   peeking cards read as blank stacked shapes, not overlapping duplicate
-   text (which, with every card nearly the same size and slightly offset,
-   would otherwise show through as visual noise). */
-.card .quoteBody {
-  opacity: 0;
-  transition: opacity var(--duration-fast) var(--ease-out);
-}
-
-.card[data-depth="0"] .quoteBody {
-  opacity: 1;
+.arrow:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* Media queries can't reference custom properties, so this is a literal
-   value — keep it in sync with --breakpoint-mobile in sizes.css. Arrow
-   navigation is desktop-only; mobile shows just the active quote (no
-   swipe-to-advance — explicitly out of scope).
+   value — keep it in sync with --breakpoint-mobile in sizes.css.
 
    Width is a deliberate deviation from "same sizing rules as desktop":
    50% of an already-narrow mobile Column measures well under 200px,
    which wraps body-l text to one or two words per line — a real
    readability break, not just a different look. Padding, text size, and
-   mark position are unchanged from desktop. */
+   mark position are unchanged from desktop. Arrows stay visible on
+   mobile alongside swipe. */
 @media (max-width: 48rem) {
-  .arrow {
-    display: none;
-  }
-
-  .card:not([data-depth="0"]) {
-    display: none;
-  }
-
   .quote,
-  .stack {
+  .carousel {
     inline-size: 100%;
   }
 }

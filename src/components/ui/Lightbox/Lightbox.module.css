@@ -1,0 +1,238 @@
+/* ---- Inline trigger ------------------------------------------------- */
+
+/* Native button reset — the only visible affordance is the zoom-in
+   cursor. fit-content keeps the hit area to the image itself rather than
+   the full column width. */
+.trigger {
+  appearance: none;
+  display: block;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: zoom-in;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---- Dialog --------------------------------------------------------- */
+
+/* Page scroll lock while open. scrollbar-gutter keeps the page from
+   shifting sideways when the scrollbar disappears on non-overlay
+   scrollbar systems. */
+:root:has(.dialog[open]) {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
+
+.dialog {
+  /* Backdrop is always dark, so the lightbox resolves every light-dark()
+     token to its dark value — text/surface/line tokens stay legible on it
+     in both site themes without any lightbox-specific colors. */
+  color-scheme: dark;
+  color: var(--text-primary);
+
+  position: fixed;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  max-inline-size: none;
+  max-block-size: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+
+  /* Fade in/out with no JS: @starting-style for the entry, allow-discrete
+     on display/overlay so the exit can play before the dialog leaves the
+     top layer. Browsers without `overlay` transitions just close
+     instantly. Reduced motion is covered by the global rule in
+     globals.css. */
+  opacity: 0;
+  transition:
+    opacity var(--duration-base) var(--ease-out),
+    display var(--duration-base) allow-discrete,
+    overlay var(--duration-base) allow-discrete;
+}
+
+.dialog[open] {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  opacity: 1;
+}
+
+.dialog::backdrop {
+  background-color: var(--lightbox-backdrop);
+  backdrop-filter: blur(var(--lightbox-backdrop-blur));
+  -webkit-backdrop-filter: blur(var(--lightbox-backdrop-blur));
+  opacity: 0;
+  transition:
+    opacity var(--duration-base) var(--ease-out),
+    display var(--duration-base) allow-discrete,
+    overlay var(--duration-base) allow-discrete;
+}
+
+.dialog[open]::backdrop {
+  opacity: 1;
+}
+
+@starting-style {
+  .dialog[open],
+  .dialog[open]::backdrop {
+    opacity: 0;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  inset-block-start: var(--size-2);
+  inset-inline-end: var(--size-2);
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--size-6);
+  block-size: var(--size-6);
+  padding: 0;
+  appearance: none;
+  border: 1px solid var(--line-bold);
+  border-radius: 999px;
+  background-color: var(--surface);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .closeButton:hover {
+    background-color: var(--surface-2);
+  }
+}
+
+.closeButton:active {
+  transform: scale(0.97);
+}
+
+.closeButton:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---- Stage + image -------------------------------------------------- */
+
+/* Size container so the image can fit itself with cqi/cqb units — no JS
+   layout measurement needed for the fit, and it stays correct on resize. */
+.stage {
+  container-type: size;
+  display: grid;
+  place-items: center;
+  min-block-size: 0;
+  overflow: hidden;
+  padding-block: var(--size-8) var(--size-2);
+  padding-inline: var(--size-8);
+  /* Wheel/drag are handled in JS; stops the browser treating them as
+     scroll or native gestures. */
+  touch-action: none;
+}
+
+/* Image, placeholder and error message share one grid cell, centred. */
+.stage > * {
+  grid-area: 1 / 1;
+}
+
+/* Fit = the smallest of: stage width, the asset's own width (never
+   upscaled), and the width that makes its height equal the stage height.
+   block-size: auto + the width/height attributes give the natural aspect
+   ratio — no forced aspect-ratio. */
+.image {
+  display: block;
+  inline-size: min(
+    100cqi,
+    calc(var(--lightbox-image-width) * 1px),
+    calc(100cqb * var(--lightbox-image-width) / var(--lightbox-image-height))
+  );
+  block-size: auto;
+  max-inline-size: none;
+  user-select: none;
+  transform-origin: center;
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.image[data-loaded] {
+  opacity: 1;
+}
+
+.image[data-animate] {
+  transition:
+    opacity var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.image[data-zoom="in"] {
+  cursor: zoom-in;
+}
+
+.image[data-zoom="out"] {
+  cursor: zoom-out;
+}
+
+.image[data-dragging] {
+  cursor: grabbing;
+}
+
+/* Inline image shown at fit size while the larger version loads. Comes
+   after .image so its opacity wins at equal specificity. */
+.placeholder {
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* Error message can sit on top of the placeholder image, so it gets a
+   surface chip to stay visible over any image content. */
+.status {
+  margin: 0;
+  padding: var(--size-1);
+  border-radius: 999px;
+  background-color: var(--surface);
+  color: var(--text-soft);
+}
+
+/* ---- Caption -------------------------------------------------------- */
+
+.caption {
+  justify-self: center;
+  inline-size: min(100%, var(--prose-max-width));
+  padding-block-end: var(--size-4);
+  padding-inline: var(--size-4);
+  text-align: center;
+  color: var(--text-soft);
+}
+
+/* MDX captions arrive as <p>/<h3> etc. with their own global sizes —
+   pull them all to the container's body-s size so the caption stays
+   quiet under the image (same idea as ImageTabs' tab text). */
+.caption :is(h1, h2, h3, h4, h5, h6, p) {
+  margin-block: 0;
+  max-inline-size: none;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.caption :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--text-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+.caption > * + * {
+  margin-block-start: var(--size-0);
+}

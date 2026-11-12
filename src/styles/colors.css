@@ -90,4 +90,10 @@
      read as a distinct section without that complexity. */
   --section-bg-default: transparent;
   --section-bg-dark: var(--surface-2);
+
+  /* Lightbox backdrop — deliberately NOT light-dark(): it stays dark in
+     both themes so enlarged images read against a neutral dark field.
+     Built from the darkest gray primitive at partial opacity so the
+     blurred page shows through. New token, flagged per CLAUDE.md. */
+  --lightbox-backdrop: oklch(from var(--gray-9) l c h / 85%);
 }
