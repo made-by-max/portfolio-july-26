@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CloudinaryImage } from "@/components/ui/CloudinaryImage";
+import { LightboxTrigger } from "@/components/ui/Lightbox";
 import styles from "./ImageTabs.module.css";
 
 type ResolvedItem = {
@@ -24,13 +25,23 @@ export function ImageTabsClient({ items }: Props) {
     <div className={styles.wrapper}>
       <div className={styles.imageArea}>
         {/* key forces a hard cut on swap — no crossfade transition */}
-        <CloudinaryImage
+        <LightboxTrigger
           key={active.publicId}
-          publicId={active.publicId}
-          width={active.width}
-          height={active.height}
-          alt={active.alt}
-        />
+          image={{
+            publicId: active.publicId,
+            alt: active.alt,
+            width: active.width,
+            height: active.height,
+            caption: active.content,
+          }}
+        >
+          <CloudinaryImage
+            publicId={active.publicId}
+            width={active.width}
+            height={active.height}
+            alt={active.alt}
+          />
+        </LightboxTrigger>
       </div>
       <div className={styles.tabList}>
         {items.map((item, index) => (

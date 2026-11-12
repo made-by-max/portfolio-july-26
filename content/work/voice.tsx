@@ -218,47 +218,65 @@ export default function Voice() {
       <Section>
         <ImageTabs>
           <ImageTabsItem
-            image="Tandem-Oly-Option-1_jofykr"
+            image="Tandem-Oly-Option-1_rvo2w4"
             alt=""
           >
-            <h3>Pure Olysense UI</h3>
+            <h3>Olysense only UI</h3>
             <p>
-              Scrap the partnership and either work with a different vendor or become a medical device and build it ourselves. This would give us full control over the UI, but would cost more and be more to build.
+              Build in house or work with a different vendor. Larger time and engineering effort, but Olympus retains complete control of the UI.
             </p>
           </ImageTabsItem>
 
           <ImageTabsItem
-            image="Tandem-Oly-Option-2_z0tfgn"
+            image="Tandem-Oly-Option-2_q0ulrm"
             alt=""
           >
             <h3>Tandem for voice procedures</h3>
             <p>
-              Preserves both UIs but basically asking users to use 2 different products.
+              Use the Tandem UI for voice procedures and the OlySense UI for other procedures. Preserves both UIs, but requires users to learn and use two completely different UIs depending on the procedure.
             </p>
           </ImageTabsItem>
 
           <ImageTabsItem
-            image="Tandem-Oly-Option-3_oxvgvc"
+            image="Tandem-Oly-Option-3_a5hpal"
             alt=""
           >
             <h3>Tandem within Olysense</h3>
             <p>
-              Incorporate the Tandem UI into OlySense report as an iframe or something.
+              Incorporate the Tandem UI into OlySense report as an iFrame. Solves the regulatory issue, but presents two different UIs on the same screen.
             </p>
           </ImageTabsItem>
           <ImageTabsItem
-            image="Tandem-Oly-Option-4_cpniew"
+            image="Tandem-Oly-Option-4_wjrli2"
             alt=""
           >
             <h3>Tandem UI before Olysense</h3>
             <p>
-              Entire sections were completely missing from the sidebar
-              navigation.
+              Users approve findings in the Tandem UI before moving to the OlySense UI.
             </p>
           </ImageTabsItem>
         </ImageTabs>
       </Section>
 
+      <Section>
+        <Grid columns={[1]}>
+          <Column>
+
+            <p>
+              The intra-procedure experience and the post-procedure report
+              writing experience were owned by different teams, each with its
+              own roadmap and delivery constraints.
+            </p>
+
+            <p>
+              I partnered closely with designers, engineers, and product
+              managers from both teams to craft the end-to-end voice experience
+              that spanned multiple touchpoints and integrated into their
+              existing designs without risking their delivery timelines.
+            </p>
+          </Column>
+        </Grid>
+      </Section>
 
       <Section>
         <Grid columns={[1]}>

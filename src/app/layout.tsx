@@ -10,6 +10,7 @@ import {
   Footer,
   ScrollTimelinePolyfillLoader,
 } from "@/components/layout";
+import { LightboxProvider } from "@/components/ui/Lightbox";
 
 const SITE_URL = "https://maxtaylor.design";
 const SITE_NAME = "Max Taylor";
@@ -57,9 +58,11 @@ export default function RootLayout({
       </head>
       <body>
         <ScrollTimelinePolyfillLoader />
-        <TopNav />
-        <div className="page-content">{children}</div>
-        <Footer />
+        <LightboxProvider>
+          <TopNav />
+          <div className="page-content">{children}</div>
+          <Footer />
+        </LightboxProvider>
       </body>
     </html>
   );

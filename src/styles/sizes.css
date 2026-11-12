@@ -36,4 +36,8 @@
   /* Fixed TopNav height — page content needs matching top padding so the
      fixed nav doesn't obscure it on load. New token, flagging per CLAUDE.md. */
   --nav-height: var(--size-10); /* 80px */
+
+  /* Blur radius behind the lightbox backdrop. New token, flagged per
+     CLAUDE.md. */
+  --lightbox-backdrop-blur: var(--size-2); /* 16px */
 }
