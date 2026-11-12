@@ -7,7 +7,9 @@ import {
   Image,
   Blockquote,
   BlockquoteStack,
-  ListStack,Video
+  ListStack, Video,
+  ImageTabsItem,
+      ImageTabs,
 } from "@/components/layout";
 
 export const meta: CaseStudyMeta = {
@@ -198,6 +200,65 @@ export default function Voice() {
           </Column>
         </Grid>
       </Section>
+
+      <Section>
+        <Grid columns={[1]}>
+          <Column>
+            <h2>
+              An unexpected complication
+            </h2>
+            <p>We were partnering with Tandem to handle the backend part of parsing the speech, in part because they had medical device clearance and Olympus didn’t want to deal with the regulatory burden of our reporting tool being classified as a medical device. Our intention had always been to treat Tandem as an API and use our own UI, but somewhere along the way some wires got crossed and they told us 4 months into the project that in order to meet the EU MDR requirements the human-in-the-loop portion of the interface would have to be performed in their UI. </p>
+
+          </Column>
+        </Grid>
+      </Section>
+
+
+
+      <Section>
+        <ImageTabs>
+          <ImageTabsItem
+            image="Tandem-Oly-Option-1_jofykr"
+            alt=""
+          >
+            <h3>Pure Olysense UI</h3>
+            <p>
+              Scrap the partnership and either work with a different vendor or become a medical device and build it ourselves. This would give us full control over the UI, but would cost more and be more to build.
+            </p>
+          </ImageTabsItem>
+
+          <ImageTabsItem
+            image="Tandem-Oly-Option-2_z0tfgn"
+            alt=""
+          >
+            <h3>Tandem for voice procedures</h3>
+            <p>
+              Preserves both UIs but basically asking users to use 2 different products.
+            </p>
+          </ImageTabsItem>
+
+          <ImageTabsItem
+            image="Tandem-Oly-Option-3_oxvgvc"
+            alt=""
+          >
+            <h3>Tandem within Olysense</h3>
+            <p>
+              Incorporate the Tandem UI into OlySense report as an iframe or something.
+            </p>
+          </ImageTabsItem>
+          <ImageTabsItem
+            image="Tandem-Oly-Option-4_cpniew"
+            alt=""
+          >
+            <h3>Tandem UI before Olysense</h3>
+            <p>
+              Entire sections were completely missing from the sidebar
+              navigation.
+            </p>
+          </ImageTabsItem>
+        </ImageTabs>
+      </Section>
+
 
       <Section>
         <Grid columns={[1]}>
