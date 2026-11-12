@@ -158,24 +158,23 @@ export default function Voice() {
         </Grid>
       </Section>
 
+
       <Section>
       <Grid columns={[1]}>
           <Column>
-            <p>User flows
-            When we started the voice work there were a lot of unknowns and a lot of them depended on other teams or directions from senior leadership which made it really hard to plan the user flows.
-            Some of the unknowns were
-            Where would the software run
-            Microphone type
-            How to trigger voice on/off
-            How much/what to capture
-            System status and feedback
-            Real time corrections
-            Data output
-            Vendor
-              In order to move forward when I had so many open questions, I mapped out the unknowns and the possible directions for each then put together user flows for each permutation, including what i viewed as the worst case scenario, best case scenario, and the most realistic scenario.</p>
+            <h2>Navigating ambiguous constraints</h2>
+            <p>This project came with a lot of unknowns and unanswered questions, including what hardware the feature would run on, how voice controls would be triggered, how to display system status, and more. Many were dependent on outside forces like other teams, external vendors, and product leadership, so I often felt like I was designing with more questions than answers.</p>
+            <p>In order to move forward, I mapped out each of the unknowns and the possible directions for each and created user flows for all the different permutations. </p>
+            <p>I identified the flow with the least friction for the end user, the flow with the most concessions, and the flow that seemed most likely based on our constraints.
+</p>
+
+
             <WideScrollImage publicId="Highly_complex_flow_kxkhr3" alt="" />
-<WideScrollImage publicId="Less_complex_flow_potukc" alt="" />
-            <p>Worked with PM and UXR to align on most realistic given what we knew at the time. Then I wanted to test that user flow with users.</p>
+            <WideScrollImage publicId="Less_complex_flow_potukc" alt="" />
+
+
+            <p>I led a series of story mapping sessions with my PM, UX researcher, and engineering team to align on the most likely user flow and plan different phases of development.
+</p>
             <WideScrollImage publicId="Most_realistic_tnrn7i" alt="" />
 
           </Column>
@@ -187,8 +186,7 @@ export default function Voice() {
           <Column>
             <h2>User testing a voice interface presented unique challenges</h2>
             <p>
-              In order to validate the doctor’s mental model before the backend
-              was in place I used Claude to create a realistic transcript of a
+              I wanted to validate the user flow against the doctors’ mental models before the engineering work began, but with almost no on-screen interactions I had to get creative. I used Claude to create a realistic transcript of a
               colonoscopy procedure, complete with side conversations and
               interruptions. I then used ElevenLabs to turn it into an audio
               recording and played that over images from a procedure room.
@@ -228,18 +226,17 @@ export default function Voice() {
       <Section>
         <Grid columns={[1]}>
           <Column>
-            <h2>An unexpected complication</h2>
-            <p>
-              We were partnering with Tandem to handle the backend part of
-              parsing the speech, in part because they had medical device
-              clearance and Olympus didn’t want to deal with the regulatory
-              burden of our reporting tool being classified as a medical device.
-              Our intention had always been to treat Tandem as an API and use
-              our own UI, but somewhere along the way some wires got crossed and
-              they told us 4 months into the project that in order to meet the
-              EU MDR requirements the human-in-the-loop portion of the interface
-              would have to be performed in their UI.{" "}
+            <h2>Dealing with an unexpected twist</h2>
+
+              <p>With the user flow validated, I was ready to move forward when we ran into a major speedbump.
+              </p>
+              <p>We were partnering with a voice AI company called Tandem to handle the backend part of parsing the speech, in part to reduce our engineering load, but primarily because they already had clearance as a medical device and Olympus was looking to avoid that regulatory burden.
+</p>
+
+<p>Our intention had always been to treat Tandem as an API and use our own UI, but there was a communication breakdown somewhere along the way and we found out several months into the project that in order to meet the EU medical device requirements, the human-in-the-loop portion of the interface would have to be performed using Tandem’s UI and not the Olympus UI we’d been building. That meant I had to go back to the drawing board to figure out how to adapt our existing user flow and reporting product to accommodate an entirely new interface.
             </p>
+            <p>I coordinated closely with our in-house regulatory team as well as the designers and PMs for adjacent features that would be impacted and I came up with four potential flows that would ensure we were in compliance.
+</p>
           </Column>
         </Grid>
       </Section>
@@ -273,7 +270,7 @@ export default function Voice() {
             </p>
           </ImageTabsItem>
           <ImageTabsItem image="Tandem-Oly-Option-4_wjrli2" alt="">
-            <h3>Tandem UI before Olysense</h3>
+            <h3>Tandem before Olysense</h3>
             <p>
               Users approve findings in the Tandem UI before moving to the
               OlySense UI.
@@ -285,18 +282,15 @@ export default function Voice() {
       <Section>
         <Grid columns={[1]}>
           <Column>
-            <p>
-              The intra-procedure experience and the post-procedure report
-              writing experience were owned by different teams, each with its
-              own roadmap and delivery constraints.
+            <p>I presented the options to the impact teams, our regulatory department, and product leadership. The consensus was that while the OlySense only UI flow was our ideal solution, Tandem was unlikely to agree to it and the next best option was the Tandem before OlySense flow.
             </p>
-
-            <p>
-              I partnered closely with designers, engineers, and product
-              managers from both teams to craft the end-to-end voice experience
-              that spanned multiple touchpoints and integrated into their
-              existing designs without risking their delivery timelines.
+            <p>I worked with our regulatory team to come up with an argument for the first option that Tandem’s regulatory team might accept, though we knew it was a long shot. I met with their team and presented our case, but as expected they rejected it. I then came back with our fallback option and we were able to reach a compromise that worked for both sides.
             </p>
+            <Image
+              publicId="Aligned_flow_l5wdoo"
+              alt=""
+              padded
+            />
           </Column>
         </Grid>
       </Section>
@@ -400,6 +394,8 @@ export default function Voice() {
               If this was the report I got [from Voice], I would add the
               sentence here, and I would print it.
             </Blockquote>
+            <p>This feature is expected to launch in Europe in April 2027, with a limited release to partner hospitals in January 2027.
+</p>
           </Column>
         </Grid>
       </Section>
