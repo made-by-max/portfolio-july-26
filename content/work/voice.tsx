@@ -6,10 +6,11 @@ import {
   CaseStudyHero,
   Image,
   Blockquote,
-  BlockquoteStack,
-  ListStack, Video,
+  ListStack,
+  Video,
   ImageTabsItem,
-      ImageTabs,
+  ImageTabs,
+  WideScrollImage
 } from "@/components/layout";
 
 export const meta: CaseStudyMeta = {
@@ -158,16 +159,39 @@ export default function Voice() {
       </Section>
 
       <Section>
+      <Grid columns={[1]}>
+          <Column>
+            <p>User flows
+            When we started the voice work there were a lot of unknowns and a lot of them depended on other teams or directions from senior leadership which made it really hard to plan the user flows.
+            Some of the unknowns were
+            Where would the software run
+            Microphone type
+            How to trigger voice on/off
+            How much/what to capture
+            System status and feedback
+            Real time corrections
+            Data output
+            Vendor
+              In order to move forward when I had so many open questions, I mapped out the unknowns and the possible directions for each then put together user flows for each permutation, including what i viewed as the worst case scenario, best case scenario, and the most realistic scenario.</p>
+            <WideScrollImage publicId="Highly_complex_flow_kxkhr3" alt="" />
+<WideScrollImage publicId="Less_complex_flow_potukc" alt="" />
+            <p>Worked with PM and UXR to align on most realistic given what we knew at the time. Then I wanted to test that user flow with users.</p>
+            <WideScrollImage publicId="Most_realistic_tnrn7i" alt="" />
+
+          </Column>
+      </Grid>
+        </Section>
+
+      <Section>
         <Grid columns={[1]}>
           <Column>
             <h2>User testing a voice interface presented unique challenges</h2>
             <p>
-              In order to validate the doctor’s mental model before the
-              backend was in place I used Claude to create a realistic
-              transcript of a colonoscopy procedure, complete with side
-              conversations and interruptions. I then used ElevenLabs to turn it
-              into an audio recording and played that over images from a
-              procedure room.
+              In order to validate the doctor’s mental model before the backend
+              was in place I used Claude to create a realistic transcript of a
+              colonoscopy procedure, complete with side conversations and
+              interruptions. I then used ElevenLabs to turn it into an audio
+              recording and played that over images from a procedure room.
             </p>
             <p>
               The video demonstrated how doctors could use vocal commands to
@@ -204,55 +228,55 @@ export default function Voice() {
       <Section>
         <Grid columns={[1]}>
           <Column>
-            <h2>
-              An unexpected complication
-            </h2>
-            <p>We were partnering with Tandem to handle the backend part of parsing the speech, in part because they had medical device clearance and Olympus didn’t want to deal with the regulatory burden of our reporting tool being classified as a medical device. Our intention had always been to treat Tandem as an API and use our own UI, but somewhere along the way some wires got crossed and they told us 4 months into the project that in order to meet the EU MDR requirements the human-in-the-loop portion of the interface would have to be performed in their UI. </p>
-
+            <h2>An unexpected complication</h2>
+            <p>
+              We were partnering with Tandem to handle the backend part of
+              parsing the speech, in part because they had medical device
+              clearance and Olympus didn’t want to deal with the regulatory
+              burden of our reporting tool being classified as a medical device.
+              Our intention had always been to treat Tandem as an API and use
+              our own UI, but somewhere along the way some wires got crossed and
+              they told us 4 months into the project that in order to meet the
+              EU MDR requirements the human-in-the-loop portion of the interface
+              would have to be performed in their UI.{" "}
+            </p>
           </Column>
         </Grid>
       </Section>
 
-
-
       <Section>
         <ImageTabs>
-          <ImageTabsItem
-            image="Tandem-Oly-Option-1_rvo2w4"
-            alt=""
-          >
+          <ImageTabsItem image="Tandem-Oly-Option-1_rvo2w4" alt="">
             <h3>Olysense only UI</h3>
             <p>
-              Build in house or work with a different vendor. Larger time and engineering effort, but Olympus retains complete control of the UI.
+              Build in house or work with a different vendor. Larger time and
+              engineering effort, but Olympus retains complete control of the
+              UI.
             </p>
           </ImageTabsItem>
 
-          <ImageTabsItem
-            image="Tandem-Oly-Option-2_q0ulrm"
-            alt=""
-          >
+          <ImageTabsItem image="Tandem-Oly-Option-2_q0ulrm" alt="">
             <h3>Tandem for voice procedures</h3>
             <p>
-              Use the Tandem UI for voice procedures and the OlySense UI for other procedures. Preserves both UIs, but requires users to learn and use two completely different UIs depending on the procedure.
+              Use the Tandem UI for voice procedures and the OlySense UI for
+              other procedures. Preserves both UIs, but requires users to learn
+              and use two completely different UIs depending on the procedure.
             </p>
           </ImageTabsItem>
 
-          <ImageTabsItem
-            image="Tandem-Oly-Option-3_a5hpal"
-            alt=""
-          >
+          <ImageTabsItem image="Tandem-Oly-Option-3_a5hpal" alt="">
             <h3>Tandem within Olysense</h3>
             <p>
-              Incorporate the Tandem UI into OlySense report as an iFrame. Solves the regulatory issue, but presents two different UIs on the same screen.
+              Incorporate the Tandem UI into OlySense report as an iFrame.
+              Solves the regulatory issue, but presents two different UIs on the
+              same screen.
             </p>
           </ImageTabsItem>
-          <ImageTabsItem
-            image="Tandem-Oly-Option-4_wjrli2"
-            alt=""
-          >
+          <ImageTabsItem image="Tandem-Oly-Option-4_wjrli2" alt="">
             <h3>Tandem UI before Olysense</h3>
             <p>
-              Users approve findings in the Tandem UI before moving to the OlySense UI.
+              Users approve findings in the Tandem UI before moving to the
+              OlySense UI.
             </p>
           </ImageTabsItem>
         </ImageTabs>
@@ -261,7 +285,6 @@ export default function Voice() {
       <Section>
         <Grid columns={[1]}>
           <Column>
-
             <p>
               The intra-procedure experience and the post-procedure report
               writing experience were owned by different teams, each with its
@@ -315,8 +338,6 @@ export default function Voice() {
               autoplay
               padded
             />
-
-
           </Column>
         </Grid>
 

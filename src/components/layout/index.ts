@@ -14,7 +14,7 @@ export { ImageTabs } from "./ImageTabs";
 export { ImageTabsItem } from "./ImageTabsItem";
 
 export { Blockquote } from "./Blockquote";
-export { BlockquoteStack } from "./BlockquoteStack";
+export { BlockquoteCarousel } from "./BlockquoteCarousel";
 
 export { PinnedMediaScroll } from "./PinnedMediaScroll";
 export { PinnedMediaScrollItem } from "./PinnedMediaScrollItem";
